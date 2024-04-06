@@ -83,8 +83,7 @@ def mitigated(chromosome, circuit, execute):
     for gene in chromosome:
         chain_executor = gene.executor(chain_executor)
 
-    # result = chain_executor(circuit)
-    result = OBS.expectation(circuit, chain_executor)
+    result = chain_executor(circuit)
 
     return result
     
@@ -160,8 +159,7 @@ def genetic_algorithm(circuit, generations=5, population_size=10):
 def initialize_population(population_size):
     fac = zne.RichardsonFactory(scale_factors=[1, 3, 5])
 
-    # return [[REMGene(p0=0.05, p1=0.05), ZNEGene(factory=fac, scale_noise=zne.scaling.fold_global, num_to_avg=1)] for _ in range(population_size)]
-    return [[REMGene(p0=0.05, p1=0.05)] for _ in range(population_size)]
+    return [[REMGene(p0=0.05, p1=0.05), ZNEGene(factory=fac, scale_noise=zne.scaling.fold_global, num_to_avg=1)] for _ in range(population_size)]
 
 
 circuit = generate_rb_circuits(2, 10)[0] # TODO: some benchmarking circuit
