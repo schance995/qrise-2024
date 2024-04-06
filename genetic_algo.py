@@ -12,6 +12,7 @@ import numpy as np
 
 N_QUBITS = 2
 OBS = Observable(PauliString("Z"*N_QUBITS)) # THIS IS IN THE WRONG PLACE
+np.random.seed(42) # TODO: global random seed is not respected
 
 # TODO: for now I'm just going to hardcode the genes
 class BaseGene(ABC):
@@ -132,13 +133,13 @@ def crossover(population, p=0.5):
 
 def genetic_algorithm(circuit, generations=5, population_size=10):
     population = initialize_population(population_size)
-    
-    for generation in range(generations):
+    max_fitness_over_time = []
+    avg_fitness_over_time = []
+    for generation in range(1, 1+generations):
         # Evaluate fitness
         fitness_scores = [evaluate_fitness(chromosome, circuit) for chromosome in population]
         avg_fitness = sum(fitness_scores) / len(fitness_scores)
-        print(avg_fitness) # TODO: nice plot
-
+        avg_fitness_over_time.append(avg_fitness)
         # Selection
         # Simple selection strategy: sort by fitness and select top half
         population = [chromosome for _, chromosome in sorted(zip(fitness_scores, population), key=lambda pair: pair[0], reverse=True)]
@@ -148,9 +149,11 @@ def genetic_algorithm(circuit, generations=5, population_size=10):
         population = [mutate(chromosome) for chromosome in population]
         population = crossover(population)
 
-        print(f"Generation {generation}, Best Score: {max(fitness_scores)}")
+        max_fitness = max(fitness_scores)
+        max_fitness_over_time.append(max_fitness)
+        print(f"Generation {generation}, Average Fitness: {avg_fitness}, Best Fitness: {max_fitness}")
 
-    return population
+    return population, max_fitness_over_time
     # Return the best individual and its score
     # best_index = np.argmax(fitness_scores)
     # return population[best_index], fitness_scores[best_index]
