@@ -5,8 +5,8 @@
 
 from abc import ABC, abstractmethod
 from functools import partial
-from mitiq.benchmarks import generate_rb_circuits
-from mitiq import rem, zne, Observable, PauliString, MeasurementResult, raw
+from mitiq.benchmarks import generate_rb_circuits, generate_ghz_circuit, generate_w_circuit
+from mitiq import rem, zne, ddd, Observable, PauliString, MeasurementResult, raw
 import cirq
 import numpy as np
 
@@ -48,6 +48,17 @@ class ZNEGene(BaseGene):
             factory=self.factory,
             scale_noise=self.scale_noise,
             num_to_average=self.num_to_avg
+        )
+    
+class DDDGene(BaseGene):
+    def __init__(self, rule):
+        self.rule = rule
+
+    def executor(self, executable):
+        return ddd.mitigate_executor(
+            executable,
+            rule=self.rule,
+            observable=OBS
         )
 
 # TODO: this is hardcoded
@@ -162,8 +173,11 @@ def genetic_algorithm(circuit, generations=5, population_size=10):
 def initialize_population(population_size):
     fac = zne.RichardsonFactory(scale_factors=[1, 3, 5])
 
-    return [[REMGene(p0=0.05, p1=0.05), ZNEGene(factory=fac, scale_noise=zne.scaling.fold_global, num_to_avg=1)] for _ in range(population_size)]
+    return [[REMGene(p0=0.05, p1=0.05), DDDGene(rule=ddd.rules.xx)] for _ in range(population_size)]
+    # return [[REMGene(p0=0.05, p1=0.05), ZNEGene(factory=fac, scale_noise=zne.scaling.fold_global, num_to_avg=1)] for _ in range(population_size)]
 
 
-circuit = generate_rb_circuits(2, 10)[0] # TODO: some benchmarking circuit
+# circuit = generate_ghz_circuit(N_QUBITS)
+# circuit = generate_w_circuit(N_QUBITS)
+circuit = generate_rb_circuits(N_QUBITS, 10)[0] # TODO: some benchmarking circuit
 print(genetic_algorithm(circuit))
