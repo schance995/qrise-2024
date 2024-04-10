@@ -358,7 +358,7 @@ if __name__ == '__main__':
     # circuit = generate_w_circuit(N_QUBITS)
     # circuit = generate_rb_circuits(N_QUBITS, 10)[0] # TODO: some benchmarking circuit
 
-    pop_size = 20
+    pop_size = 12
     generation_count = 10
     
     pop = initialize_population(pop_size)
@@ -383,7 +383,7 @@ if __name__ == '__main__':
                 fitnesses[i] = evaluate_fitness(pop[i], circuit)
             except zne.inference.ExtrapolationError:
                 # really really bad if it doesn't even work
-                fitnesses[i] = -1e100
+                fitnesses[i] = -1e8
 
         # sort by fitnesses
         pop_fit = sorted(
