@@ -4,14 +4,14 @@
 # assume gene is executable, takes only circuit as parameter
 
 from abc import ABC, abstractmethod
+from copy import deepcopy
 from functools import partial
-from mitiq.benchmarks import generate_rb_circuits, generate_ghz_circuit, generate_w_circuit
-from mitiq import rem, zne, ddd, Observable, PauliString, MeasurementResult, raw
+
 import cirq
 import numpy as np
 from numpy import random as random
-from copy import deepcopy
-
+from mitiq import rem, zne, ddd, Observable, PauliString, MeasurementResult, raw
+from mitiq.benchmarks import generate_rb_circuits, generate_ghz_circuit, generate_w_circuit
 from tqdm import tqdm, trange
 
 N_QUBITS = 5
