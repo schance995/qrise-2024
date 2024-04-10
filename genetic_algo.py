@@ -12,6 +12,7 @@ import numpy as np
 from numpy import random as random
 from mitiq import rem, zne, ddd, Observable, PauliString, MeasurementResult, raw
 from mitiq.benchmarks import generate_rb_circuits, generate_ghz_circuit, generate_w_circuit
+import qsimcirq
 from tqdm import tqdm, trange
 
 N_QUBITS = 5
@@ -165,6 +166,13 @@ class DDDGene(BaseGene):
             observable=OBS
         )
 
+# Do not recreate the simulator every time
+SIMULATOR = cirq.DensityMatrixSimulator()
+# qsimcirq is slow
+# Use all threads except 4? Somehow slower than single thread
+# qsim_options = qsimcirq.QSimOptions(cpu_threads=4)
+# SIMULATOR = qsimcirq.QSimSimulator(qsim_options)
+
 # TODO: this is hardcoded
 def execute(circuit: cirq.Circuit, noise_level: float = 0.002, p0: float = 0.05) -> MeasurementResult:
     """Execute a circuit with depolarizing noise of strength ``noise_level`` and readout errors ...
@@ -175,9 +183,9 @@ def execute(circuit: cirq.Circuit, noise_level: float = 0.002, p0: float = 0.05)
     circuit.append(cirq.bit_flip(p0).on_each(circuit.all_qubits()))
     circuit.append(measurements)
 
-    simulator = cirq.DensityMatrixSimulator()
+    # simulator = cirq.DensityMatrixSimulator()
 
-    result = simulator.run(circuit, repetitions=1000)
+    result = SIMULATOR.run(circuit, repetitions=1000)
     bitstrings = np.column_stack(list(result.measurements.values()))
     return MeasurementResult(bitstrings)
 
