@@ -211,19 +211,21 @@ def evaluate_fitness(chromosome, circuit):
     ideal_measurement = ideal(circuit)
     noisy_measurement = noisy(circuit)
     mitigated_measurement = mitigated(chromosome, circuit, execute)
-    # TODO: fitness = relative gain in mitigation
+    # fitness = relative gain in mitigation
     # higher fitness = the difference between noisy and ideal > mitigated and ideal
     # ideal noise is as far away as possible
+    # maximize negative tanh log ratio of differences
+
+    if (distance_mitigated := abs(mitigated_measurement - ideal_measurement)) == 0:
+        fitness = 1
     
-    distance_mitigated = abs(mitigated_measurement - ideal_measurement)
-    distance_noisy     = abs(noisy_measurement     - ideal_measurement)
-
     # fix for divide by zero and log 0 in fitness :(
-    if distance_noisy == 0:
-        distance_noisy = 1e-8
+    else:
+        if (distance_noisy     := abs(noisy_measurement     - ideal_measurement)) == 0:
+            distance_noisy = 1e-8
 
-    relative_distance = distance_mitigated / distance_noisy
-    fitness = 1 if relative_distance == 0 else np.tanh(-np.log(relative_distance))
+        relative_distance = distance_mitigated / distance_noisy
+        fitness = np.tanh(-np.log(relative_distance))
 
     return fitness
 
