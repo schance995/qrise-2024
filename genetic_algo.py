@@ -364,11 +364,11 @@ if __name__ == '__main__':
     generation_count = 10
     
     pop = initialize_population(pop_size)
-        
-    for generation in trange(generation_count,
+
+    for generation in (pbar := trange(generation_count,
         desc = 'genetic algorithm',
         unit = 'generation',
-    ):
+    )):
         # mutation
         pop = [mutate(i) for i in pop]
         
@@ -380,6 +380,7 @@ if __name__ == '__main__':
         for i in trange(len(pop),
             desc = 'fitness calculation',
             unit = 'candidate',
+            leave = False,
         ):
             try:
                 fitnesses[i] = evaluate_fitness(pop[i], circuit)
@@ -399,8 +400,9 @@ if __name__ == '__main__':
         ]
 
         # logging
-        print(f"\n\nGeneration {generation}, Median Fitness: {np.median(fitnesses)}, Best Fitness: {np.max(fitnesses)}\n\n")
-        print_pop(pop)
+        pbar.set_postfix_str(f"Median Fitness: {np.median(fitnesses):.3f}, Best Fitness: {np.max(fitnesses):.3f}")
+        # print(f"\n\nGeneration {generation}, Median Fitness: {np.median(fitnesses)}, Best Fitness: {np.max(fitnesses)}\n\n")
+        # print_pop(pop)
 
         # repopulation
         half = len(pop) // 2
