@@ -350,19 +350,10 @@ def initialize_population(population_size):
     ]
 
 
-def print_pop(pop):
-    for i,j in enumerate(pop):
-        print(f'{i+1}. {j}')
-
-if __name__ == '__main__':
-    
-    circuit = generate_ghz_circuit(N_QUBITS)
-    # circuit = generate_w_circuit(N_QUBITS)
-    # circuit = generate_rb_circuits(N_QUBITS, 10)[0] # TODO: some benchmarking circuit
-
-    pop_size = 12
-    generation_count = 10
-    
+def genetic_algorithm(pop_size, generation_count, circuit):
+    '''
+    Optimize a population of 'pop size' on 'circuit' for 'generation_count' generations.
+    '''
     pop = initialize_population(pop_size)
 
     for generation in (pbar := trange(generation_count,
@@ -404,6 +395,9 @@ if __name__ == '__main__':
         # print(f"\n\nGeneration {generation}, Median Fitness: {np.median(fitnesses)}, Best Fitness: {np.max(fitnesses)}\n\n")
         # print_pop(pop)
 
+        if generation >= generation_count + 1:
+            return pop
+
         # repopulation
         half = len(pop) // 2
         rest = len(pop) - half # account for odd-length population sizes
@@ -414,3 +408,20 @@ if __name__ == '__main__':
             ]
             for i in pop[:half] + pop[:rest]
         ]
+
+def print_pop(pop):
+    for i,j in enumerate(pop):
+        print(f'{i+1}. {j}')
+
+if __name__ == '__main__':
+
+    circuit = generate_ghz_circuit(N_QUBITS)
+    # circuit = generate_w_circuit(N_QUBITS)
+    # circuit = generate_rb_circuits(N_QUBITS, 10)[0] # TODO: some benchmarking circuit
+
+    pop_size = 20
+
+    generation_count = 10
+
+    final_pop = genetic_algorithm(pop_size, generation_count, circuit)
+    print_pop(final_pop)
