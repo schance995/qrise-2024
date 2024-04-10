@@ -321,33 +321,6 @@ def crossover(population, times=None):
     return population
 
 
-def genetic_algorithm(circuit, generations=5, population_size=10):
-    population = initialize_population(population_size)
-    max_fitness_over_time = []
-    avg_fitness_over_time = []
-    for generation in range(1, 1+generations):
-        # Evaluate fitness
-        fitness_scores = [evaluate_fitness(chromosome, circuit) for chromosome in population]
-        avg_fitness = sum(fitness_scores) / len(fitness_scores)
-        avg_fitness_over_time.append(avg_fitness)
-        # Selection
-        # Simple selection strategy: sort by fitness and select top half
-        population = [chromosome for _, chromosome in sorted(zip(fitness_scores, population), key=lambda pair: pair[0], reverse=True)]
-        parents = population[:len(population)//2]
-
-        population = grow_shrink(population)
-        population = [mutate(chromosome) for chromosome in population]
-        population = crossover(population)
-
-        max_fitness = max(fitness_scores)
-        max_fitness_over_time.append(max_fitness)
-        print(f"Generation {generation}, Average Fitness: {avg_fitness}, Best Fitness: {max_fitness}")
-
-    return population, max_fitness_over_time
-    # Return the best individual and its score
-    # best_index = np.argmax(fitness_scores)
-    # return population[best_index], fitness_scores[best_index]
-
 # TODO: this is hardcoded
 def initialize_population(population_size):
     def chain_1():
