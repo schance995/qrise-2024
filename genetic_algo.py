@@ -44,7 +44,6 @@ class REMGene(BaseGene):
     
     def executor(self, executable):
         icm = rem.generate_inverse_confusion_matrix(N_QUBITS, self.p0, self.p1)
-
         return rem.mitigate_executor(executable, inverse_confusion_matrix=icm)
 
 class ZNEGene(BaseGene):
@@ -57,9 +56,78 @@ class ZNEGene(BaseGene):
         # zne.scaling.insert_id_layers,
         # zne.scaling.layer_folding,
     ]
+
+    factories = [
+        zne.inference.RichardsonFactory(scale_factors=[1, 3, 5]),
+        zne.inference.LinearFactory(scale_factors=[1, 3]),
+        zne.inference.PolyFactory(scale_factors=[1, 1.5, 2, 2.5, 3], order=2),
+        zne.inference.ExpFactory(scale_factors=[1, 2, 3], asymptote=0.5),
+        zne.inference.AdaExpFactory(steps=5, asymptote=0.5),
+    ]
+
+    @staticmethod
+    def generate_factory():
+        scale_factors = np.sort(
+            random.uniform(
+                low  = 1.0,
+                high = 10.0,
+                size = random.randint(2, 7),
+            )
+        )
+        match random.randint(5):
+            case 0: # Richardson
+                return zne.inference.RichardsonFactory(
+                    scale_factors = scale_factors
+                )
+            case 1: # Linear
+                return zne.inference.LinearFactory(
+                    scale_factors = scale_factors
+                )
+            case 2: # Poly
+                return zne.inference.PolyFactory(
+                    scale_factors = scale_factors,
+                    order = random.randint(len(scale_factors))
+                )
+            case 3: # Exp
+                return zne.inference.ExpFactory(
+                    scale_factors = scale_factors,
+                    asymptote = random.uniform(
+                        low  = -10.0,
+                        high = +10.0,
+                    )
+                )
+            case 4: # AdaExp
+                match random.randint(2):
+                    case 0:
+                        # without asymptote
+                        return zne.inference.AdaExpFactory(
+                            steps = random.randint(4, 15),
+                        )
+                    case 1:
+                        # with asymptote
+                        return zne.inference.AdaExpFactory(
+                            steps = random.randint(3, 15),
+                            asymptote = random.uniform(
+                                low  = -10.0,
+                                high = +10.0,
+                            )
+                        )
     
     def __str__(self):
-        return f'zne({self.factory.__class__.__name__}, {self.scale_noise.__name__})'
+        factory_name = self.factory.__class__.__name__
+        parameters = ''
+        match self.factory:
+            case zne.inference.RichardsonFactory(_scale_factors=scale_factors):
+                parameters = f'{scale_factors}'
+            case zne.inference.LinearFactory(_scale_factors=scale_factors):
+                parameters = f'{scale_factors}'
+            case zne.inference.PolyFactory(_scale_factors=scale_factors, _options=options):
+                parameters = f'{scale_factors}, {options["order"]}'
+            case zne.inference.ExpFactory(_scale_factors=scale_factors, _options=options):
+                parameters = f'{scale_factors}, {options["asymptote"]}'
+            case zne.inference.AdaExpFactory(_steps=steps, asymptote=asymptote):
+                parameters = f'{steps}, {asymptote}'
+        return f'zne({factory_name}({parameters}), {self.scale_noise.__name__})'
     
     def __init__(self, factory, scale_noise, num_to_avg):
         super().__init__()
@@ -73,7 +141,7 @@ class ZNEGene(BaseGene):
             observable=OBS,
             factory=self.factory,
             scale_noise=self.scale_noise,
-            num_to_average=self.num_to_avg
+            num_to_average=self.num_to_avg,
         )
     
 class DDDGene(BaseGene):
@@ -173,7 +241,23 @@ def mutate(chromosome):
             c.p0 = np.clip(c.p0, 0, 1)
             c.p1 = np.clip(c.p1, 0, 1)
         case ZNEGene(scale_noise=scale_noise):
-            c.scale_noise = random.choice(ZNEGene.scale_noises)
+            match random.randint(3):
+                case 0:
+                    c.scale_noise = random.choice(ZNEGene.scale_noises)
+                case 1:
+                    c.factory = ZNEGene.generate_factory()
+                case 2:
+                    match c.factory:
+                        case zne.inference.RichardsonFactory(_scale_factors=scale_factors):
+                            c.factory.scale_factors = random.randint(max(scale_factors) * 2, size=len(scale_factors))
+                        case zne.inference.LinearFactory(_scale_factors=scale_factors):
+                            c.factory.scale_factors = random.randint(max(scale_factors) * 2, size=len(scale_factors))
+                        case zne.inference.PolyFactory(_scale_factors=scale_factors, _order=order):
+                            c.factory.scale_factors = random.randint(max(scale_factors) * 2, size=len(scale_factors))
+                        case zne.inference.ExpFactory(_scale_factors=scale_factors, _asymptote=asymptote):
+                            c.factory.scale_factors = random.randint(max(scale_factors) * 2, size=len(scale_factors))
+                        case zne.inference.AdaExpFactory(_steps=steps, _asymptote=asymptote):
+                            c.factory.steps = c.factory.steps + random.randint(3) - 1
         case DDDGene(rule=rule):
             c.rule = random.choice(DDDGene.rules)
     return chromosome
@@ -233,9 +317,7 @@ def genetic_algorithm(circuit, generations=5, population_size=10):
 
 # TODO: this is hardcoded
 def initialize_population(population_size):
-    fac = zne.RichardsonFactory(scale_factors=[1, 3, 5])
-
-    def i1():
+    def chain_1():
         return [
             REMGene(p0 = 0.05, p1 = 0.05),
             DDDGene(
@@ -243,23 +325,22 @@ def initialize_population(population_size):
             ),
         ]
 
-    def i2():
-        
+    def chain_2():
         return [
             REMGene(p0 = 0.05, p1 = 0.05),
             ZNEGene(
-                factory = fac,
+                factory = random.choice(ZNEGene.factories),
                 scale_noise = random.choice(ZNEGene.scale_noises),
                 num_to_avg = 1,
             )
         ]
 
-    def i():
-        opts = [i1, i2]
-        return opts[random.randint(len(opts))]()
+    def make_chain():
+        known_working = [chain_1, chain_2]
+        return known_working[random.randint(len(known_working))]()
     
     return [
-        i()
+        make_chain()
         for _ in range(population_size)
     ]
 
@@ -295,7 +376,11 @@ if __name__ == '__main__':
             desc = 'fitness calculation',
             unit = 'candidate',
         ):
-            fitnesses[i] = evaluate_fitness(pop[i], circuit)
+            try:
+                fitnesses[i] = evaluate_fitness(pop[i], circuit)
+            except zne.inference.ExtrapolationError:
+                # really really bad if it doesn't even work
+                fitnesses[i] = -1e100
 
         # sort by fitnesses
         pop_fit = sorted(
