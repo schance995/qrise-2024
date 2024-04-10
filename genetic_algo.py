@@ -6,6 +6,8 @@
 from abc import ABC, abstractmethod
 from copy import deepcopy
 from functools import partial
+import sys
+import time
 
 import cirq
 import numpy as np
@@ -21,6 +23,21 @@ from tqdm import tqdm, trange
 N_QUBITS = 5
 OBS = Observable(PauliString("Z" * N_QUBITS)) # THIS IS IN THE WRONG PLACE
 np.random.seed(42) # TODO: global random seed is not respected
+
+def get_serial_code():
+    """gets a unique integer every time the algorithm is run for logging purposes"""
+    count_file = open("bin/count.txt", "r") # open file in read mode
+    count = count_file.read() # read data 
+    count_file.close() # close file
+
+    count_file = open("bin/count.txt", "w") # open file again but in write mode
+    count = int(count) + 1 # increase the count value by add 1
+    count_file.write(str(count)) # write count to file
+    count_file.close() # close file
+
+    return count
+
+SERIAL_CODE = get_serial_code()
 
 # TODO: for now I'm just going to hardcode the genes
 class BaseGene(ABC):
@@ -457,7 +474,31 @@ def make_plot(max_fits, med_fits, title):
     ax.set_xticks(ticks)
     ax.legend()
     ax.grid()
-    plt.show()
+    plt.savefig(f'plots/{title} (run {SERIAL_CODE}).png')
+
+def benchmark_results(fittest_chromosome):
+    print("\n========= BENCHMARK RESULTS ========")
+
+
+    ideal_measurement = ideal(circuit)
+    noisy_measurement = noisy(circuit)
+    print("Ideal value:", "{:.5f}".format(ideal_measurement.real))
+    print("Noisy value:", "{:.5f}".format(noisy_measurement.real))
+
+    icm = rem.generate_inverse_confusion_matrix(N_QUBITS, 0.05, 0.05) # arbitrary config
+    rem_executor = rem.mitigate_executor(execute, inverse_confusion_matrix=icm)
+
+    rem_result = OBS.expectation(circuit, rem_executor)
+    print("Mitigated value obtained with REM:", "{:.5f}".format(rem_result.real))
+    
+    zne_result = zne.execute_with_zne(circuit, execute, OBS) # default params
+    print("Mitigated value obtained with ZNE:", "{:.5f}".format(zne_result.real))
+    
+    ddd_result = ddd.execute_with_ddd(circuit, execute, OBS, rule = ddd.rules.xx) # default params
+    print("Mitigated value obtained with ZNE:", "{:.5f}".format(ddd_result.real))
+
+    optim_result = mitigated(fittest_chromosome, circuit, execute)
+    print("Optim mitigated value:", "{:.5f}".format(optim_result.real))
 
 if __name__ == '__main__':
 
@@ -486,24 +527,31 @@ if __name__ == '__main__':
     ]
 
     pop_size = 20
-    generation_count = 6  # 6 generations is enough
+    generation_count = 1  # 6 generations is enough
 
-    for circuit, circuit_name in zip(circuits, circuit_names):
-        title = f'{circuit_name} with {N_QUBITS} qubits'
-        print(title)
-        print(circuit)  # TODO: show a picture of this
-        final_pop, results = genetic_algorithm(pop_size, generation_count, circuit)
-        max_indivs = results['max_indivs']
-        med_indivs = results['med_indivs']
-        max_fits = results['max_fitness']
-        med_fits = results['med_fitness']
-        print('Final pop')
-        print_pop(final_pop)
-        print('Max pop')
-        print_pop(max_indivs)
-        # print(max_fits)
-        print('Med pop')
-        print_pop(med_indivs)
-        # print(med_fits)
-        # make a quick plot of max/med fitness over time
-        make_plot(max_fits, med_fits, title)
+
+    with open("output.txt", "a") as f:
+        sys.stdout = f
+        print(f"\n\n\n############### EXPERIMENT {SERIAL_CODE} ({time.asctime()}) ############")
+
+        for circuit, circuit_name in zip(circuits, circuit_names):
+            title = f'{circuit_name} with {N_QUBITS} qubits'
+            print(f'\n\nCIRCUIT: {title}')
+            print(circuit)  # TODO: show a picture of this
+            final_pop, results = genetic_algorithm(pop_size, generation_count, circuit)
+            max_indivs = results['max_indivs']
+            med_indivs = results['med_indivs']
+            max_fits = results['max_fitness']
+            med_fits = results['med_fitness']
+            print('Final pop')
+            print_pop(final_pop)
+            print('Max pop')
+            print_pop(max_indivs)
+            # print(max_fits)
+            print('Med pop')
+            print_pop(med_indivs)
+            # print(med_fits)
+            # make a quick plot of max/med fitness over time
+            make_plot(max_fits, med_fits, title)
+
+            benchmark_results(max_indivs[-1])
