@@ -208,7 +208,6 @@ def evaluate_fitness(chromosome, circuit):
     """
     Evaluates the mitigation performance of 'chromosome' on 'circuit'
     """
-    fitness = 0
     ideal_measurement = ideal(circuit)
     noisy_measurement = noisy(circuit)
     mitigated_measurement = mitigated(chromosome, circuit, execute)
@@ -219,9 +218,13 @@ def evaluate_fitness(chromosome, circuit):
     distance_mitigated = abs(mitigated_measurement - ideal_measurement)
     distance_noisy     = abs(noisy_measurement     - ideal_measurement)
 
-    # fix for divide by zero in fitness :(
-    fitness = 1 - distance_mitigated / (1e-8 + distance_noisy)
-    
+    # fix for divide by zero and log 0 in fitness :(
+    if distance_noisy == 0:
+        distance_noisy = 1e-8
+
+    relative_distance = distance_mitigated / distance_noisy
+    fitness = 1 if relative_distance == 0 else np.tanh(-np.log(relative_distance))
+
     return fitness
 
 
