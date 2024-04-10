@@ -10,8 +10,11 @@ from functools import partial
 import cirq
 import numpy as np
 from numpy import random as random
+import matplotlib.pyplot as plt
 from mitiq import rem, zne, ddd, Observable, PauliString, MeasurementResult, raw
 from mitiq.benchmarks import generate_rb_circuits, generate_ghz_circuit, generate_w_circuit
+from mitiq.benchmarks.randomized_clifford_t_circuit import generate_random_clifford_t_circuit
+from mitiq.benchmarks.mirror_qv_circuits import generate_mirror_qv_circuit
 import qsimcirq
 from tqdm import tqdm, trange
 
@@ -363,6 +366,12 @@ def genetic_algorithm(pop_size, generation_count, circuit):
     Optimize a population of 'pop size' on 'circuit' for 'generation_count' generations.
     '''
     pop = initialize_population(pop_size)
+    max_fitness_over_time = []
+    med_fitness_over_time = []
+    max_indivs_over_time = []
+    med_indivs_over_time = []
+    best_max_fitness_so_far = float('-inf')
+    best_med_fitness_so_far = float('-inf')
 
     for generation in (pbar := trange(generation_count,
         desc = 'genetic algorithm',
@@ -385,6 +394,7 @@ def genetic_algorithm(pop_size, generation_count, circuit):
                 fitnesses[i] = evaluate_fitness(pop[i], circuit)
             except zne.inference.ExtrapolationError:
                 # really really bad if it doesn't even work
+                # this means we can't log the worst fitness configurations
                 fitnesses[i] = -1e8
 
         # sort by fitnesses
@@ -393,18 +403,35 @@ def genetic_algorithm(pop_size, generation_count, circuit):
             key = lambda v: -v[1],
         )
 
+        # logging
+        # array is sorted, use constant-time lookups
+        max_pop, max_fit = pop_fit[0]
+        med_pop, med_fit = pop_fit[len(fitnesses)//2]
+        best_max_fitness_so_far = max(best_max_fitness_so_far, max_fit)
+        best_med_fitness_so_far = max(best_med_fitness_so_far, med_fit)
+        max_indivs_over_time.append(max_pop)
+        med_indivs_over_time.append(med_pop)
+        max_fitness_over_time.append(max_fit)
+        med_fitness_over_time.append(med_fit)
+
         # re-extract population
         pop = [
             i for (i, f) in pop_fit
         ]
 
         # logging
-        pbar.set_postfix_str(f"Median Fitness: {np.median(fitnesses):.3f}, Best Fitness: {np.max(fitnesses):.3f}")
-        # print(f"\n\nGeneration {generation}, Median Fitness: {np.median(fitnesses)}, Best Fitness: {np.max(fitnesses)}\n\n")
+        pbar.set_postfix_str(f"Best Median Fitness: {best_med_fitness_so_far:.3f}, Best Max Fitness: {best_max_fitness_so_far:.3f}")
         # print_pop(pop)
 
-        if generation >= generation_count + 1:
-            return pop
+        # return the final population and metrics once done
+        if generation + 1 >= generation_count:
+            results = {
+                "max_fitness": max_fitness_over_time,
+                "med_fitness": med_fitness_over_time,
+                "max_indivs": max_indivs_over_time,
+                "med_indivs": med_indivs_over_time,
+            }
+            return pop, results
 
         # repopulation
         half = len(pop) // 2
@@ -421,15 +448,62 @@ def print_pop(pop):
     for i,j in enumerate(pop):
         print(f'{i+1}. {j}')
 
+def make_plot(max_fits, med_fits, title):
+    fig, ax = plt.subplots()
+    ticks = list(range(1, 1 + len(max_fits)))
+    ax.plot(ticks, max_fits, label='Max')
+    ax.plot(ticks, med_fits, label='Median')
+    ax.set(xlabel='Generation', ylabel='Fitness', title=title)
+    ax.set_xticks(ticks)
+    ax.legend()
+    ax.grid()
+    plt.show()
+
 if __name__ == '__main__':
 
-    circuit = generate_ghz_circuit(N_QUBITS)
-    # circuit = generate_w_circuit(N_QUBITS)
-    # circuit = generate_rb_circuits(N_QUBITS, 10)[0] # TODO: some benchmarking circuit
+    # some benchmarking circuits
+    circuits = [
+        generate_ghz_circuit(N_QUBITS),
+        generate_w_circuit(N_QUBITS),
+        generate_random_clifford_t_circuit(
+            num_qubits=N_QUBITS,
+            num_oneq_cliffords=N_QUBITS,
+            num_twoq_cliffords=N_QUBITS,
+            num_t_gates=N_QUBITS,
+        ),
+        # TODO: what do mirror circuits return?
+        # ValueError: probabilities are not non-negative
+        # generate_mirror_qv_circuit(
+        #     num_qubits=N_QUBITS,
+        #     depth=N_QUBITS,
+        # ),
+    ]
+
+    circuit_names = [
+        'GHZ',
+        'W-state',
+        'Random Clifford T',
+    ]
 
     pop_size = 20
+    generation_count = 6  # 6 generations is enough
 
-    generation_count = 10
-
-    final_pop = genetic_algorithm(pop_size, generation_count, circuit)
-    print_pop(final_pop)
+    for circuit, circuit_name in zip(circuits, circuit_names):
+        title = f'{circuit_name} with {N_QUBITS} qubits'
+        print(title)
+        print(circuit)  # TODO: show a picture of this
+        final_pop, results = genetic_algorithm(pop_size, generation_count, circuit)
+        max_indivs = results['max_indivs']
+        med_indivs = results['med_indivs']
+        max_fits = results['max_fitness']
+        med_fits = results['med_fitness']
+        print('Final pop')
+        print_pop(final_pop)
+        print('Max pop')
+        print_pop(max_indivs)
+        # print(max_fits)
+        print('Med pop')
+        print_pop(med_indivs)
+        # print(med_fits)
+        # make a quick plot of max/med fitness over time
+        make_plot(max_fits, med_fits, title)
