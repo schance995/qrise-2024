@@ -10,6 +10,7 @@ from mitiq import rem, zne, ddd, Observable, PauliString, MeasurementResult, raw
 import cirq
 import numpy as np
 from numpy import random as random
+from copy import deepcopy
 
 from tqdm import tqdm, trange
 
@@ -47,6 +48,16 @@ class REMGene(BaseGene):
         return rem.mitigate_executor(executable, inverse_confusion_matrix=icm)
 
 class ZNEGene(BaseGene):
+    scale_noises = [
+        zne.scaling.fold_global,
+        zne.scaling.fold_all,
+        zne.scaling.fold_gates_from_left,
+        zne.scaling.fold_gates_from_right,
+        zne.scaling.fold_gates_at_random,
+        # zne.scaling.insert_id_layers,
+        # zne.scaling.layer_folding,
+    ]
+    
     def __str__(self):
         return f'zne({self.factory.__class__.__name__}, {self.scale_noise.__name__})'
     
@@ -66,6 +77,12 @@ class ZNEGene(BaseGene):
         )
     
 class DDDGene(BaseGene):
+    rules = [
+        ddd.rules.xx,
+        ddd.rules.xyxy,
+        ddd.rules.yy,
+    ]
+    
     def __str__(self):
         return f'ddd({self.rule.__name__})'
         
@@ -140,42 +157,33 @@ def evaluate_fitness(chromosome, circuit):
     return fitness
 
 
-def mutate(chromosome, p=0.5):
+def mutate(chromosome):
     i = random.randint(len(chromosome))
-    match chromosome[i]:
+    c = chromosome[i]
+    # if no change happened, consider it as a no-op
+    match c:
         case REMGene(p0=p0, p1=p1):
             match random.randint(3):
                 case 0:
                     pass
                 case 1:
-                    chromosome[i].p0 += 0.01 * random.randn()
+                    c.p0 += 0.01 * random.randn()
                 case 2:
-                    chromosome[i].p1 += 0.01 * random.randn()
-            chromosome[i].p0 = np.clip(chromosome[i].p0, 0, 1)
-            chromosome[i].p1 = np.clip(chromosome[i].p1, 0, 1)
-        case ZNEGene():
-            pass
-        case DDDGene():
-            pass
+                    c.p1 += 0.01 * random.randn()
+            c.p0 = np.clip(c.p0, 0, 1)
+            c.p1 = np.clip(c.p1, 0, 1)
+        case ZNEGene(scale_noise=scale_noise):
+            c.scale_noise = random.choice(ZNEGene.scale_noises)
+        case DDDGene(rule=rule):
+            c.rule = random.choice(DDDGene.rules)
     return chromosome
-
-
-def grow_shrink(population, p=0.5):
-    return population
-    # TODO: implement
-    if random.uniform(0,1) < p:
-        pass # pop random individual
-    if random.uniform(0,1) < p:
-        pass # add random individual
-    return population
-
 
 def crossover(population, times=None):
     if times is None:
         times = len(population) // 2
 
     # individual crossover
-    def cross(x, y):
+    def cross(x, y, i=0):
         ix = random.randint(len(x))
         iy = random.randint(len(y))
         # right now, we can only swap matching gene types
@@ -183,11 +191,15 @@ def crossover(population, times=None):
             t     = x[ix]
             x[ix] = y[iy]
             y[iy] = t
+        else:
+            # failed, try again 10 times
+            if i < 10:
+                cross(x, y, i+1)
     
     # do an arbitrary number of crossover iterations
     for _ in range(times):
         ix, iy = random.randint(len(population), size=2)
-        cross(population[ix], population[iy])
+        cross(population[ix], population[iy], 0)
     
     return population
 
@@ -226,13 +238,20 @@ def initialize_population(population_size):
     def i1():
         return [
             REMGene(p0 = 0.05, p1 = 0.05),
-            DDDGene(rule = ddd.rules.xx),
+            DDDGene(
+                rule = random.choice(DDDGene.rules)
+            ),
         ]
 
     def i2():
+        
         return [
             REMGene(p0 = 0.05, p1 = 0.05),
-            ZNEGene(factory = fac, scale_noise = zne.scaling.fold_global, num_to_avg = 1)
+            ZNEGene(
+                factory = fac,
+                scale_noise = random.choice(ZNEGene.scale_noises),
+                num_to_avg = 1,
+            )
         ]
 
     def i():
@@ -291,9 +310,15 @@ if __name__ == '__main__':
 
         # logging
         print(f"\n\nGeneration {generation}, Average Fitness: {np.mean(fitnesses)}, Best Fitness: {np.max(fitnesses)}\n\n")
-        # print_pop(pop)
+        print_pop(pop)
 
         # repopulation
         half = len(pop) // 2
         rest = len(pop) - half # account for odd-length population sizes
-        pop = pop[:half] + pop[:rest]
+        pop = [
+            [
+                deepcopy(j)
+                for j in i
+            ]
+            for i in pop[:half] + pop[:rest]
+        ]
