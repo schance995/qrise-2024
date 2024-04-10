@@ -9,13 +9,22 @@ from mitiq.benchmarks import generate_rb_circuits, generate_ghz_circuit, generat
 from mitiq import rem, zne, ddd, Observable, PauliString, MeasurementResult, raw
 import cirq
 import numpy as np
+from numpy import random as random
 
-N_QUBITS = 2
-OBS = Observable(PauliString("Z"*N_QUBITS)) # THIS IS IN THE WRONG PLACE
+from tqdm import tqdm, trange
+
+N_QUBITS = 5
+OBS = Observable(PauliString("Z" * N_QUBITS)) # THIS IS IN THE WRONG PLACE
 np.random.seed(42) # TODO: global random seed is not respected
 
 # TODO: for now I'm just going to hardcode the genes
 class BaseGene(ABC):
+    def __str__(self):
+        return f'base'
+
+    def __repr__(self):
+        return str(self)
+    
     def __init__(self):
         pass
 
@@ -24,6 +33,9 @@ class BaseGene(ABC):
         pass
     
 class REMGene(BaseGene):
+    def __str__(self):
+        return f'rem({self.p0:.2f}, {self.p1:.2f})'
+        
     def __init__(self, p0=0.05, p1=0.05):
         super().__init__()
         self.p0 = p0
@@ -35,6 +47,9 @@ class REMGene(BaseGene):
         return rem.mitigate_executor(executable, inverse_confusion_matrix=icm)
 
 class ZNEGene(BaseGene):
+    def __str__(self):
+        return f'zne({self.factory.__class__.__name__}, {self.scale_noise.__name__})'
+    
     def __init__(self, factory, scale_noise, num_to_avg):
         super().__init__()
         self.factory = factory
@@ -51,7 +66,11 @@ class ZNEGene(BaseGene):
         )
     
 class DDDGene(BaseGene):
+    def __str__(self):
+        return f'ddd({self.rule.__name__})'
+        
     def __init__(self, rule):
+        super().__init__()
         self.rule = rule
 
     def executor(self, executable):
@@ -111,15 +130,34 @@ def evaluate_fitness(chromosome, circuit):
     # TODO: fitness = relative gain in mitigation
     # higher fitness = the difference between noisy and ideal > mitigated and ideal
     # ideal noise is as far away as possible
-    fitness = 1 - abs(mitigated_measurement - ideal_measurement) / abs(noisy_measurement - ideal_measurement)
+    
+    distance_mitigated = abs(mitigated_measurement - ideal_measurement)
+    distance_noisy     = abs(noisy_measurement     - ideal_measurement)
+
+    # fix for divide by zero in fitness :(
+    fitness = 1 - distance_mitigated / (1e-8 + distance_noisy)
+    
     return fitness
 
 
 def mutate(chromosome, p=0.5):
+    i = random.randint(len(chromosome))
+    match chromosome[i]:
+        case REMGene(p0=p0, p1=p1):
+            match random.randint(3):
+                case 0:
+                    pass
+                case 1:
+                    chromosome[i].p0 += 0.01 * random.randn()
+                case 2:
+                    chromosome[i].p1 += 0.01 * random.randn()
+            chromosome[i].p0 = np.clip(chromosome[i].p0, 0, 1)
+            chromosome[i].p1 = np.clip(chromosome[i].p1, 0, 1)
+        case ZNEGene():
+            pass
+        case DDDGene():
+            pass
     return chromosome
-    # if np.random.uniform(0,1) < p: # some p
-    #     return new(chromosome) # or change its parameter
-    # return chromosome
 
 
 def grow_shrink(population, p=0.5):
@@ -132,14 +170,26 @@ def grow_shrink(population, p=0.5):
     return population
 
 
-def crossover(population, p=0.5):
+def crossover(population, times=None):
+    if times is None:
+        times = len(population) // 2
+
+    # individual crossover
+    def cross(x, y):
+        ix = random.randint(len(x))
+        iy = random.randint(len(y))
+        # right now, we can only swap matching gene types
+        if type(x[ix]) == type(y[iy]):
+            t     = x[ix]
+            x[ix] = y[iy]
+            y[iy] = t
+    
+    # do an arbitrary number of crossover iterations
+    for _ in range(times):
+        ix, iy = random.randint(len(population), size=2)
+        cross(population[ix], population[iy])
+    
     return population
-    # TODO: implement
-    # for each pair: maybe crossover
-    for i in range(len(population) // 2):
-        if random.uniform(0,1) < p: # TODO: select by random number
-            pass
-            # partition 2 chromosomes
 
 
 def genetic_algorithm(circuit, generations=5, population_size=10):
@@ -173,11 +223,77 @@ def genetic_algorithm(circuit, generations=5, population_size=10):
 def initialize_population(population_size):
     fac = zne.RichardsonFactory(scale_factors=[1, 3, 5])
 
-    return [[REMGene(p0=0.05, p1=0.05), DDDGene(rule=ddd.rules.xx)] for _ in range(population_size)]
-    # return [[REMGene(p0=0.05, p1=0.05), ZNEGene(factory=fac, scale_noise=zne.scaling.fold_global, num_to_avg=1)] for _ in range(population_size)]
+    def i1():
+        return [
+            REMGene(p0 = 0.05, p1 = 0.05),
+            DDDGene(rule = ddd.rules.xx),
+        ]
+
+    def i2():
+        return [
+            REMGene(p0 = 0.05, p1 = 0.05),
+            ZNEGene(factory = fac, scale_noise = zne.scaling.fold_global, num_to_avg = 1)
+        ]
+
+    def i():
+        opts = [i1, i2]
+        return opts[random.randint(len(opts))]()
+    
+    return [
+        i()
+        for _ in range(population_size)
+    ]
 
 
-# circuit = generate_ghz_circuit(N_QUBITS)
-# circuit = generate_w_circuit(N_QUBITS)
-circuit = generate_rb_circuits(N_QUBITS, 10)[0] # TODO: some benchmarking circuit
-print(genetic_algorithm(circuit))
+def print_pop(pop):
+    for i,j in enumerate(pop):
+        print(f'{i+1}. {j}')
+
+if __name__ == '__main__':
+    
+    circuit = generate_ghz_circuit(N_QUBITS)
+    # circuit = generate_w_circuit(N_QUBITS)
+    # circuit = generate_rb_circuits(N_QUBITS, 10)[0] # TODO: some benchmarking circuit
+
+    pop_size = 20
+    generation_count = 10
+    
+    pop = initialize_population(pop_size)
+        
+    for generation in trange(generation_count,
+        desc = 'genetic algorithm',
+        unit = 'generation',
+    ):
+        # mutation
+        pop = [mutate(i) for i in pop]
+        
+        # crossover
+        pop = crossover(pop, times=1)
+    
+        # fitness testing
+        fitnesses = np.zeros(len(pop))
+        for i in trange(len(pop),
+            desc = 'fitness calculation',
+            unit = 'candidate',
+        ):
+            fitnesses[i] = evaluate_fitness(pop[i], circuit)
+
+        # sort by fitnesses
+        pop_fit = sorted(
+            zip(pop, fitnesses),
+            key = lambda v: -v[1],
+        )
+
+        # re-extract population
+        pop = [
+            i for (i, f) in pop_fit
+        ]
+
+        # logging
+        print(f"\n\nGeneration {generation}, Average Fitness: {np.mean(fitnesses)}, Best Fitness: {np.max(fitnesses)}\n\n")
+        # print_pop(pop)
+
+        # repopulation
+        half = len(pop) // 2
+        rest = len(pop) - half # account for odd-length population sizes
+        pop = pop[:half] + pop[:rest]
