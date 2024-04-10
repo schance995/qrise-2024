@@ -397,7 +397,7 @@ if __name__ == '__main__':
         ]
 
         # logging
-        print(f"\n\nGeneration {generation}, Average Fitness: {np.mean(fitnesses)}, Best Fitness: {np.max(fitnesses)}\n\n")
+        print(f"\n\nGeneration {generation}, Median Fitness: {np.median(fitnesses)}, Best Fitness: {np.max(fitnesses)}\n\n")
         print_pop(pop)
 
         # repopulation
