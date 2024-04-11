@@ -4,8 +4,10 @@
 # assume gene is executable, takes only circuit as parameter
 
 from abc import ABC, abstractmethod
+from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
 from copy import deepcopy
 from functools import partial
+from multiprocessing import get_context
 import sys
 import time
 
@@ -20,7 +22,7 @@ from mitiq.benchmarks.mirror_qv_circuits import generate_mirror_qv_circuit
 # import qsimcirq
 from tqdm import tqdm, trange
 
-N_QUBITS = 5
+N_QUBITS = 6
 OBS = Observable(PauliString("Z" * N_QUBITS)) # THIS IS IN THE WRONG PLACE
 np.random.seed(42) # TODO: global random seed is not respected
 
@@ -371,77 +373,79 @@ def genetic_algorithm(pop_size, generation_count, circuit):
     med_indivs_over_time = []
     best_max_fitness_so_far = float('-inf')
     best_med_fitness_so_far = float('-inf')
+    ctx = get_context('spawn')
+    with ProcessPoolExecutor(mp_context=ctx) as executor:
+        for generation in (pbar := trange(generation_count,
+            desc = 'genetic algorithm',
+            unit = 'generation',
+        )):
+            # mutation
+            pop = [mutate(i) for i in pop]
 
-    for generation in (pbar := trange(generation_count,
-        desc = 'genetic algorithm',
-        unit = 'generation',
-    )):
-        # mutation
-        pop = [mutate(i) for i in pop]
+            # crossover
+            pop = crossover(pop, times=1)
         
-        # crossover
-        pop = crossover(pop, times=1)
-    
-        # fitness testing
-        fitnesses = np.zeros(len(pop))
-        for i in trange(len(pop),
-            desc = 'fitness calculation',
-            unit = 'candidate',
-            leave = False,
-        ):
-            try:
-                fitnesses[i] = evaluate_fitness(pop[i], circuit)
-            except zne.inference.ExtrapolationError:
-                # really really bad if it doesn't even work
-                # this means we can't log the worst fitness configurations
-                fitnesses[i] = -1e8
+            # fitness testing. Multiprocessing speeds this up
+            futures = [executor.submit(evaluate_fitness, indiv, circuit) for indiv in pop]
+            fbar = trange(len(futures), leave=False)
+            def get_res(f, indiv, circuit):
+                fbar.update()
+                # execute the exceptions synchronously if unpickleable:
+                # AttributeError: Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+                try:
+                    result = f.result()
+                except AttributeError:
+                    result = evaluate_fitness(indiv, circuit)
+                return result
 
-        # sort by fitnesses
-        pop_fit = sorted(
-            zip(pop, fitnesses),
-            key = lambda v: -v[1],
-        )
+            fitnesses = [get_res(future, indiv, circuit) for future, indiv in zip(futures, pop)]
 
-        # logging
-        # array is sorted, use constant-time lookups
-        max_pop, max_fit = pop_fit[0]
-        med_pop, med_fit = pop_fit[len(fitnesses)//2]
-        best_max_fitness_so_far = max(best_max_fitness_so_far, max_fit)
-        best_med_fitness_so_far = max(best_med_fitness_so_far, med_fit)
-        max_indivs_over_time.append(max_pop)
-        med_indivs_over_time.append(med_pop)
-        max_fitness_over_time.append(max_fit)
-        med_fitness_over_time.append(med_fit)
+            # sort by fitnesses
+            pop_fit = sorted(
+                zip(pop, fitnesses),
+                key = lambda v: -v[1],
+            )
 
-        # re-extract population
-        pop = [
-            i for (i, f) in pop_fit
-        ]
+            # logging
+            # array is sorted, use constant-time lookups
+            max_pop, max_fit = pop_fit[0]
+            med_pop, med_fit = pop_fit[len(fitnesses)//2]
+            best_max_fitness_so_far = max(best_max_fitness_so_far, max_fit)
+            best_med_fitness_so_far = max(best_med_fitness_so_far, med_fit)
+            max_indivs_over_time.append(max_pop)
+            med_indivs_over_time.append(med_pop)
+            max_fitness_over_time.append(max_fit)
+            med_fitness_over_time.append(med_fit)
 
-        # logging
-        pbar.set_postfix_str(f"Best Median Fitness: {best_med_fitness_so_far:.3f}, Best Max Fitness: {best_max_fitness_so_far:.3f}")
-        # print_pop(pop)
-
-        # return the final population and metrics once done
-        if generation + 1 >= generation_count:
-            results = {
-                "max_fitness": max_fitness_over_time,
-                "med_fitness": med_fitness_over_time,
-                "max_indivs": max_indivs_over_time,
-                "med_indivs": med_indivs_over_time,
-            }
-            return pop, results
-
-        # repopulation
-        half = len(pop) // 2
-        rest = len(pop) - half # account for odd-length population sizes
-        pop = [
-            [
-                deepcopy(j)
-                for j in i
+            # re-extract population
+            pop = [
+                i for (i, f) in pop_fit
             ]
-            for i in pop[:half] + pop[:rest]
-        ]
+
+            # logging
+            pbar.set_postfix_str(f"Best Median Fitness: {best_med_fitness_so_far:.3f}, Best Max Fitness: {best_max_fitness_so_far:.3f}")
+            # print_pop(pop)
+
+            # return the final population and metrics once done
+            if generation + 1 >= generation_count:
+                results = {
+                    "max_fitness": max_fitness_over_time,
+                    "med_fitness": med_fitness_over_time,
+                    "max_indivs": max_indivs_over_time,
+                    "med_indivs": med_indivs_over_time,
+                }
+                return pop, results
+
+            # repopulation
+            half = len(pop) // 2
+            rest = len(pop) - half # account for odd-length population sizes
+            pop = [
+                [
+                    deepcopy(j)
+                    for j in i
+                ]
+                for i in pop[:half] + pop[:rest]
+            ]
 
 def print_pop(pop):
     for i,j in enumerate(pop):
