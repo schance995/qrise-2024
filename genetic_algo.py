@@ -8,6 +8,7 @@ from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
 from copy import deepcopy
 from functools import partial
 from multiprocessing import get_context
+from pathlib import Path
 import sys
 import time
 
@@ -28,16 +29,23 @@ np.random.seed(42) # TODO: global random seed is not respected
 
 def get_serial_code():
     """gets a unique integer every time the algorithm is run for logging purposes"""
-    count_file = open("bin/count.txt", "r") # open file in read mode
-    count = count_file.read() # read data
-    count_file.close() # close file
-    if count == '':
+    config_dir = Path('config')
+    config_dir.mkdir(exist_ok=True)
+    count_file_path = config_dir / "count.txt"
+    if count_file_path.is_file():
+        with open(count_file_path, "r") as count_file: # open file in read mode
+            count = count_file.read() # read data
+        try:
+            count += 1
+        except:
+            count = 0
+    else:
         count = 0
+    # file is closed after leaving with
 
-    count_file = open("bin/count.txt", "w") # open file again but in write mode
-    count = int(count) + 1 # increase the count value by add 1
-    count_file.write(str(count)) # write count to file
-    count_file.close() # close file
+    with open(count_file_path, "w") as count_file: # open file again but in write mode
+        count_file.write(str(count)) # write count to file
+    # file is closed after leaving with
 
     return count
 
@@ -460,7 +468,9 @@ def make_plot(max_fits, med_fits, title):
     ax.set_xticks(ticks)
     ax.legend()
     ax.grid()
-    plt.savefig(f'plots/{title} (run {SERIAL_CODE}).png')
+    plots_dir = Path('plots')
+    plots_dir.mkdir(exist_ok=True)
+    plt.savefig(plots_dir / f'{title} (run {SERIAL_CODE}).png')
 
 def benchmark_results(fittest_chromosome, circuit):
     print("\n========= BENCHMARK RESULTS ========")
