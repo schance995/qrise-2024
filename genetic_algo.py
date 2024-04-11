@@ -528,4 +528,8 @@ if __name__ == '__main__':
             # make a quick plot of max/med fitness over time
             make_plot(max_fits, med_fits, title)
 
-            benchmark_results(max_indivs[-1])
+            # use the best max individual
+            best_max_indiv = max_indivs[np.argmax(max_fits)]
+            print('Best max individual')
+            print(best_max_indiv)
+            benchmark_results(best_max_indiv, circuit)
