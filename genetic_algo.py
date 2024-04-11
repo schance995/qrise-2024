@@ -17,7 +17,7 @@ from mitiq import rem, zne, ddd, Observable, PauliString, MeasurementResult, raw
 from mitiq.benchmarks import generate_rb_circuits, generate_ghz_circuit, generate_w_circuit
 from mitiq.benchmarks.randomized_clifford_t_circuit import generate_random_clifford_t_circuit
 from mitiq.benchmarks.mirror_qv_circuits import generate_mirror_qv_circuit
-import qsimcirq
+# import qsimcirq
 from tqdm import tqdm, trange
 
 N_QUBITS = 5
@@ -190,9 +190,8 @@ class DDDGene(BaseGene):
 
 # Do not recreate the simulator every time
 SIMULATOR = cirq.DensityMatrixSimulator()
-# qsimcirq is slow
-# Use all threads except 4? Somehow slower than single thread
-# qsim_options = qsimcirq.QSimOptions(cpu_threads=4)
+# qsimcirq is slower than single threaded for small circuits
+# qsim_options = qsimcirq.QSimOptions(cpu_threads=6)
 # SIMULATOR = qsimcirq.QSimSimulator(qsim_options)
 
 # TODO: this is hardcoded
