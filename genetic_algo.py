@@ -27,8 +27,10 @@ np.random.seed(42) # TODO: global random seed is not respected
 def get_serial_code():
     """gets a unique integer every time the algorithm is run for logging purposes"""
     count_file = open("bin/count.txt", "r") # open file in read mode
-    count = count_file.read() # read data 
+    count = count_file.read() # read data
     count_file.close() # close file
+    if count == '':
+        count = 0
 
     count_file = open("bin/count.txt", "w") # open file again but in write mode
     count = int(count) + 1 # increase the count value by add 1
