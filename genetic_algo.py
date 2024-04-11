@@ -458,7 +458,7 @@ def make_plot(max_fits, med_fits, title):
     ax.grid()
     plt.savefig(f'plots/{title} (run {SERIAL_CODE}).png')
 
-def benchmark_results(fittest_chromosome):
+def benchmark_results(fittest_chromosome, circuit):
     print("\n========= BENCHMARK RESULTS ========")
 
 
@@ -477,10 +477,16 @@ def benchmark_results(fittest_chromosome):
     print("Mitigated value obtained with ZNE:", "{:.5f}".format(zne_result.real))
     
     ddd_result = ddd.execute_with_ddd(circuit, execute, OBS, rule = ddd.rules.xx) # default params
-    print("Mitigated value obtained with ZNE:", "{:.5f}".format(ddd_result.real))
+    print("Mitigated value obtained with DDD:", "{:.5f}".format(ddd_result.real))
 
     optim_result = mitigated(fittest_chromosome, circuit, execute)
     print("Optim mitigated value:", "{:.5f}".format(optim_result.real))
+
+    # compute fitness values of each
+    print('REM fitness: {:.5f}'.format(compute_fitness(ideal_measurement, noisy_measurement, rem_result)))
+    print('ZNE fitness: {:.5f}'.format(compute_fitness(ideal_measurement, noisy_measurement, zne_result)))
+    print('DDD fitness: {:.5f}'.format(compute_fitness(ideal_measurement, noisy_measurement, ddd_result)))
+    print('Optim fitness: {:.5f}'.format(compute_fitness(ideal_measurement, noisy_measurement, optim_result)))
 
 if __name__ == '__main__':
 
