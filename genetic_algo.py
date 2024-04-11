@@ -402,7 +402,8 @@ def genetic_algorithm(pop_size, generation_count, circuit):
                 # AttributeError: Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
                 try:
                     result = f.result()
-                except AttributeError:
+                except Exception as e:  # assume that errors are related to multiprocessing
+                    print(e)
                     result = evaluate_fitness(indiv, circuit)
                 return result
 
