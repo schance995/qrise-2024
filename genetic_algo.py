@@ -231,32 +231,40 @@ def mitigated(chromosome, circuit, execute):
     result = chain_executor(circuit)
 
     return result
-    
 
-def evaluate_fitness(chromosome, circuit):
-    """
-    Evaluates the mitigation performance of 'chromosome' on 'circuit'
-    """
-    ideal_measurement = ideal(circuit)
-    noisy_measurement = noisy(circuit)
-    mitigated_measurement = mitigated(chromosome, circuit, execute)
-    # fitness = relative gain in mitigation
-    # higher fitness = the difference between noisy and ideal > mitigated and ideal
-    # ideal noise is as far away as possible
-    # maximize negative tanh log ratio of differences
 
+def compute_fitness(ideal_measurement, noisy_measurement, mitigated_measurement):
     if (distance_mitigated := abs(mitigated_measurement - ideal_measurement)) == 0:
         fitness = 1
     
     # fix for divide by zero and log 0 in fitness :(
     else:
-        if (distance_noisy     := abs(noisy_measurement     - ideal_measurement)) == 0:
+        if (distance_noisy := abs(noisy_measurement     - ideal_measurement)) == 0:
             distance_noisy = 1e-8
 
         relative_distance = distance_mitigated / distance_noisy
         fitness = np.tanh(-np.log(relative_distance))
-
     return fitness
+
+
+def evaluate_fitness(chromosome, circuit):
+    """
+    Evaluates the mitigation performance of 'chromosome' on 'circuit'
+    - fitness = relative gain in mitigation
+    - higher fitness = the difference between noisy and ideal > mitigated and ideal
+    - ideal noise is as far away as possible
+    - maximize negative tanh log ratio of differences
+    """
+    ideal_measurement = ideal(circuit)
+    noisy_measurement = noisy(circuit)
+    try:
+        mitigated_measurement = mitigated(chromosome, circuit, execute)
+    except zne.inference.ExtrapolationError:
+        # really really bad if it doesn't even work
+        # this means we can't log the worst fitness configurations
+        return -1e8
+
+    return compute_fitness(ideal_measurement, noisy_measurement, mitigated_measurement)
 
 
 def mutate(chromosome):
