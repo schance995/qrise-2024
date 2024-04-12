@@ -48,9 +48,7 @@ def get_serial_code():
 
     return count
 
-SERIAL_CODE = get_serial_code()
-
-# TODO: for now I'm just going to hardcode the genes
+# hardcode genes
 class BaseGene(ABC):
     def __str__(self):
         return f'base'
@@ -200,7 +198,7 @@ class DDDGene(BaseGene):
             observable=obs
         )
 
-# TODO: this is hardcoded
+# this is hardcoded
 def execute(circuit: cirq.Circuit, noise_level: float = 0.002, p0: float = 0.05) -> MeasurementResult:
     """Execute a circuit with depolarizing noise of strength ``noise_level`` and readout errors ...
     """
@@ -239,18 +237,23 @@ def mitigated(chromosome, circuit, execute):
     return result
 
 
-def compute_fitness(ideal_measurement, noisy_measurement, mitigated_measurement):
+def compute_mitigation_ratio(ideal_measurement, noisy_measurement, mitigated_measurement):
     if (distance_mitigated := abs(mitigated_measurement - ideal_measurement)) == 0:
-        fitness = 1
-    
-    # fix for divide by zero and log 0 in fitness :(
-    else:
-        if (distance_noisy := abs(noisy_measurement     - ideal_measurement)) == 0:
-            distance_noisy = 1e-8
+        return 0
+    if (distance_noisy     := abs(noisy_measurement     - ideal_measurement)) == 0:
+        distance_noisy = 1e-8
 
-        relative_distance = distance_mitigated / distance_noisy
-        fitness = np.tanh(-np.log(relative_distance))
-    return fitness
+    return distance_mitigated / distance_noisy
+
+
+def compute_fitness(ideal_measurement = None, noisy_measurement = None, mitigated_measurement = None, ratio = None):
+    if ratio is None:
+        ratio = compute_mitigation_ratio(ideal_measurement, noisy_measurement, mitigated_measurement)
+
+    if ratio == 0:
+        return 1
+
+    return np.tanh(-np.log(ratio)) # bound fitness between [-inf, 1]
 
 
 def evaluate_fitness(chromosome, circuit, obs):
@@ -336,7 +339,7 @@ def crossover(population, times=None):
     return population
 
 
-# TODO: this is hardcoded
+# this is hardcoded
 def initialize_population(population_size, n_qubits, obs):
     def chain_1():
         return [
@@ -460,7 +463,7 @@ def print_pop(pop):
     for i,j in enumerate(pop):
         print(f'{i+1}. {j}')
 
-def make_plot(max_fits, med_fits, title):
+def make_plot(max_fits, med_fits, title, serial_code):
     fig, ax = plt.subplots()
     ticks = list(range(1, 1 + len(max_fits)))
     ax.plot(ticks, max_fits, label='Max')
@@ -471,7 +474,8 @@ def make_plot(max_fits, med_fits, title):
     ax.grid()
     plots_dir = Path('plots')
     plots_dir.mkdir(exist_ok=True)
-    plt.savefig(plots_dir / f'{title} (run {SERIAL_CODE}).png')
+    plt.savefig(plots_dir / f'{title} (run {serial_code}).png')
+    plt.close()
 
 def benchmark_results(fittest_chromosome, circuit, n_qubits, obs):
     print("\n========= BENCHMARK RESULTS ========")
@@ -497,11 +501,29 @@ def benchmark_results(fittest_chromosome, circuit, n_qubits, obs):
     optim_result = mitigated(fittest_chromosome, circuit, execute)
     print("Optim mitigated value:", "{:.5f}".format(optim_result.real))
 
+    # compute mitigation ratios of each
+    rem_ratio = compute_mitigation_ratio(ideal_measurement, noisy_measurement, rem_result)
+    zne_ratio = compute_mitigation_ratio(ideal_measurement, noisy_measurement, zne_result)
+    ddd_ratio = compute_mitigation_ratio(ideal_measurement, noisy_measurement, ddd_result)
+    optim_ratio = compute_mitigation_ratio(ideal_measurement, noisy_measurement, optim_result)
+    print('REM ratio: {:.5f}'.format(rem_ratio))
+    print('ZNE ratio: {:.5f}'.format(zne_ratio))
+    print('DDD ratio: {:.5f}'.format(ddd_ratio))
+    print('Optim ratio: {:.5f}'.format(optim_ratio))
+
+    rem_fitness = compute_fitness(ratio=rem_ratio)
+    zne_fitness = compute_fitness(ratio=zne_ratio)
+    ddd_fitness = compute_fitness(ratio=ddd_ratio)
+    optim_fitness = compute_fitness(ratio=optim_ratio)
     # compute fitness values of each
-    print('REM fitness: {:.5f}'.format(compute_fitness(ideal_measurement, noisy_measurement, rem_result)))
-    print('ZNE fitness: {:.5f}'.format(compute_fitness(ideal_measurement, noisy_measurement, zne_result)))
-    print('DDD fitness: {:.5f}'.format(compute_fitness(ideal_measurement, noisy_measurement, ddd_result)))
-    print('Optim fitness: {:.5f}'.format(compute_fitness(ideal_measurement, noisy_measurement, optim_result)))
+    print('REM fitness: {:.5f}'.format(rem_fitness))
+    print('ZNE fitness: {:.5f}'.format(zne_fitness))
+    print('DDD fitness: {:.5f}'.format(ddd_fitness))
+    print('Optim fitness: {:.5f}'.format(optim_fitness))
+    # TODO: plot these results
+    # X-axis = circuit
+    # Y-axis = fitness
+    # error-bar = standard deviation
 
 
 def generate_circuits(n_qubits):
@@ -514,7 +536,7 @@ def generate_circuits(n_qubits):
             num_twoq_cliffords=n_qubits,
             num_t_gates=n_qubits,
         ),
-        # TODO: what do mirror circuits return?
+        # what do mirror circuits return?
         # ValueError: probabilities are not non-negative
         # generate_mirror_qv_circuit(
         #     num_qubits=n_qubits,
@@ -522,15 +544,15 @@ def generate_circuits(n_qubits):
         # ),
     ]
 
-def run_experiment(circuit, circuit_names, n_qubits, obs):
-    with open(f"output_{SERIAL_CODE}.txt", "a") as f:
+def run_experiment(circuit, circuit_names, n_qubits, obs, serial_code):
+    with open(f"output_{serial_code}.txt", "a") as f:
         sys.stdout = f
-        print(f"\n\n\n############### EXPERIMENT {SERIAL_CODE} ({time.asctime()}) ############")
+        print(f"\n\n\n############### EXPERIMENT {serial_code} ({time.asctime()}) ############")
 
         for circuit, circuit_name in zip(circuits, circuit_names):
-            title = f'{circuit_name} with {n_qubits} qubits'
+            title = f'{circuit_name} with {n_qubits} qubits and seed {seed}'
             print(f'\n\nCIRCUIT: {title}')
-            print(circuit)  # TODO: show a picture of this, not just ASCII
+            print(circuit)  # SVG cirq drawings are unreliable
             final_pop, results = genetic_algorithm(pop_size, generation_count, circuit, n_qubits, obs)
             max_indivs = results['max_indivs']
             med_indivs = results['med_indivs']
@@ -542,7 +564,7 @@ def run_experiment(circuit, circuit_names, n_qubits, obs):
             print_pop(max_indivs)
             print('Med pop')
             print_pop(med_indivs)
-            make_plot(max_fits, med_fits, title)
+            make_plot(max_fits, med_fits, title, serial_code)
 
             # use the best max individual
             best_max_indiv = max_indivs[np.argmax(max_fits)]
@@ -552,12 +574,14 @@ def run_experiment(circuit, circuit_names, n_qubits, obs):
 
 
 if __name__ == '__main__':
-
-    pop_size = 4
-    generation_count = 1
-    for n_qubits in range(5,8):
-        for seed in range(5,8):
-            np.random.seed(seed) # TODO: global random seed is not respected
+    serial_code = get_serial_code()
+    pop_size = 4  # TODO: set to 40 when ready
+    generation_count = 1  # TODO: set to 10 when ready
+    max_qubits = 5  # TODO: set to 8 when ready
+    n_seeds = 1  # TODO: set to 3 when ready
+    for n_qubits in range(5,max_qubits):
+        for seed in range(seeds):
+            np.random.seed(seed) # global random seed is probably not respected
             obs = Observable(PauliString("Z" * n_qubits))
             circuits = generate_circuits(n_qubits)
             circuit_names = [
@@ -565,4 +589,4 @@ if __name__ == '__main__':
                 'W-state',
                 'Random Clifford T',
             ]
-            run_experiment(circuits, circuit_names, n_qubits, obs)
+            run_experiment(circuits, circuit_names, n_qubits, obs, serial_code)
