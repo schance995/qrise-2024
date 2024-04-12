@@ -20,6 +20,7 @@ from mitiq import rem, zne, ddd, Observable, PauliString, MeasurementResult, raw
 from mitiq.benchmarks import generate_rb_circuits, generate_ghz_circuit, generate_w_circuit
 from mitiq.benchmarks.randomized_clifford_t_circuit import generate_random_clifford_t_circuit
 from mitiq.benchmarks.mirror_qv_circuits import generate_mirror_qv_circuit
+from scipy.special import expit
 from tqdm import tqdm, trange
 
 
@@ -253,7 +254,7 @@ def compute_fitness(ideal_measurement = None, noisy_measurement = None, mitigate
     if ratio == 0:
         return 1
 
-    return np.tanh(-np.log(ratio)) # bound fitness between [-inf, 1]
+    return expit(-np.log(ratio)) # bound fitness between [0, 1]
 
 
 def evaluate_fitness(chromosome, circuit, obs):
@@ -271,7 +272,7 @@ def evaluate_fitness(chromosome, circuit, obs):
     except zne.inference.ExtrapolationError:
         # really really bad if it doesn't even work
         # this means we can't log the worst fitness configurations
-        return -1e8
+        return 0 # -1e8
 
     return compute_fitness(ideal_measurement, noisy_measurement, mitigated_measurement)
 
