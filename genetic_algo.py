@@ -278,7 +278,7 @@ def mutate(chromosome):
     c = chromosome[i]
     # if no change happened, consider it as a no-op
     match c:
-        case REMGene(p0=p0, p1=p1, n_qubits=n_qubits):
+        case REMGene(p0=p0, p1=p1):
             match random.randint(3):
                 case 0:
                     pass
@@ -522,24 +522,7 @@ def generate_circuits(n_qubits):
         # ),
     ]
 
-
-if __name__ == '__main__':
-
-    np.random.seed(42) # TODO: global random seed is not respected
-    n_qubits = 6
-    np.random.seed(n_qubits)
-    obs = Observable(PauliString("Z" * n_qubits)) # THIS IS IN THE WRONG PLACE
-    circuits = generate_circuits(n_qubits)
-    circuit_names = [
-        'GHZ',
-        'W-state',
-        'Random Clifford T',
-    ]
-
-    pop_size = 4
-    generation_count = 1
-
-
+def run_experiment(circuit, circuit_names, n_qubits, obs):
     with open(f"output_{SERIAL_CODE}.txt", "a") as f:
         sys.stdout = f
         print(f"\n\n\n############### EXPERIMENT {SERIAL_CODE} ({time.asctime()}) ############")
@@ -566,3 +549,20 @@ if __name__ == '__main__':
             print('Best max individual')
             print(best_max_indiv)
             benchmark_results(best_max_indiv, circuit, n_qubits, obs)
+
+
+if __name__ == '__main__':
+
+    pop_size = 4
+    generation_count = 1
+    for n_qubits in range(5,8):
+        for seed in range(5,8):
+            np.random.seed(seed) # TODO: global random seed is not respected
+            obs = Observable(PauliString("Z" * n_qubits))
+            circuits = generate_circuits(n_qubits)
+            circuit_names = [
+                'GHZ',
+                'W-state',
+                'Random Clifford T',
+            ]
+            run_experiment(circuits, circuit_names, n_qubits, obs)
