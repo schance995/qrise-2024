@@ -408,7 +408,7 @@ def genetic_algorithm(pop_size, generation_count, circuit, n_qubits, obs):
                 try:
                     result = f.result()
                 except Exception as e:  # assume that errors are related to multiprocessing
-                    print(e)
+                    print(e, file=sys.stderr)
                     result = evaluate_fitness(indiv, circuit, obs)
                 return result
 
@@ -558,7 +558,7 @@ def run_experiment(circuit, circuit_names, n_qubits, obs, serial_code):
     benchmark_fitnesses = [] # {circuit_name: [] for circuit_name in circuit_names}
     benchmark_ratios = [] # {circuit_name: [] for circuit_name in circuit_names}
     with open(f"output_{serial_code}.txt", "a") as f:
-        with redirect_stdout(f):
+        with redirect_stdout(f): # this is a temporary workaround for logging because we couldn't get the logging module working. This current redirects ALL stdout to the file so it could capture random unintended outputs.
             print(f"\n\n\n############### EXPERIMENT {serial_code} ({time.asctime()}) ############")
 
             for circuit, circuit_name in zip(circuits, circuit_names):
@@ -616,12 +616,12 @@ def plot_benchmarks(benchmark_fitnesses, benchmark_ratios, n_qubits, serial_code
 if __name__ == '__main__':
 
     serial_code = get_serial_code()
-    pop_size = 1  # TODO: set to 40 when ready
-    generation_count = 1  # TODO: set to 10 when ready
+    pop_size = 40  # TODO: set to 40 when ready
+    generation_count = 10  # TODO: set to 10 when ready
     max_qubits = 2  # TODO: set to 8 when ready
-    n_seeds = 2  # TODO: set to 3 when ready
+    n_seeds = 3  # TODO: set to 3 when ready
 
-    for n_qubits in [2]: # range(21+max_qubits):
+    for n_qubits in [5,6,7]: # range(21+max_qubits):
         benchmark_fitnesses = []
         benchmark_ratios = []
         for seed in range(1+n_seeds):
