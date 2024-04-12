@@ -5,6 +5,7 @@
 
 from abc import ABC, abstractmethod
 from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
+from contextlib import redirect_stdout
 from copy import deepcopy
 from functools import partial
 from multiprocessing import get_context
@@ -20,9 +21,12 @@ from mitiq import rem, zne, ddd, Observable, PauliString, MeasurementResult, raw
 from mitiq.benchmarks import generate_rb_circuits, generate_ghz_circuit, generate_w_circuit
 from mitiq.benchmarks.randomized_clifford_t_circuit import generate_random_clifford_t_circuit
 from mitiq.benchmarks.mirror_qv_circuits import generate_mirror_qv_circuit
+import pandas as pd
 from scipy.special import expit
 from tqdm import tqdm, trange
 
+# make sure text fits inside plots
+plt.rcParams['figure.constrained_layout.use'] = True
 
 # Do not recreate the simulator every time
 SIMULATOR = cirq.DensityMatrixSimulator()
@@ -263,7 +267,7 @@ def evaluate_fitness(chromosome, circuit, obs):
     - fitness = relative gain in mitigation
     - higher fitness = the difference between noisy and ideal > mitigated and ideal
     - ideal noise is as far away as possible
-    - maximize negative tanh log ratio of differences
+    - maximize negative sigmoid log ratio of differences
     """
     ideal_measurement = ideal(circuit, obs)
     noisy_measurement = noisy(circuit, obs)
@@ -506,25 +510,33 @@ def benchmark_results(fittest_chromosome, circuit, n_qubits, obs):
     rem_ratio = compute_mitigation_ratio(ideal_measurement, noisy_measurement, rem_result)
     zne_ratio = compute_mitigation_ratio(ideal_measurement, noisy_measurement, zne_result)
     ddd_ratio = compute_mitigation_ratio(ideal_measurement, noisy_measurement, ddd_result)
-    optim_ratio = compute_mitigation_ratio(ideal_measurement, noisy_measurement, optim_result)
+    dna_ratio = compute_mitigation_ratio(ideal_measurement, noisy_measurement, optim_result)
+    ratios = {
+        'REM': rem_ratio,
+        'ZNE': zne_ratio,
+        'DDD': ddd_ratio,
+        'DNA': dna_ratio,
+    }
     print('REM ratio: {:.5f}'.format(rem_ratio))
     print('ZNE ratio: {:.5f}'.format(zne_ratio))
     print('DDD ratio: {:.5f}'.format(ddd_ratio))
-    print('Optim ratio: {:.5f}'.format(optim_ratio))
+    print('DNA ratio: {:.5f}'.format(dna_ratio))
 
     rem_fitness = compute_fitness(ratio=rem_ratio)
     zne_fitness = compute_fitness(ratio=zne_ratio)
     ddd_fitness = compute_fitness(ratio=ddd_ratio)
-    optim_fitness = compute_fitness(ratio=optim_ratio)
-    # compute fitness values of each
+    dna_fitness = compute_fitness(ratio=dna_ratio)
+    fitnesses = {
+        'REM': rem_fitness,
+        'ZNE': zne_fitness,
+        'DDD': ddd_fitness,
+        'DNA': dna_fitness,
+    }
     print('REM fitness: {:.5f}'.format(rem_fitness))
     print('ZNE fitness: {:.5f}'.format(zne_fitness))
     print('DDD fitness: {:.5f}'.format(ddd_fitness))
-    print('Optim fitness: {:.5f}'.format(optim_fitness))
-    # TODO: plot these results
-    # X-axis = circuit
-    # Y-axis = fitness
-    # error-bar = standard deviation
+    print('DNA fitness: {:.5f}'.format(dna_fitness))
+    return fitnesses, ratios
 
 
 def generate_circuits(n_qubits):
@@ -546,42 +558,76 @@ def generate_circuits(n_qubits):
     ]
 
 def run_experiment(circuit, circuit_names, n_qubits, obs, serial_code):
+    benchmark_fitnesses = [] # {circuit_name: [] for circuit_name in circuit_names}
+    benchmark_ratios = [] # {circuit_name: [] for circuit_name in circuit_names}
     with open(f"output_{serial_code}.txt", "a") as f:
-        sys.stdout = f
-        print(f"\n\n\n############### EXPERIMENT {serial_code} ({time.asctime()}) ############")
+        with redirect_stdout(f):
+            print(f"\n\n\n############### EXPERIMENT {serial_code} ({time.asctime()}) ############")
 
-        for circuit, circuit_name in zip(circuits, circuit_names):
-            title = f'{circuit_name} with {n_qubits} qubits and seed {seed}'
-            print(f'\n\nCIRCUIT: {title}')
-            print(circuit)  # SVG cirq drawings are unreliable
-            final_pop, results = genetic_algorithm(pop_size, generation_count, circuit, n_qubits, obs)
-            max_indivs = results['max_indivs']
-            med_indivs = results['med_indivs']
-            max_fits = results['max_fitness']
-            med_fits = results['med_fitness']
-            print('Final pop')
-            print_pop(final_pop)
-            print('Max pop')
-            print_pop(max_indivs)
-            print('Med pop')
-            print_pop(med_indivs)
-            make_plot(max_fits, med_fits, title, serial_code)
+            for circuit, circuit_name in zip(circuits, circuit_names):
+                title = f'{circuit_name} with {n_qubits} qubits and seed {seed}'
+                print(f'\n\nCIRCUIT: {title}')
+                print(circuit)  # SVG cirq drawings are unreliable
+                final_pop, results = genetic_algorithm(pop_size, generation_count, circuit, n_qubits, obs)
+                max_indivs = results['max_indivs']
+                med_indivs = results['med_indivs']
+                max_fits = results['max_fitness']
+                med_fits = results['med_fitness']
+                print('Final pop')
+                print_pop(final_pop)
+                print('Max pop')
+                print_pop(max_indivs)
+                print('Med pop')
+                print_pop(med_indivs)
+                make_plot(max_fits, med_fits, title, serial_code)
 
-            # use the best max individual
-            best_max_indiv = max_indivs[np.argmax(max_fits)]
-            print('Best max individual')
-            print(best_max_indiv)
-            benchmark_results(best_max_indiv, circuit, n_qubits, obs)
+                # use the best max individual
+                best_max_indiv = max_indivs[np.argmax(max_fits)]
+                print('Best max individual')
+                print(best_max_indiv)
+                fitnesses, ratios = benchmark_results(best_max_indiv, circuit, n_qubits, obs)
+                # convert dictionaries to dataframes
+                benchmark_fitnesses.append(pd.DataFrame(fitnesses, index=[circuit_name]))
+                benchmark_ratios.append(pd.DataFrame(ratios, index=[circuit_name]))
+    return pd.concat(benchmark_fitnesses), pd.concat(benchmark_ratios)
+
+
+def plot_benchmarks(benchmark_fitnesses, benchmark_ratios, n_qubits, serial_code):
+
+    plots_dir = Path('plots')
+    plots_dir.mkdir(exist_ok=True)
+
+    fitness_df = pd.concat(benchmark_fitnesses)
+    mean_fitness_df = fitness_df.groupby(fitness_df.index).mean()
+    std_fitness_df = fitness_df.groupby(fitness_df.index).std()
+    ax = mean_fitness_df.plot.bar(rot=0, yerr=std_fitness_df)
+    title = f'Mitigation fitness with {n_qubits} qubits (run {serial_code})'
+    ax.set(xlabel='Mitigation', ylabel='Fitness', title=title)
+    plt.savefig(plots_dir / f'{title}.png')
+    plt.close()
+
+    ratio_df = pd.concat(benchmark_ratios)
+    mean_ratio_df = ratio_df.groupby(ratio_df.index).mean()
+    std_ratio_df = ratio_df.groupby(ratio_df.index).std()
+    ax = mean_ratio_df.plot.bar(rot=0, yerr= std_ratio_df) # only include 1 standard error
+    title = f'Mitigation ratio with {n_qubits} qubits (run {serial_code})'
+    ax.set(xlabel='Mitigation', ylabel='Ratio', title=title)
+    plt.savefig(plots_dir / f'{title}.png')
+    plt.close()
 
 
 if __name__ == '__main__':
+
     serial_code = get_serial_code()
-    pop_size = 4  # TODO: set to 40 when ready
+    pop_size = 1  # TODO: set to 40 when ready
     generation_count = 1  # TODO: set to 10 when ready
-    max_qubits = 5  # TODO: set to 8 when ready
-    n_seeds = 1  # TODO: set to 3 when ready
-    for n_qubits in range(5,max_qubits):
-        for seed in range(seeds):
+    max_qubits = 2  # TODO: set to 8 when ready
+    n_seeds = 2  # TODO: set to 3 when ready
+
+    for n_qubits in [2]: # range(21+max_qubits):
+        benchmark_fitnesses = []
+        benchmark_ratios = []
+        for seed in range(1+n_seeds):
             np.random.seed(seed) # global random seed is probably not respected
             obs = Observable(PauliString("Z" * n_qubits))
             circuits = generate_circuits(n_qubits)
@@ -590,4 +636,9 @@ if __name__ == '__main__':
                 'W-state',
                 'Random Clifford T',
             ]
-            run_experiment(circuits, circuit_names, n_qubits, obs, serial_code)
+            these_benchmark_fitnesses, these_benchmark_ratios = run_experiment(circuits, circuit_names, n_qubits, obs, serial_code)
+            benchmark_fitnesses.append(these_benchmark_fitnesses)
+            benchmark_ratios.append(these_benchmark_ratios)
+
+        plot_benchmarks(benchmark_fitnesses, benchmark_ratios, n_qubits, serial_code)
+
