@@ -1,5 +1,5 @@
 # population = list[chromosome]
-# chromosome = list[gene] = list of mitiq executables
+# chromosome = list[gene] = ORDERED list of mitiq executables
 # gene = parameterized error mitigator
 # assume gene is executable, takes only circuit as parameter
 
@@ -213,8 +213,6 @@ def execute(circuit: cirq.Circuit, noise_level: float = 0.002, p0: float = 0.05)
     circuit.append(cirq.bit_flip(p0).on_each(circuit.all_qubits()))
     circuit.append(measurements)
 
-    # simulator = cirq.DensityMatrixSimulator()
-
     result = SIMULATOR.run(circuit, repetitions=1000)
     bitstrings = np.column_stack(list(result.measurements.values()))
     return MeasurementResult(bitstrings)
@@ -343,9 +341,11 @@ def crossover(population, times=None):
 
     return population
 
-
 # this is hardcoded
 def initialize_population(population_size, n_qubits, obs):
+    """
+    Initializes the population to 2 chromosome configurations: REM + DDD, or REM + ZNE. This is due to the limitations of the API and time constraints, but this can be expanded to cover more gene combinations if a more generalized error composition framework is developed.
+    """
     def chain_1():
         return [
             REMGene(p0 = 0.05, p1 = 0.05, n_qubits = n_qubits),
@@ -374,9 +374,6 @@ def initialize_population(population_size, n_qubits, obs):
         make_chain()
         for _ in range(population_size)
     ]
-
-# log the real ratio not just fitness
-
 
 def genetic_algorithm(pop_size, generation_count, circuit, n_qubits, obs):
     '''
