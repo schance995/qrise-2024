@@ -20,12 +20,11 @@ from mitiq import rem, zne, ddd, Observable, PauliString, MeasurementResult, raw
 from mitiq.benchmarks import generate_rb_circuits, generate_ghz_circuit, generate_w_circuit
 from mitiq.benchmarks.randomized_clifford_t_circuit import generate_random_clifford_t_circuit
 from mitiq.benchmarks.mirror_qv_circuits import generate_mirror_qv_circuit
-# import qsimcirq
 from tqdm import tqdm, trange
 
-N_QUBITS = 6
-OBS = Observable(PauliString("Z" * N_QUBITS)) # THIS IS IN THE WRONG PLACE
-np.random.seed(42) # TODO: global random seed is not respected
+
+# Do not recreate the simulator every time
+SIMULATOR = cirq.DensityMatrixSimulator()
 
 def get_serial_code():
     """gets a unique integer every time the algorithm is run for logging purposes"""
@@ -34,9 +33,9 @@ def get_serial_code():
     count_file_path = config_dir / "count.txt"
     if count_file_path.is_file():
         with open(count_file_path, "r") as count_file: # open file in read mode
-            count = count_file.read() # read data
+            count = count_file.readline() # read data and try to increment by 1
         try:
-            count += 1
+            count = int(count) + 1
         except:
             count = 0
     else:
@@ -58,25 +57,26 @@ class BaseGene(ABC):
 
     def __repr__(self):
         return str(self)
-    
+
     def __init__(self):
         pass
 
     @abstractmethod
     def executor(self, executable):
         pass
-    
+
 class REMGene(BaseGene):
     def __str__(self):
         return f'rem({self.p0:.2f}, {self.p1:.2f})'
-        
-    def __init__(self, p0=0.05, p1=0.05):
+
+    def __init__(self, p0=0.05, p1=0.05, n_qubits=5):
         super().__init__()
         self.p0 = p0
         self.p1 = p1
+        self.n_qubits = n_qubits
     
     def executor(self, executable):
-        icm = rem.generate_inverse_confusion_matrix(N_QUBITS, self.p0, self.p1)
+        icm = rem.generate_inverse_confusion_matrix(self.n_qubits, self.p0, self.p1)
         return rem.mitigate_executor(executable, inverse_confusion_matrix=icm)
 
 class ZNEGene(BaseGene):
@@ -162,16 +162,17 @@ class ZNEGene(BaseGene):
                 parameters = f'{steps}, {asymptote}'
         return f'zne({factory_name}({parameters}), {self.scale_noise.__name__})'
     
-    def __init__(self, factory, scale_noise, num_to_avg):
+    def __init__(self, factory, scale_noise, num_to_avg, obs):
         super().__init__()
         self.factory = factory
         self.scale_noise = scale_noise
         self.num_to_avg = num_to_avg
+        self.obs = obs
 
     def executor(self, executable):
         return zne.mitigate_executor(
             executable,
-            observable=OBS,
+            observable=self.obs,
             factory=self.factory,
             scale_noise=self.scale_noise,
             num_to_average=self.num_to_avg,
@@ -187,22 +188,17 @@ class DDDGene(BaseGene):
     def __str__(self):
         return f'ddd({self.rule.__name__})'
         
-    def __init__(self, rule):
+    def __init__(self, rule, obs):
         super().__init__()
         self.rule = rule
+        self.obs = obs
 
     def executor(self, executable):
         return ddd.mitigate_executor(
             executable,
             rule=self.rule,
-            observable=OBS
+            observable=obs
         )
-
-# Do not recreate the simulator every time
-SIMULATOR = cirq.DensityMatrixSimulator()
-# qsimcirq is slower than single threaded for small circuits
-# qsim_options = qsimcirq.QSimOptions(cpu_threads=6)
-# SIMULATOR = qsimcirq.QSimSimulator(qsim_options)
 
 # TODO: this is hardcoded
 def execute(circuit: cirq.Circuit, noise_level: float = 0.002, p0: float = 0.05) -> MeasurementResult:
@@ -221,11 +217,11 @@ def execute(circuit: cirq.Circuit, noise_level: float = 0.002, p0: float = 0.05)
     return MeasurementResult(bitstrings)
 
 
-def ideal(circuit):
-    return raw.execute(circuit, partial(execute, noise_level=0, p0=0), OBS) # TODO: not use this raw thing
+def ideal(circuit, obs):
+    return raw.execute(circuit, partial(execute, noise_level=0, p0=0), obs)
 
-def noisy(circuit):
-    return raw.execute(circuit, execute, OBS)
+def noisy(circuit, obs):
+    return raw.execute(circuit, execute, obs)
 
 def mitigated(chromosome, circuit, execute):
     """
@@ -257,7 +253,7 @@ def compute_fitness(ideal_measurement, noisy_measurement, mitigated_measurement)
     return fitness
 
 
-def evaluate_fitness(chromosome, circuit):
+def evaluate_fitness(chromosome, circuit, obs):
     """
     Evaluates the mitigation performance of 'chromosome' on 'circuit'
     - fitness = relative gain in mitigation
@@ -265,8 +261,8 @@ def evaluate_fitness(chromosome, circuit):
     - ideal noise is as far away as possible
     - maximize negative tanh log ratio of differences
     """
-    ideal_measurement = ideal(circuit)
-    noisy_measurement = noisy(circuit)
+    ideal_measurement = ideal(circuit, obs)
+    noisy_measurement = noisy(circuit, obs)
     try:
         mitigated_measurement = mitigated(chromosome, circuit, execute)
     except zne.inference.ExtrapolationError:
@@ -282,7 +278,7 @@ def mutate(chromosome):
     c = chromosome[i]
     # if no change happened, consider it as a no-op
     match c:
-        case REMGene(p0=p0, p1=p1):
+        case REMGene(p0=p0, p1=p1, n_qubits=n_qubits):
             match random.randint(3):
                 case 0:
                     pass
@@ -336,28 +332,30 @@ def crossover(population, times=None):
     for _ in range(times):
         ix, iy = random.randint(len(population), size=2)
         cross(population[ix], population[iy], 0)
-    
+
     return population
 
 
 # TODO: this is hardcoded
-def initialize_population(population_size):
+def initialize_population(population_size, n_qubits, obs):
     def chain_1():
         return [
-            REMGene(p0 = 0.05, p1 = 0.05),
+            REMGene(p0 = 0.05, p1 = 0.05, n_qubits = n_qubits),
             DDDGene(
-                rule = random.choice(DDDGene.rules)
+                rule = random.choice(DDDGene.rules),
+                obs = obs,
             ),
         ]
 
     def chain_2():
         return [
-            REMGene(p0 = 0.05, p1 = 0.05),
+            REMGene(p0 = 0.05, p1 = 0.05, n_qubits = n_qubits),
             ZNEGene(
                 factory = random.choice(ZNEGene.factories),
                 scale_noise = random.choice(ZNEGene.scale_noises),
                 num_to_avg = 1,
-            )
+                obs = obs,
+            ),
         ]
 
     def make_chain():
@@ -369,12 +367,14 @@ def initialize_population(population_size):
         for _ in range(population_size)
     ]
 
+# log the real ratio not just fitness
 
-def genetic_algorithm(pop_size, generation_count, circuit):
+
+def genetic_algorithm(pop_size, generation_count, circuit, n_qubits, obs):
     '''
     Optimize a population of 'pop size' on 'circuit' for 'generation_count' generations.
     '''
-    pop = initialize_population(pop_size)
+    pop = initialize_population(pop_size, n_qubits, obs)
     max_fitness_over_time = []
     med_fitness_over_time = []
     max_indivs_over_time = []
@@ -394,7 +394,7 @@ def genetic_algorithm(pop_size, generation_count, circuit):
             pop = crossover(pop, times=1)
         
             # fitness testing. Multiprocessing speeds this up
-            futures = [executor.submit(evaluate_fitness, indiv, circuit) for indiv in pop]
+            futures = [executor.submit(evaluate_fitness, indiv, circuit, obs) for indiv in pop]
             fbar = trange(len(futures), leave=False)
             def get_res(f, indiv, circuit):
                 fbar.update()
@@ -404,7 +404,7 @@ def genetic_algorithm(pop_size, generation_count, circuit):
                     result = f.result()
                 except Exception as e:  # assume that errors are related to multiprocessing
                     print(e)
-                    result = evaluate_fitness(indiv, circuit)
+                    result = evaluate_fitness(indiv, circuit, obs)
                 return result
 
             fitnesses = [get_res(future, indiv, circuit) for future, indiv in zip(futures, pop)]
@@ -473,25 +473,25 @@ def make_plot(max_fits, med_fits, title):
     plots_dir.mkdir(exist_ok=True)
     plt.savefig(plots_dir / f'{title} (run {SERIAL_CODE}).png')
 
-def benchmark_results(fittest_chromosome, circuit):
+def benchmark_results(fittest_chromosome, circuit, n_qubits, obs):
     print("\n========= BENCHMARK RESULTS ========")
 
 
-    ideal_measurement = ideal(circuit)
-    noisy_measurement = noisy(circuit)
+    ideal_measurement = ideal(circuit, obs)
+    noisy_measurement = noisy(circuit, obs)
     print("Ideal value:", "{:.5f}".format(ideal_measurement.real))
     print("Noisy value:", "{:.5f}".format(noisy_measurement.real))
 
-    icm = rem.generate_inverse_confusion_matrix(N_QUBITS, 0.05, 0.05) # arbitrary config
+    icm = rem.generate_inverse_confusion_matrix(n_qubits, 0.05, 0.05) # arbitrary config
     rem_executor = rem.mitigate_executor(execute, inverse_confusion_matrix=icm)
 
-    rem_result = OBS.expectation(circuit, rem_executor)
+    rem_result = obs.expectation(circuit, rem_executor)
     print("Mitigated value obtained with REM:", "{:.5f}".format(rem_result.real))
-    
-    zne_result = zne.execute_with_zne(circuit, execute, OBS) # default params
+
+    zne_result = zne.execute_with_zne(circuit, execute, obs) # default params
     print("Mitigated value obtained with ZNE:", "{:.5f}".format(zne_result.real))
-    
-    ddd_result = ddd.execute_with_ddd(circuit, execute, OBS, rule = ddd.rules.xx) # default params
+
+    ddd_result = ddd.execute_with_ddd(circuit, execute, obs, rule = ddd.rules.xx) # default params
     print("Mitigated value obtained with DDD:", "{:.5f}".format(ddd_result.real))
 
     optim_result = mitigated(fittest_chromosome, circuit, execute)
@@ -503,45 +503,52 @@ def benchmark_results(fittest_chromosome, circuit):
     print('DDD fitness: {:.5f}'.format(compute_fitness(ideal_measurement, noisy_measurement, ddd_result)))
     print('Optim fitness: {:.5f}'.format(compute_fitness(ideal_measurement, noisy_measurement, optim_result)))
 
-if __name__ == '__main__':
 
-    # some benchmarking circuits
-    circuits = [
-        generate_ghz_circuit(N_QUBITS),
-        generate_w_circuit(N_QUBITS),
+def generate_circuits(n_qubits):
+    return [
+        generate_ghz_circuit(n_qubits),
+        generate_w_circuit(n_qubits),
         generate_random_clifford_t_circuit(
-            num_qubits=N_QUBITS,
-            num_oneq_cliffords=N_QUBITS,
-            num_twoq_cliffords=N_QUBITS,
-            num_t_gates=N_QUBITS,
+            num_qubits=n_qubits,
+            num_oneq_cliffords=n_qubits,
+            num_twoq_cliffords=n_qubits,
+            num_t_gates=n_qubits,
         ),
         # TODO: what do mirror circuits return?
         # ValueError: probabilities are not non-negative
         # generate_mirror_qv_circuit(
-        #     num_qubits=N_QUBITS,
-        #     depth=N_QUBITS,
+        #     num_qubits=n_qubits,
+        #     depth=n_qubits,
         # ),
     ]
 
+
+if __name__ == '__main__':
+
+    np.random.seed(42) # TODO: global random seed is not respected
+    n_qubits = 6
+    np.random.seed(n_qubits)
+    obs = Observable(PauliString("Z" * n_qubits)) # THIS IS IN THE WRONG PLACE
+    circuits = generate_circuits(n_qubits)
     circuit_names = [
         'GHZ',
         'W-state',
         'Random Clifford T',
     ]
 
-    pop_size = 20
-    generation_count = 1  # 6 generations is enough
+    pop_size = 4
+    generation_count = 1
 
 
-    with open("output.txt", "a") as f:
+    with open(f"output_{SERIAL_CODE}.txt", "a") as f:
         sys.stdout = f
         print(f"\n\n\n############### EXPERIMENT {SERIAL_CODE} ({time.asctime()}) ############")
 
         for circuit, circuit_name in zip(circuits, circuit_names):
-            title = f'{circuit_name} with {N_QUBITS} qubits'
+            title = f'{circuit_name} with {n_qubits} qubits'
             print(f'\n\nCIRCUIT: {title}')
-            print(circuit)  # TODO: show a picture of this
-            final_pop, results = genetic_algorithm(pop_size, generation_count, circuit)
+            print(circuit)  # TODO: show a picture of this, not just ASCII
+            final_pop, results = genetic_algorithm(pop_size, generation_count, circuit, n_qubits, obs)
             max_indivs = results['max_indivs']
             med_indivs = results['med_indivs']
             max_fits = results['max_fitness']
@@ -550,15 +557,12 @@ if __name__ == '__main__':
             print_pop(final_pop)
             print('Max pop')
             print_pop(max_indivs)
-            # print(max_fits)
             print('Med pop')
             print_pop(med_indivs)
-            # print(med_fits)
-            # make a quick plot of max/med fitness over time
             make_plot(max_fits, med_fits, title)
 
             # use the best max individual
             best_max_indiv = max_indivs[np.argmax(max_fits)]
             print('Best max individual')
             print(best_max_indiv)
-            benchmark_results(best_max_indiv, circuit)
+            benchmark_results(best_max_indiv, circuit, n_qubits, obs)
