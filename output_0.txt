@@ -16491,3 +16491,1398 @@ Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
 Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
 cirq.Z
 Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Final pop
+1. [rem(0.05, 0.06), ddd(yy)]
+2. [rem(0.07, 0.06), ddd(yy)]
+3. [rem(0.05, 0.05), ddd(xyxy)]
+4. [rem(0.05, 0.05), ddd(xyxy)]
+5. [rem(0.05, 0.06), ddd(yy)]
+6. [rem(0.05, 0.05), ddd(yy)]
+7. [rem(0.05, 0.05), zne(PolyFactory([1.37546786 5.61037729], 0), fold_gates_from_right)]
+8. [rem(0.05, 0.04), zne(PolyFactory([1.37546786 5.61037729], 0), fold_gates_from_right)]
+9. [rem(0.07, 0.05), ddd(xx)]
+10. [rem(0.05, 0.05), ddd(xx)]
+11. [rem(0.07, 0.05), ddd(yy)]
+12. [rem(0.05, 0.05), ddd(xyxy)]
+13. [rem(0.05, 0.05), ddd(xyxy)]
+14. [rem(0.05, 0.04), zne(PolyFactory([1.37546786 5.61037729], 0), fold_gates_from_right)]
+15. [rem(0.05, 0.05), ddd(xyxy)]
+16. [rem(0.05, 0.05), ddd(xyxy)]
+17. [rem(0.05, 0.05), ddd(yy)]
+18. [rem(0.07, 0.06), ddd(xyxy)]
+19. [rem(0.05, 0.05), zne(PolyFactory([1.37546786 5.61037729], 0), fold_gates_from_left)]
+20. [rem(0.05, 0.05), zne(PolyFactory([1.37546786 5.61037729], 0), fold_gates_from_left)]
+21. [rem(0.06, 0.06), ddd(xx)]
+22. [rem(0.05, 0.05), ddd(xx)]
+23. [rem(0.05, 0.04), ddd(xyxy)]
+24. [rem(0.05, 0.05), ddd(xx)]
+25. [rem(0.07, 0.06), ddd(xyxy)]
+26. [rem(0.05, 0.03), ddd(xyxy)]
+27. [rem(0.05, 0.05), ddd(xx)]
+28. [rem(0.05, 0.05), ddd(xyxy)]
+29. [rem(0.05, 0.04), zne(AdaExpFactory(3, -8.782381300203788), fold_all)]
+30. [rem(0.07, 0.06), zne(PolyFactory([1.37546786 5.61037729], 0), fold_gates_from_left)]
+31. [rem(0.04, 0.05), zne(AdaExpFactory(3, -8.782381300203788), fold_all)]
+32. [rem(0.05, 0.02), zne(LinearFactory([1.55894146 4.70503755]), fold_gates_at_random)]
+33. [rem(0.07, 0.07), ddd(yy)]
+34. [rem(0.07, 0.05), ddd(xyxy)]
+35. [rem(0.05, 0.02), zne(LinearFactory([1.55894146 4.70503755]), fold_gates_at_random)]
+36. [rem(0.05, 0.05), ddd(xyxy)]
+37. [rem(0.07, 0.06), ddd(xyxy)]
+38. [rem(0.05, 0.05), zne(PolyFactory([1.37546786 5.61037729], 0), fold_all)]
+39. [rem(0.05, 0.06), ddd(xx)]
+40. [rem(0.06, 0.05), zne(AdaExpFactory(5, None), fold_all)]
+Max pop
+1. [rem(0.05, 0.05), ddd(xyxy)]
+2. [rem(0.05, 0.05), ddd(xx)]
+3. [rem(0.05, 0.05), ddd(xyxy)]
+4. [rem(0.05, 0.05), ddd(yy)]
+5. [rem(0.05, 0.05), ddd(xyxy)]
+6. [rem(0.05, 0.05), ddd(xyxy)]
+7. [rem(0.05, 0.05), ddd(xx)]
+8. [rem(0.05, 0.05), zne(AdaExpFactory(3, -8.782381300203788), fold_all)]
+9. [rem(0.05, 0.05), ddd(xx)]
+10. [rem(0.05, 0.06), ddd(yy)]
+Med pop
+1. [rem(0.05, 0.05), ddd(xyxy)]
+2. [rem(0.05, 0.05), ddd(xyxy)]
+3. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_from_right)]
+4. [rem(0.06, 0.05), ddd(xx)]
+5. [rem(0.05, 0.05), ddd(yy)]
+6. [rem(0.05, 0.06), zne(LinearFactory([1.89178923 2.07377983 3.97950308 4.16531282 7.12969445]), fold_gates_from_left)]
+7. [rem(0.04, 0.05), ddd(xyxy)]
+8. [rem(0.07, 0.05), zne(PolyFactory([1.37546786 5.61037729], 0), fold_all)]
+9. [rem(0.05, 0.05), zne(LinearFactory([1.55894146 4.70503755]), fold_gates_at_random)]
+10. [rem(0.06, 0.06), ddd(xx)]
+Best max individual
+[rem(0.05, 0.05), ddd(yy)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: 0.01600
+Noisy value: 0.00600
+Mitigated value obtained with REM: -0.00200
+Mitigated value obtained with ZNE: 0.25600
+Mitigated value obtained with DDD: -0.04000
+Optim mitigated value: 0.03600
+REM ratio: 1.80000
+ZNE ratio: 24.00000
+DDD ratio: 5.60000
+DNA ratio: 2.00000
+REM fitness: 0.35714
+ZNE fitness: 0.04000
+DDD fitness: 0.15152
+DNA fitness: 0.33333
+
+
+CIRCUIT: W-state with 7 qubits and seed 3
+0: ───@────────────X──────────────────────────────────────────────────────────────────────────────────────
+      │            │
+1: ───Ry(0.753π)───@───@────────────X─────────────────────────────────────────────────────────────────────
+                       │            │
+2: ────────────────────Ry(0.732π)───@───@────────────X────────────────────────────────────────────────────
+                                        │            │
+3: ─────────────────────────────────────Ry(0.705π)───@───@────────────X───────────────────────────────────
+                                                         │            │
+4: ──────────────────────────────────────────────────────Ry(0.667π)───@───@────────────X──────────────────
+                                                                          │            │
+5: ───────────────────────────────────────────────────────────────────────Ry(0.608π)───@───@──────────X───
+                                                                                           │          │
+6: ────────────────────────────────────────────────────────────────────────────────────────Ry(0.5π)───@───
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Final pop
+1. [rem(0.07, 0.08), ddd(xx)]
+2. [rem(0.07, 0.06), ddd(xx)]
+3. [rem(0.09, 0.05), ddd(xx)]
+4. [rem(0.06, 0.04), ddd(xyxy)]
+5. [rem(0.07, 0.06), ddd(xyxy)]
+6. [rem(0.08, 0.04), ddd(xx)]
+7. [rem(0.07, 0.08), ddd(xx)]
+8. [rem(0.07, 0.06), ddd(yy)]
+9. [rem(0.09, 0.05), ddd(xx)]
+10. [rem(0.07, 0.05), ddd(yy)]
+11. [rem(0.08, 0.05), ddd(xx)]
+12. [rem(0.08, 0.05), ddd(xx)]
+13. [rem(0.07, 0.05), ddd(xx)]
+14. [rem(0.07, 0.09), ddd(xx)]
+15. [rem(0.07, 0.05), ddd(yy)]
+16. [rem(0.07, 0.06), ddd(yy)]
+17. [rem(0.07, 0.04), ddd(xx)]
+18. [rem(0.09, 0.05), ddd(xyxy)]
+19. [rem(0.07, 0.06), ddd(yy)]
+20. [rem(0.08, 0.04), ddd(yy)]
+21. [rem(0.07, 0.08), ddd(xyxy)]
+22. [rem(0.09, 0.05), ddd(xx)]
+23. [rem(0.07, 0.05), ddd(yy)]
+24. [rem(0.08, 0.05), ddd(xx)]
+25. [rem(0.08, 0.05), ddd(yy)]
+26. [rem(0.07, 0.04), ddd(xyxy)]
+27. [rem(0.07, 0.04), ddd(xx)]
+28. [rem(0.06, 0.05), ddd(yy)]
+29. [rem(0.07, 0.04), ddd(yy)]
+30. [rem(0.07, 0.05), ddd(xx)]
+31. [rem(0.06, 0.05), ddd(yy)]
+32. [rem(0.07, 0.05), ddd(yy)]
+33. [rem(0.06, 0.04), ddd(xx)]
+34. [rem(0.06, 0.05), ddd(yy)]
+35. [rem(0.07, 0.04), ddd(xx)]
+36. [rem(0.06, 0.04), ddd(xyxy)]
+37. [rem(0.06, 0.09), ddd(yy)]
+38. [rem(0.06, 0.06), ddd(xx)]
+39. [rem(0.07, 0.08), ddd(yy)]
+40. [rem(0.05, 0.04), ddd(xx)]
+Max pop
+1. [rem(0.05, 0.05), zne(PolyFactory([1, 1.5, 2, 2.5, 3], 2), fold_global)]
+2. [rem(0.07, 0.05), ddd(yy)]
+3. [rem(0.07, 0.05), ddd(yy)]
+4. [rem(0.07, 0.05), ddd(xyxy)]
+5. [rem(0.07, 0.07), ddd(xx)]
+6. [rem(0.07, 0.05), ddd(yy)]
+7. [rem(0.07, 0.05), ddd(xx)]
+8. [rem(0.07, 0.05), ddd(xx)]
+9. [rem(0.07, 0.08), ddd(yy)]
+10. [rem(0.07, 0.08), ddd(xx)]
+Med pop
+1. [rem(0.05, 0.05), ddd(yy)]
+2. [rem(0.05, 0.03), ddd(xx)]
+3. [rem(0.04, 0.05), zne(LinearFactory([1, 3]), fold_global)]
+4. [rem(0.05, 0.05), zne(LinearFactory([1, 3]), fold_all)]
+5. [rem(0.07, 0.05), zne(RichardsonFactory([1, 3, 5]), fold_all)]
+6. [rem(0.06, 0.05), zne(LinearFactory([1, 3]), fold_gates_from_left)]
+7. [rem(0.06, 0.05), ddd(xx)]
+8. [rem(0.09, 0.06), zne(LinearFactory([1, 3]), fold_gates_from_left)]
+9. [rem(0.09, 0.05), ddd(xyxy)]
+10. [rem(0.07, 0.08), ddd(xyxy)]
+Best max individual
+[rem(0.07, 0.05), ddd(yy)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: 1.00000
+Noisy value: 0.46400
+Mitigated value obtained with REM: 0.78400
+Mitigated value obtained with ZNE: 0.35800
+Mitigated value obtained with DDD: 0.37800
+Optim mitigated value: 1.00000
+REM ratio: 0.40299
+ZNE ratio: 1.19776
+DDD ratio: 1.16045
+DNA ratio: 0.00000
+REM fitness: 0.71277
+ZNE fitness: 0.45501
+DDD fitness: 0.46287
+DNA fitness: 1.00000
+
+
+CIRCUIT: Random Clifford T with 7 qubits and seed 3
+0: ───H───S───────────────────────
+
+1: ───@───@───@───S───H───@───S───
+      │   │   │           │
+2: ───┼───┼───@───T───────┼───────
+      │   │               │
+3: ───@───@───H───T───────┼───────
+                          │
+4: ───@───T───S───────────X───X───
+      │                       │
+5: ───@───T───@───T───────────┼───
+              │               │
+6: ───T───────X───T───────────@───
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyFactory.extrapolate.<locals>.zne_curve'
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+cirq.Z
+Can't pickle local object 'PolyExpFactory.extrapolate.<locals>._zne_curve'
+cirq.Z
+cirq.Z
+Final pop
+1. [rem(0.06, 0.03), ddd(yy)]
+2. [rem(0.05, 0.06), ddd(yy)]
+3. [rem(0.05, 0.06), zne(AdaExpFactory(11, -4.199402451271372), fold_global)]
+4. [rem(0.06, 0.02), zne(LinearFactory([3.72768588 5.70418093 8.28261741 8.53200142]), fold_all)]
+5. [rem(0.06, 0.02), ddd(yy)]
+6. [rem(0.05, 0.05), ddd(yy)]
+7. [rem(0.03, 0.04), ddd(xx)]
+8. [rem(0.04, 0.03), ddd(xx)]
+9. [rem(0.06, 0.03), ddd(xyxy)]
+10. [rem(0.05, 0.06), ddd(yy)]
+11. [rem(0.03, 0.06), ddd(xyxy)]
+12. [rem(0.05, 0.06), zne(AdaExpFactory(11, -4.199402451271372), fold_global)]
+13. [rem(0.06, 0.03), zne(LinearFactory([3.72768588 5.70418093 8.28261741 8.53200142]), fold_all)]
+14. [rem(0.04, 0.06), ddd(xyxy)]
+15. [rem(0.07, 0.06), ddd(yy)]
+16. [rem(0.05, 0.05), ddd(xx)]
+17. [rem(0.06, 0.04), ddd(xx)]
+18. [rem(0.05, 0.05), ddd(yy)]
+19. [rem(0.04, 0.05), ddd(xyxy)]
+20. [rem(0.04, 0.04), ddd(xyxy)]
+21. [rem(0.04, 0.06), ddd(xx)]
+22. [rem(0.04, 0.04), ddd(yy)]
+23. [rem(0.04, 0.04), ddd(yy)]
+24. [rem(0.06, 0.01), ddd(yy)]
+25. [rem(0.03, 0.04), ddd(xx)]
+26. [rem(0.03, 0.06), ddd(xx)]
+27. [rem(0.05, 0.05), ddd(xx)]
+28. [rem(0.06, 0.04), ddd(xx)]
+29. [rem(0.04, 0.03), ddd(yy)]
+30. [rem(0.05, 0.05), ddd(yy)]
+31. [rem(0.04, 0.04), ddd(xyxy)]
+32. [rem(0.04, 0.05), ddd(xyxy)]
+33. [rem(0.04, 0.03), ddd(xyxy)]
+34. [rem(0.03, 0.04), zne(AdaExpFactory(5, 0.5), fold_all)]
+35. [rem(0.06, 0.03), ddd(yy)]
+36. [rem(0.03, 0.04), ddd(xx)]
+37. [rem(0.06, 0.02), zne(AdaExpFactory(5, 0.5), fold_all)]
+38. [rem(0.05, 0.04), ddd(xx)]
+39. [rem(0.05, 0.04), ddd(xyxy)]
+40. [rem(0.04, 0.03), ddd(yy)]
+Max pop
+1. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_all)]
+2. [rem(0.05, 0.05), zne(RichardsonFactory([1, 3, 5]), fold_gates_at_random)]
+3. [rem(0.05, 0.05), zne(LinearFactory([1.58513871 2.60377978 3.14354726 7.96980376]), fold_all)]
+4. [rem(0.05, 0.07), zne(AdaExpFactory(5, 0.5), fold_all)]
+5. [rem(0.05, 0.06), ddd(yy)]
+6. [rem(0.06, 0.05), ddd(xyxy)]
+7. [rem(0.05, 0.06), zne(AdaExpFactory(5, 0.5), fold_global)]
+8. [rem(0.05, 0.06), ddd(xyxy)]
+9. [rem(0.03, 0.04), ddd(xx)]
+10. [rem(0.06, 0.03), ddd(yy)]
+Med pop
+1. [rem(0.05, 0.05), ddd(xyxy)]
+2. [rem(0.03, 0.05), ddd(xyxy)]
+3. [rem(0.05, 0.06), ddd(xx)]
+4. [rem(0.05, 0.05), ddd(xyxy)]
+5. [rem(0.05, 0.04), ddd(xyxy)]
+6. [rem(0.04, 0.06), ddd(xyxy)]
+7. [rem(0.06, 0.06), ddd(xyxy)]
+8. [rem(0.06, 0.06), ddd(xyxy)]
+9. [rem(0.04, 0.04), ddd(xyxy)]
+10. [rem(0.04, 0.06), ddd(xx)]
+Best max individual
+[rem(0.05, 0.06), ddd(yy)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: 0.04200
+Noisy value: 0.00800
+Mitigated value obtained with REM: 0.06600
+Mitigated value obtained with ZNE: -0.04800
+Mitigated value obtained with DDD: 0.02400
+Optim mitigated value: 0.00400
+REM ratio: 0.70588
+ZNE ratio: 2.64706
+DDD ratio: 0.52941
+DNA ratio: 1.11765
+REM fitness: 0.58621
+ZNE fitness: 0.27419
+DDD fitness: 0.65385
+DNA fitness: 0.47222
