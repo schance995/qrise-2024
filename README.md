@@ -5,6 +5,16 @@ Our approach diverges from traditional methods by implementing a genetic algorit
 
 Developed for [QRISE 2024](https://www.quantumcoalition.io/).
 
+## 💻 Languages and Tools 💻
+DNA Game was developed using the following technologies:
+- Mitiq <img src="https://repository-images.githubusercontent.com/236706881/95644100-bd79-11eb-8c37-0aa9d555cb52" width="50px" />
+- Cirq <img src="https://quantumai.google/static/site-assets/images/marketing/icons/shared-ic-cirq.png" width="30px" />
+- Python <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" alt="python logo" width="30px"/>
 
-How to create virtual environment:
+## 🔨 Setup 🔨
 Follow [this tutorial](https://www.freecodecamp.org/news/how-to-setup-virtual-environments-in-python/), then install the necessary dependencies with `pip install -r requirements.txt`.
+
+Then run the genetic algorithm using:
+```
+python genetic_algo.py
+```
