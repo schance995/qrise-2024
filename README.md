@@ -18,3 +18,13 @@ Then run the genetic algorithm using:
 ```
 python genetic_algo.py
 ```
+
+Logs are saved to `output.txt` and plots to `plots`. To reset a run, delete `config/count.txt`.
+
+## Notes
+
+Our notes are available in `QEM_tunable_params.md` and in `notebooks`.
+
+## License
+
+BSD 3-Clause. See `LICENSE` for the full text.
