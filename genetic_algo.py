@@ -606,8 +606,8 @@ def plot_benchmarks(benchmark_fitnesses, benchmark_ratios, n_qubits, serial_code
 
     fitness_df = pd.concat(benchmark_fitnesses)
     mean_fitness_df = fitness_df.groupby(fitness_df.index).mean()
-    std_fitness_df = fitness_df.groupby(fitness_df.index).std()
-    ax = mean_fitness_df.plot.bar(rot=0, yerr=std_fitness_df)
+    # std_fitness_df = fitness_df.groupby(fitness_df.index).std()
+    ax = mean_fitness_df.plot.bar(rot=0) # , yerr=std_fitness_df)
     title = f'Mitigation fitness with {n_qubits} qubits (run {serial_code})'
     ax.set(xlabel='Mitigation', ylabel='Fitness', title=title)
     plt.savefig(plots_dir / f'{title}.png')
