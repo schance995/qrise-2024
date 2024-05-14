@@ -622,19 +622,18 @@ def plot_benchmarks(benchmark_fitnesses, benchmark_ratios, n_qubits, serial_code
     plt.savefig(plots_dir / f'{title}.png')
     plt.close()
 
-
 if __name__ == '__main__':
 
     serial_code = get_serial_code()
     pop_size = 40  # TODO: set to 40 when ready
     generation_count = 10  # TODO: set to 10 when ready
-    max_qubits = 2  # TODO: set to 8 when ready
+    max_qubits = 7
     n_seeds = 3  # TODO: set to 3 when ready
 
-    for n_qubits in [5,6,7]: # range(21+max_qubits):
+    for n_qubits in range(5, max_qubits+1):
         benchmark_fitnesses = []
         benchmark_ratios = []
-        for seed in range(1+n_seeds):
+        for seed in range(n_seeds):
             np.random.seed(seed) # global random seed is probably not respected
             obs = Observable(PauliString("Z" * n_qubits))
             circuits = generate_circuits(n_qubits)
