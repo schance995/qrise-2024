@@ -382,10 +382,12 @@ def genetic_algorithm(pop_size, generation_count, circuit, n_qubits, obs):
     pop = initialize_population(pop_size, n_qubits, obs)
     max_fitness_over_time = []
     mean_fitness_over_time = []
+    med_fitness_over_time = []
     max_indivs_over_time = []
-    mean_indivs_over_time = []
+    med_indivs_over_time = []
     best_max_fitness_so_far = float('-inf')
     best_mean_fitness_so_far = float('-inf')
+    best_med_fitness_so_far = float('-inf')
     ctx = get_context('spawn')
     with ProcessPoolExecutor(mp_context=ctx) as executor:
         for generation in (pbar := trange(generation_count,
@@ -422,14 +424,19 @@ def genetic_algorithm(pop_size, generation_count, circuit, n_qubits, obs):
 
             # logging
             # array is sorted, use constant-time lookups
-            max_pop, max_fit = pop_fit[0]
-            mean_pop, mean_fit = sum(pop_fit) / len(pop_fit) # pop_fit[len(fitnesses)//2]
+            max_indiv, max_fit = pop_fit[0]
+            med_indiv, med_fit = pop_fit[len(fitnesses)//2]
+            mean_fit = sum(p[1] for p in pop_fit) / len(pop_fit)
+
             best_max_fitness_so_far = max(best_max_fitness_so_far, max_fit)
+            best_median_fitness_so_far = max(best_max_fitness_so_far, med_fit)
             best_mean_fitness_so_far = max(best_mean_fitness_so_far, mean_fit)
-            max_indivs_over_time.append(max_pop)
-            mean_indivs_over_time.append(mean_pop)
+
+            max_indivs_over_time.append(max_indiv)
             max_fitness_over_time.append(max_fit)
             mean_fitness_over_time.append(mean_fit)
+            med_fitness_over_time.append(med_fit)
+            med_indivs_over_time.append(med_indiv)
 
             # re-extract population
             pop = [
@@ -445,8 +452,9 @@ def genetic_algorithm(pop_size, generation_count, circuit, n_qubits, obs):
                 results = {
                     "max_fitness": max_fitness_over_time,
                     "mean_fitness": mean_fitness_over_time,
+                    "med_fitness": med_fitness_over_time,
                     "max_indivs": max_indivs_over_time,
-                    "mean_indivs": mean_indivs_over_time,
+                    "med_indivs": med_indivs_over_time,
                 }
                 return pop, results
 
@@ -465,11 +473,12 @@ def print_pop(pop):
     for i,j in enumerate(pop):
         print(f'{i+1}. {j}')
 
-def make_plot(max_fits, mean_fits, title, serial_code):
+def make_plot(max_fits, mean_fits, med_fits, title, serial_code):
     fig, ax = plt.subplots()
     ticks = list(range(1, 1 + len(max_fits)))
     ax.plot(ticks, max_fits, label='Max')
     ax.plot(ticks, mean_fits, label='Mean')
+    ax.plot(ticks, med_fits, label='Median')
     ax.set(xlabel='Generation', ylabel='Fitness', title=title)
     ax.set_xticks(ticks)
     ax.legend()
@@ -567,16 +576,17 @@ def run_experiment(circuit, circuit_names, n_qubits, obs, serial_code):
                 print(circuit)  # SVG cirq drawings are unreliable
                 final_pop, results = genetic_algorithm(pop_size, generation_count, circuit, n_qubits, obs)
                 max_indivs = results['max_indivs']
-                mean_indivs = results['mean_indivs']
+                med_indivs = results['med_indivs']
                 max_fits = results['max_fitness']
                 mean_fits = results['mean_fitness']
+                med_fits = results['med_fitness']
                 print('Final pop')
                 print_pop(final_pop)
                 print('Max pop')
                 print_pop(max_indivs)
-                print('Mean pop')
-                print_pop(mean_indivs)
-                make_plot(max_fits, mean_fits, title, serial_code)
+                print('Med pop')
+                print_pop(med_indivs)
+                make_plot(max_fits, mean_fits, med_fits, title, serial_code)
 
                 # use the best max individual
                 best_max_indiv = max_indivs[np.argmax(max_fits)]
