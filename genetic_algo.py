@@ -410,7 +410,7 @@ def genetic_algorithm(pop_size, generation_count, circuit, n_qubits, obs):
                 try:
                     result = f.result()
                 except Exception as e:  # assume that errors are related to multiprocessing
-                    print(e, file=sys.stderr)
+                    # print(e, file=sys.stderr)
                     result = evaluate_fitness(indiv, circuit, obs)
                 return result
 
