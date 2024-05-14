@@ -429,7 +429,7 @@ def genetic_algorithm(pop_size, generation_count, circuit, n_qubits, obs):
             mean_fit = sum(p[1] for p in pop_fit) / len(pop_fit)
 
             best_max_fitness_so_far = max(best_max_fitness_so_far, max_fit)
-            best_median_fitness_so_far = max(best_med_fitness_so_far, med_fit)
+            best_med_fitness_so_far = max(best_med_fitness_so_far, med_fit)
             best_mean_fitness_so_far = max(best_mean_fitness_so_far, mean_fit)
 
             max_indivs_over_time.append(max_indiv)
