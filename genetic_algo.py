@@ -605,8 +605,8 @@ def plot_benchmarks(benchmark_fitnesses, benchmark_ratios, n_qubits, serial_code
 
     ratio_df = pd.concat(benchmark_ratios)
     mean_ratio_df = ratio_df.groupby(ratio_df.index).mean()
-    std_ratio_df = ratio_df.groupby(ratio_df.index).std()
-    ax = mean_ratio_df.plot.bar(rot=0, yerr= std_ratio_df) # only include 1 standard error
+    # std_ratio_df = ratio_df.groupby(ratio_df.index).std()
+    ax = mean_ratio_df.plot.bar(rot=0) # , yerr= std_ratio_df) # only include 1 standard error
     title = f'Mitigation ratio with {n_qubits} qubits (run {serial_code})'
     ax.set(xlabel='Mitigation', ylabel='Ratio', title=title)
     plt.savefig(plots_dir / f'{title}.png')
