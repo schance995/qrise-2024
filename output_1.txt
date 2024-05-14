@@ -1,0 +1,1645 @@
+
+
+
+############### EXPERIMENT 1 (Tue May 14 18:30:54 2024) ############
+
+
+CIRCUIT: GHZ with 5 qubits and seed 0
+0: ───H───@───────────────
+          │
+1: ───────X───@───────────
+              │
+2: ───────────X───@───────
+                  │
+3: ───────────────X───@───
+                      │
+4: ───────────────────X───
+Final pop
+1. [rem(0.07, 0.05), ddd(xyxy)]
+2. [rem(0.05, 0.07), ddd(xx)]
+3. [rem(0.07, 0.05), ddd(xyxy)]
+4. [rem(0.06, 0.05), ddd(yy)]
+5. [rem(0.06, 0.05), ddd(xx)]
+6. [rem(0.06, 0.06), ddd(yy)]
+7. [rem(0.06, 0.05), ddd(yy)]
+8. [rem(0.04, 0.06), ddd(xx)]
+9. [rem(0.07, 0.04), ddd(xyxy)]
+10. [rem(0.06, 0.06), ddd(xx)]
+11. [rem(0.06, 0.05), ddd(xyxy)]
+12. [rem(0.07, 0.05), ddd(xyxy)]
+13. [rem(0.05, 0.04), ddd(yy)]
+14. [rem(0.06, 0.06), ddd(xx)]
+15. [rem(0.06, 0.04), zne(LinearFactory([1.46821448 1.57410891 3.3386719 ]), fold_gates_at_random)]
+16. [rem(0.04, 0.05), ddd(xyxy)]
+17. [rem(0.05, 0.03), ddd(xyxy)]
+18. [rem(0.06, 0.05), ddd(xyxy)]
+19. [rem(0.06, 0.04), ddd(yy)]
+20. [rem(0.06, 0.03), ddd(xyxy)]
+21. [rem(0.05, 0.03), ddd(yy)]
+22. [rem(0.06, 0.05), ddd(yy)]
+23. [rem(0.06, 0.05), ddd(xyxy)]
+24. [rem(0.07, 0.05), ddd(xyxy)]
+25. [rem(0.07, 0.05), ddd(xyxy)]
+26. [rem(0.07, 0.05), ddd(xyxy)]
+27. [rem(0.06, 0.05), ddd(yy)]
+28. [rem(0.05, 0.06), ddd(xx)]
+29. [rem(0.07, 0.08), zne(AdaExpFactory(5, 0.5), fold_gates_at_random)]
+30. [rem(0.06, 0.08), zne(AdaExpFactory(5, 0.5), fold_gates_at_random)]
+31. [rem(0.06, 0.05), zne(LinearFactory([1.46821448 1.57410891 3.3386719 ]), fold_gates_at_random)]
+32. [rem(0.05, 0.04), ddd(yy)]
+33. [rem(0.06, 0.03), ddd(xyxy)]
+34. [rem(0.06, 0.05), zne(LinearFactory([1.82276275 2.05982873 8.25528299]), fold_gates_from_right)]
+35. [rem(0.06, 0.04), ddd(xyxy)]
+36. [rem(0.05, 0.04), ddd(xyxy)]
+37. [rem(0.06, 0.04), ddd(yy)]
+38. [rem(0.05, 0.05), ddd(xyxy)]
+39. [rem(0.05, 0.03), ddd(xyxy)]
+40. [rem(0.06, 0.05), zne(ExpFactory([1.05434269 5.26978428 5.57741181 7.05126322 8.02747974], -3.74682201261294), fold_gates_from_right)]
+Max pop
+1. [rem(0.05, 0.05), ddd(xyxy)]
+2. [rem(0.05, 0.05), ddd(xx)]
+3. [rem(0.05, 0.07), ddd(xyxy)]
+4. [rem(0.06, 0.05), zne(PolyFactory([1.46555374 1.57228446 1.57462757 2.80856739 6.60880694], 2), fold_gates_at_random)]
+5. [rem(0.06, 0.05), ddd(xyxy)]
+6. [rem(0.06, 0.05), ddd(xyxy)]
+7. [rem(0.06, 0.05), zne(LinearFactory([1.46821448 1.57410891 3.3386719 ]), fold_gates_at_random)]
+8. [rem(0.05, 0.03), ddd(xyxy)]
+9. [rem(0.05, 0.05), ddd(xyxy)]
+10. [rem(0.07, 0.05), ddd(xyxy)]
+Med pop
+1. [rem(0.05, 0.05), zne(ExpFactory([1, 2, 3], 0.5), fold_gates_from_right)]
+2. [rem(0.05, 0.05), zne(RichardsonFactory([1, 3, 5]), fold_gates_from_right)]
+3. [rem(0.05, 0.05), zne(ExpFactory([1, 2, 3], 0.5), fold_global)]
+4. [rem(0.05, 0.05), zne(LinearFactory([1, 3]), fold_all)]
+5. [rem(0.05, 0.05), ddd(xx)]
+6. [rem(0.05, 0.03), ddd(xx)]
+7. [rem(0.05, 0.06), ddd(xx)]
+8. [rem(0.05, 0.06), ddd(xx)]
+9. [rem(0.06, 0.05), ddd(yy)]
+10. [rem(0.05, 0.03), ddd(yy)]
+Best max individual
+[rem(0.05, 0.05), ddd(xyxy)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: -0.00200
+Noisy value: -0.01000
+Mitigated value obtained with REM: -0.04800
+Mitigated value obtained with ZNE: -0.14400
+Mitigated value obtained with DDD: 0.03600
+Optim mitigated value: -0.07200
+REM ratio: 5.75000
+ZNE ratio: 17.75000
+DDD ratio: 4.75000
+DNA ratio: 8.75000
+REM fitness: 0.14815
+ZNE fitness: 0.05333
+DDD fitness: 0.17391
+DNA fitness: 0.10256
+
+
+CIRCUIT: W-state with 5 qubits and seed 0
+0: ───@────────────X────────────────────────────────────────────────────
+      │            │
+1: ───Ry(0.705π)───@───@────────────X───────────────────────────────────
+                       │            │
+2: ────────────────────Ry(0.667π)───@───@────────────X──────────────────
+                                        │            │
+3: ─────────────────────────────────────Ry(0.608π)───@───@──────────X───
+                                                         │          │
+4: ──────────────────────────────────────────────────────Ry(0.5π)───@───
+Final pop
+1. [rem(0.08, 0.05), ddd(xyxy)]
+2. [rem(0.08, 0.04), ddd(xx)]
+3. [rem(0.06, 0.06), ddd(xx)]
+4. [rem(0.08, 0.05), ddd(xyxy)]
+5. [rem(0.08, 0.09), ddd(yy)]
+6. [rem(0.07, 0.05), ddd(yy)]
+7. [rem(0.08, 0.05), ddd(xx)]
+8. [rem(0.08, 0.06), ddd(yy)]
+9. [rem(0.08, 0.07), ddd(xyxy)]
+10. [rem(0.06, 0.05), ddd(xx)]
+11. [rem(0.08, 0.05), ddd(xyxy)]
+12. [rem(0.08, 0.04), ddd(xx)]
+13. [rem(0.07, 0.06), ddd(xx)]
+14. [rem(0.08, 0.05), ddd(xyxy)]
+15. [rem(0.06, 0.04), ddd(yy)]
+16. [rem(0.08, 0.05), ddd(yy)]
+17. [rem(0.08, 0.05), ddd(xx)]
+18. [rem(0.06, 0.08), ddd(xyxy)]
+19. [rem(0.08, 0.05), ddd(yy)]
+20. [rem(0.08, 0.05), ddd(xx)]
+21. [rem(0.06, 0.06), ddd(xx)]
+22. [rem(0.08, 0.05), ddd(xyxy)]
+23. [rem(0.06, 0.03), ddd(xx)]
+24. [rem(0.08, 0.08), ddd(xx)]
+25. [rem(0.08, 0.05), ddd(xx)]
+26. [rem(0.08, 0.06), ddd(yy)]
+27. [rem(0.08, 0.08), ddd(xx)]
+28. [rem(0.08, 0.05), ddd(yy)]
+29. [rem(0.08, 0.04), ddd(xyxy)]
+30. [rem(0.07, 0.06), ddd(yy)]
+31. [rem(0.08, 0.05), ddd(xyxy)]
+32. [rem(0.07, 0.04), ddd(yy)]
+33. [rem(0.08, 0.05), ddd(xx)]
+34. [rem(0.08, 0.05), ddd(xyxy)]
+35. [rem(0.07, 0.06), ddd(xyxy)]
+36. [rem(0.06, 0.05), ddd(xx)]
+37. [rem(0.06, 0.06), ddd(yy)]
+38. [rem(0.05, 0.05), ddd(xx)]
+39. [rem(0.06, 0.05), ddd(yy)]
+40. [rem(0.05, 0.03), ddd(xx)]
+Max pop
+1. [rem(0.06, 0.05), ddd(xx)]
+2. [rem(0.08, 0.05), ddd(xx)]
+3. [rem(0.08, 0.05), ddd(yy)]
+4. [rem(0.08, 0.05), ddd(xx)]
+5. [rem(0.08, 0.05), ddd(xx)]
+6. [rem(0.08, 0.05), ddd(xx)]
+7. [rem(0.08, 0.05), ddd(yy)]
+8. [rem(0.08, 0.05), ddd(yy)]
+9. [rem(0.08, 0.05), ddd(yy)]
+10. [rem(0.08, 0.05), ddd(xyxy)]
+Med pop
+1. [rem(0.05, 0.05), ddd(xyxy)]
+2. [rem(0.05, 0.05), ddd(xx)]
+3. [rem(0.05, 0.05), ddd(xyxy)]
+4. [rem(0.04, 0.04), zne(AdaExpFactory(5, 0.5), fold_gates_at_random)]
+5. [rem(0.06, 0.05), ddd(xx)]
+6. [rem(0.08, 0.05), ddd(yy)]
+7. [rem(0.06, 0.06), ddd(yy)]
+8. [rem(0.08, 0.05), ddd(yy)]
+9. [rem(0.08, 0.05), ddd(xx)]
+10. [rem(0.06, 0.06), ddd(xx)]
+Best max individual
+[rem(0.06, 0.05), ddd(xx)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: 1.00000
+Noisy value: 0.56200
+Mitigated value obtained with REM: 0.96200
+Mitigated value obtained with ZNE: 0.29200
+Mitigated value obtained with DDD: 0.55000
+Optim mitigated value: 0.99200
+REM ratio: 0.08676
+ZNE ratio: 1.61644
+DDD ratio: 1.02740
+DNA ratio: 0.01826
+REM fitness: 0.92017
+ZNE fitness: 0.38220
+DDD fitness: 0.49324
+DNA fitness: 0.98206
+
+
+CIRCUIT: Random Clifford T with 5 qubits and seed 0
+              ┌──┐       ┌──┐
+0: ───S───S────H────────────────────
+
+1: ───H────────@─────T─────@────────
+               │           │
+2: ───────@────┼──────────@┼────S───
+          │    │          ││
+3: ───X───X────┼T────T────┼@────────
+      │        │          │
+4: ───@───T────@─────T────@─────────
+              └──┘       └──┘
+Final pop
+1. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_from_left)]
+2. [rem(0.05, 0.07), ddd(xx)]
+3. [rem(0.05, 0.03), zne(AdaExpFactory(5, 0.5), fold_gates_from_right)]
+4. [rem(0.04, 0.05), ddd(yy)]
+5. [rem(0.07, 0.05), ddd(yy)]
+6. [rem(0.04, 0.05), zne(AdaExpFactory(5, 0.5), fold_all)]
+7. [rem(0.05, 0.03), ddd(xyxy)]
+8. [rem(0.04, 0.05), ddd(xyxy)]
+9. [rem(0.05, 0.05), zne(PolyFactory([2.51152857 8.53280385 9.04383174], 0), fold_global)]
+10. [rem(0.05, 0.04), zne(AdaExpFactory(5, 0.5), fold_gates_from_right)]
+11. [rem(0.04, 0.05), ddd(xyxy)]
+12. [rem(0.05, 0.07), ddd(xyxy)]
+13. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_all)]
+14. [rem(0.05, 0.05), zne(PolyFactory([2.51152857 8.53280385 9.04383174], 0), fold_global)]
+15. [rem(0.05, 0.05), ddd(yy)]
+16. [rem(0.05, 0.03), ddd(yy)]
+17. [rem(0.04, 0.05), ddd(xyxy)]
+18. [rem(0.05, 0.05), zne(LinearFactory([2.32955455 4.71743559]), fold_all)]
+19. [rem(0.05, 0.04), zne(LinearFactory([1.22620271 2.31676325 2.46496328 3.00576563 4.06927216 8.45995779]), fold_gates_at_random)]
+20. [rem(0.05, 0.07), ddd(xx)]
+21. [rem(0.04, 0.05), ddd(yy)]
+22. [rem(0.05, 0.05), zne(PolyFactory([2.51152857 8.53280385 9.04383174], 0), fold_all)]
+23. [rem(0.04, 0.05), zne(PolyFactory([2.51152857 8.53280385 9.04383174], 0), fold_global)]
+24. [rem(0.05, 0.05), ddd(yy)]
+25. [rem(0.05, 0.04), ddd(xyxy)]
+26. [rem(0.05, 0.05), zne(PolyFactory([2.51152857 8.53280385 9.04383174], 0), fold_global)]
+27. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_from_left)]
+28. [rem(0.04, 0.05), ddd(xx)]
+29. [rem(0.05, 0.04), zne(AdaExpFactory(5, 0.5), fold_gates_at_random)]
+30. [rem(0.05, 0.07), ddd(xx)]
+31. [rem(0.04, 0.07), ddd(xx)]
+32. [rem(0.05, 0.04), ddd(xyxy)]
+33. [rem(0.05, 0.07), ddd(xyxy)]
+34. [rem(0.05, 0.04), ddd(xx)]
+35. [rem(0.05, 0.04), ddd(xyxy)]
+36. [rem(0.04, 0.05), ddd(yy)]
+37. [rem(0.05, 0.07), ddd(xyxy)]
+38. [rem(0.04, 0.05), ddd(xyxy)]
+39. [rem(0.05, 0.07), ddd(xx)]
+40. [rem(0.01, 0.05), ddd(xyxy)]
+Max pop
+1. [rem(0.05, 0.05), ddd(yy)]
+2. [rem(0.05, 0.05), ddd(xyxy)]
+3. [rem(0.06, 0.05), ddd(yy)]
+4. [rem(0.04, 0.05), ddd(yy)]
+5. [rem(0.05, 0.05), ddd(xyxy)]
+6. [rem(0.05, 0.05), zne(PolyFactory([2.51152857 8.53280385 9.04383174], 0), fold_gates_at_random)]
+7. [rem(0.05, 0.04), ddd(yy)]
+8. [rem(0.05, 0.08), ddd(xyxy)]
+9. [rem(0.05, 0.05), zne(PolyFactory([2.51152857 8.53280385 9.04383174], 0), fold_global)]
+10. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_from_left)]
+Med pop
+1. [rem(0.05, 0.05), ddd(yy)]
+2. [rem(0.05, 0.04), ddd(xyxy)]
+3. [rem(0.05, 0.05), ddd(xx)]
+4. [rem(0.05, 0.04), ddd(xx)]
+5. [rem(0.04, 0.05), ddd(yy)]
+6. [rem(0.05, 0.05), ddd(xx)]
+7. [rem(0.05, 0.07), ddd(yy)]
+8. [rem(0.05, 0.06), ddd(xyxy)]
+9. [rem(0.05, 0.08), ddd(xyxy)]
+10. [rem(0.04, 0.05), ddd(yy)]
+Best max individual
+[rem(0.05, 0.05), zne(PolyFactory([2.51152857 8.53280385 9.04383174], 0), fold_gates_at_random)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: 0.00400
+Noisy value: -0.02400
+Mitigated value obtained with REM: -0.01800
+Mitigated value obtained with ZNE: -0.32200
+Mitigated value obtained with DDD: 0.00000
+Optim mitigated value: -0.00400
+REM ratio: 0.78571
+ZNE ratio: 11.64286
+DDD ratio: 0.14286
+DNA ratio: 0.28571
+REM fitness: 0.56000
+ZNE fitness: 0.07910
+DDD fitness: 0.87500
+DNA fitness: 0.77778
+
+
+
+############### EXPERIMENT 1 (Tue May 14 18:32:52 2024) ############
+
+
+CIRCUIT: GHZ with 5 qubits and seed 1
+0: ───H───@───────────────
+          │
+1: ───────X───@───────────
+              │
+2: ───────────X───@───────
+                  │
+3: ───────────────X───@───
+                      │
+4: ───────────────────X───
+Final pop
+1. [rem(0.06, 0.04), ddd(xx)]
+2. [rem(0.05, 0.05), ddd(xyxy)]
+3. [rem(0.05, 0.06), ddd(xyxy)]
+4. [rem(0.04, 0.04), ddd(xyxy)]
+5. [rem(0.05, 0.05), ddd(xyxy)]
+6. [rem(0.04, 0.06), ddd(xyxy)]
+7. [rem(0.06, 0.04), ddd(xyxy)]
+8. [rem(0.06, 0.04), ddd(yy)]
+9. [rem(0.05, 0.06), ddd(xyxy)]
+10. [rem(0.06, 0.05), ddd(yy)]
+11. [rem(0.06, 0.05), ddd(xyxy)]
+12. [rem(0.06, 0.05), ddd(xyxy)]
+13. [rem(0.06, 0.05), ddd(xx)]
+14. [rem(0.06, 0.05), ddd(xyxy)]
+15. [rem(0.05, 0.05), ddd(xyxy)]
+16. [rem(0.05, 0.05), ddd(xyxy)]
+17. [rem(0.05, 0.05), ddd(xx)]
+18. [rem(0.04, 0.06), ddd(yy)]
+19. [rem(0.06, 0.05), ddd(xyxy)]
+20. [rem(0.04, 0.05), ddd(yy)]
+21. [rem(0.06, 0.05), ddd(yy)]
+22. [rem(0.04, 0.05), ddd(yy)]
+23. [rem(0.05, 0.06), ddd(yy)]
+24. [rem(0.05, 0.04), zne(ExpFactory([1.42295702 3.95688931 5.27796874 6.90733889 9.38785077 9.96169329], -5.1802242151108935), fold_gates_from_right)]
+25. [rem(0.06, 0.05), ddd(xyxy)]
+26. [rem(0.07, 0.05), zne(ExpFactory([1.43900281 2.537905   4.14530369 8.88403689 9.03206597], 6.802908638906008), fold_gates_from_left)]
+27. [rem(0.05, 0.05), ddd(xx)]
+28. [rem(0.05, 0.05), ddd(xyxy)]
+29. [rem(0.04, 0.05), ddd(xyxy)]
+30. [rem(0.06, 0.05), ddd(xx)]
+31. [rem(0.05, 0.06), ddd(xyxy)]
+32. [rem(0.04, 0.05), ddd(xx)]
+33. [rem(0.05, 0.06), ddd(yy)]
+34. [rem(0.04, 0.04), ddd(xyxy)]
+35. [rem(0.02, 0.05), ddd(xx)]
+36. [rem(0.05, 0.04), zne(ExpFactory([1.42295702 3.95688931 5.27796874 6.90733889 9.38785077 9.96169329], -5.1802242151108935), fold_gates_from_right)]
+37. [rem(0.06, 0.05), ddd(xyxy)]
+38. [rem(0.06, 0.05), ddd(yy)]
+39. [rem(0.05, 0.05), zne(ExpFactory([1.43900281 2.537905   4.14530369 8.88403689 9.03206597], 6.802908638906008), fold_gates_from_left)]
+40. [rem(0.05, 0.05), ddd(xyxy)]
+Max pop
+1. [rem(0.05, 0.05), ddd(yy)]
+2. [rem(0.05, 0.05), zne(RichardsonFactory([1, 3, 5]), fold_gates_at_random)]
+3. [rem(0.05, 0.05), ddd(yy)]
+4. [rem(0.05, 0.05), ddd(xx)]
+5. [rem(0.06, 0.05), ddd(yy)]
+6. [rem(0.05, 0.05), ddd(xx)]
+7. [rem(0.06, 0.05), ddd(xx)]
+8. [rem(0.04, 0.04), ddd(xx)]
+9. [rem(0.04, 0.05), ddd(yy)]
+10. [rem(0.06, 0.04), ddd(xx)]
+Med pop
+1. [rem(0.05, 0.05), zne(AdaExpFactory(5, -2.7619111448649036), fold_gates_from_left)]
+2. [rem(0.04, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_from_left)]
+3. [rem(0.06, 0.05), ddd(yy)]
+4. [rem(0.05, 0.06), ddd(yy)]
+5. [rem(0.05, 0.05), zne(LinearFactory([1, 3]), fold_gates_from_left)]
+6. [rem(0.07, 0.08), ddd(xyxy)]
+7. [rem(0.05, 0.06), ddd(xx)]
+8. [rem(0.06, 0.05), ddd(xyxy)]
+9. [rem(0.06, 0.05), ddd(xyxy)]
+10. [rem(0.06, 0.05), ddd(yy)]
+Best max individual
+[rem(0.04, 0.04), ddd(xx)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: -0.04800
+Noisy value: 0.05000
+Mitigated value obtained with REM: -0.03400
+Mitigated value obtained with ZNE: 0.29600
+Mitigated value obtained with DDD: 0.00600
+Optim mitigated value: 0.02000
+REM ratio: 0.14286
+ZNE ratio: 3.51020
+DDD ratio: 0.55102
+DNA ratio: 0.69388
+REM fitness: 0.87500
+ZNE fitness: 0.22172
+DDD fitness: 0.64474
+DNA fitness: 0.59036
+
+
+CIRCUIT: W-state with 5 qubits and seed 1
+0: ───@────────────X────────────────────────────────────────────────────
+      │            │
+1: ───Ry(0.705π)───@───@────────────X───────────────────────────────────
+                       │            │
+2: ────────────────────Ry(0.667π)───@───@────────────X──────────────────
+                                        │            │
+3: ─────────────────────────────────────Ry(0.608π)───@───@──────────X───
+                                                         │          │
+4: ──────────────────────────────────────────────────────Ry(0.5π)───@───
+Final pop
+1. [rem(0.08, 0.05), ddd(yy)]
+2. [rem(0.08, 0.05), ddd(xyxy)]
+3. [rem(0.06, 0.03), ddd(yy)]
+4. [rem(0.07, 0.03), ddd(xyxy)]
+5. [rem(0.07, 0.05), ddd(yy)]
+6. [rem(0.06, 0.03), ddd(xyxy)]
+7. [rem(0.08, 0.05), ddd(xx)]
+8. [rem(0.07, 0.04), ddd(xx)]
+9. [rem(0.07, 0.05), ddd(yy)]
+10. [rem(0.08, 0.05), ddd(yy)]
+11. [rem(0.10, 0.05), ddd(yy)]
+12. [rem(0.07, 0.04), ddd(xx)]
+13. [rem(0.07, 0.05), ddd(yy)]
+14. [rem(0.07, 0.03), ddd(xyxy)]
+15. [rem(0.08, 0.05), ddd(xyxy)]
+16. [rem(0.07, 0.03), ddd(yy)]
+17. [rem(0.10, 0.05), ddd(xyxy)]
+18. [rem(0.07, 0.04), ddd(yy)]
+19. [rem(0.06, 0.03), ddd(xx)]
+20. [rem(0.08, 0.05), ddd(yy)]
+21. [rem(0.08, 0.05), ddd(xyxy)]
+22. [rem(0.06, 0.03), ddd(yy)]
+23. [rem(0.07, 0.03), ddd(xyxy)]
+24. [rem(0.07, 0.05), ddd(xyxy)]
+25. [rem(0.08, 0.05), ddd(xyxy)]
+26. [rem(0.07, 0.05), ddd(xyxy)]
+27. [rem(0.07, 0.03), ddd(xyxy)]
+28. [rem(0.08, 0.05), ddd(yy)]
+29. [rem(0.07, 0.04), ddd(yy)]
+30. [rem(0.06, 0.03), ddd(xyxy)]
+31. [rem(0.07, 0.05), ddd(yy)]
+32. [rem(0.08, 0.05), ddd(xyxy)]
+33. [rem(0.07, 0.02), ddd(yy)]
+34. [rem(0.07, 0.03), ddd(xyxy)]
+35. [rem(0.06, 0.03), ddd(yy)]
+36. [rem(0.05, 0.03), ddd(xyxy)]
+37. [rem(0.07, 0.03), ddd(xyxy)]
+38. [rem(0.06, 0.03), ddd(xyxy)]
+39. [rem(0.06, 0.02), ddd(xyxy)]
+40. [rem(0.06, 0.03), ddd(yy)]
+Max pop
+1. [rem(0.05, 0.04), zne(LinearFactory([1, 3]), fold_gates_from_right)]
+2. [rem(0.06, 0.05), ddd(xyxy)]
+3. [rem(0.06, 0.05), ddd(yy)]
+4. [rem(0.06, 0.05), ddd(yy)]
+5. [rem(0.07, 0.03), ddd(xx)]
+6. [rem(0.07, 0.03), ddd(xx)]
+7. [rem(0.07, 0.03), ddd(xx)]
+8. [rem(0.07, 0.03), ddd(xyxy)]
+9. [rem(0.08, 0.05), ddd(xx)]
+10. [rem(0.08, 0.05), ddd(yy)]
+Med pop
+1. [rem(0.05, 0.05), ddd(xx)]
+2. [rem(0.06, 0.05), zne(AdaExpFactory(5, 0.5), fold_all)]
+3. [rem(0.06, 0.05), zne(ExpFactory([1.93686008 3.50799521 3.5363201  4.90723649 7.56982304 8.91520567], 9.194783598346298), fold_gates_at_random)]
+4. [rem(0.05, 0.03), zne(LinearFactory([1, 3]), fold_gates_from_right)]
+5. [rem(0.06, 0.05), zne(RichardsonFactory([1, 3, 5]), fold_gates_at_random)]
+6. [rem(0.06, 0.04), zne(LinearFactory([1, 3]), fold_all)]
+7. [rem(0.05, 0.01), zne(LinearFactory([1, 3]), fold_gates_from_right)]
+8. [rem(0.09, 0.05), zne(LinearFactory([1, 3]), fold_gates_from_left)]
+9. [rem(0.07, 0.05), ddd(xx)]
+10. [rem(0.08, 0.05), ddd(xyxy)]
+Best max individual
+[rem(0.06, 0.05), ddd(xyxy)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: 1.00000
+Noisy value: 0.55600
+Mitigated value obtained with REM: 0.89600
+Mitigated value obtained with ZNE: 0.78600
+Mitigated value obtained with DDD: 0.54800
+Optim mitigated value: 0.98800
+REM ratio: 0.23423
+ZNE ratio: 0.48198
+DDD ratio: 1.01802
+DNA ratio: 0.02703
+REM fitness: 0.81022
+ZNE fitness: 0.67477
+DDD fitness: 0.49554
+DNA fitness: 0.97368
+
+
+CIRCUIT: Random Clifford T with 5 qubits and seed 1
+                  ┌──┐   ┌──┐
+0: ───T───S────────@──────@─────────
+                   │      │
+1: ───T───S────────┼@─────┼T────T───
+                   ││     │
+2: ───S────────────┼┼─────┼─────────
+                   ││     │
+3: ───@───H───@────X┼─────@─────────
+      │       │     │
+4: ───@───S───@─────X─────T─────────
+                  └──┘   └──┘
+Final pop
+1. [rem(0.05, 0.05), ddd(xx)]
+2. [rem(0.04, 0.09), zne(AdaExpFactory(5, 0.5), fold_all)]
+3. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_global)]
+4. [rem(0.06, 0.04), ddd(yy)]
+5. [rem(0.05, 0.04), ddd(xyxy)]
+6. [rem(0.07, 0.05), zne(LinearFactory([1.58673417 1.75302178 2.14700043 8.00003482 8.49373481]), fold_gates_from_right)]
+7. [rem(0.06, 0.05), ddd(yy)]
+8. [rem(0.06, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_from_left)]
+9. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_from_left)]
+10. [rem(0.05, 0.04), ddd(xx)]
+11. [rem(0.05, 0.04), ddd(xx)]
+12. [rem(0.05, 0.05), ddd(yy)]
+13. [rem(0.05, 0.04), ddd(yy)]
+14. [rem(0.04, 0.06), zne(AdaExpFactory(13, 9.38044927315105), fold_gates_from_right)]
+15. [rem(0.05, 0.05), zne(LinearFactory([1.78353317 4.66320202 5.16085302 6.20864164 7.14212099]), fold_gates_from_left)]
+16. [rem(0.06, 0.05), zne(LinearFactory([1.528602   1.5988672  2.07515536 3.30828848 8.47951354]), fold_global)]
+17. [rem(0.05, 0.05), ddd(xx)]
+18. [rem(0.06, 0.06), zne(LinearFactory([3.19806564 3.20202526 4.11316768 6.76235247 9.63530718]), fold_gates_from_left)]
+19. [rem(0.05, 0.05), ddd(yy)]
+20. [rem(0.05, 0.04), ddd(xyxy)]
+21. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_from_left)]
+22. [rem(0.04, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_from_left)]
+23. [rem(0.06, 0.07), zne(LinearFactory([1.528602   1.5988672  2.07515536 3.30828848 8.47951354]), fold_all)]
+24. [rem(0.07, 0.05), zne(PolyFactory([3.4414096  8.87152683], 0), fold_gates_from_right)]
+25. [rem(0.06, 0.06), zne(AdaExpFactory(5, 0.5), fold_gates_from_left)]
+26. [rem(0.05, 0.05), ddd(xyxy)]
+27. [rem(0.05, 0.04), zne(PolyFactory([1.47849658 9.63166288], 0), fold_gates_from_right)]
+28. [rem(0.07, 0.04), zne(ExpFactory([1.33269656 6.54467137 7.49201739 9.38984054], -0.7625454131777936), fold_all)]
+29. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_at_random)]
+30. [rem(0.05, 0.05), ddd(xyxy)]
+31. [rem(0.05, 0.04), ddd(xx)]
+32. [rem(0.04, 0.10), ddd(yy)]
+33. [rem(0.07, 0.05), zne(ExpFactory([1.33269656 6.54467137 7.49201739 9.38984054], -0.7625454131777936), fold_all)]
+34. [rem(0.05, 0.04), ddd(yy)]
+35. [rem(0.05, 0.04), zne(PolyFactory([1.47849658 9.63166288], 0), fold_gates_from_right)]
+36. [rem(0.04, 0.06), zne(AdaExpFactory(13, 9.38044927315105), fold_gates_from_right)]
+37. [rem(0.05, 0.05), ddd(xyxy)]
+38. [rem(0.06, 0.04), ddd(xyxy)]
+39. [rem(0.05, 0.05), ddd(xx)]
+40. [rem(0.05, 0.05), ddd(yy)]
+Max pop
+1. [rem(0.04, 0.05), ddd(xx)]
+2. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_from_left)]
+3. [rem(0.05, 0.05), ddd(xyxy)]
+4. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_global)]
+5. [rem(0.06, 0.05), zne(AdaExpFactory(5, 0.5), fold_all)]
+6. [rem(0.04, 0.06), zne(AdaExpFactory(5, 0.5), fold_global)]
+7. [rem(0.05, 0.06), zne(AdaExpFactory(7, 3.1540144302209487), fold_gates_at_random)]
+8. [rem(0.05, 0.05), ddd(yy)]
+9. [rem(0.05, 0.05), ddd(yy)]
+10. [rem(0.05, 0.05), ddd(xx)]
+Med pop
+1. [rem(0.05, 0.04), zne(AdaExpFactory(5, 0.5), fold_global)]
+2. [rem(0.06, 0.05), ddd(xx)]
+3. [rem(0.05, 0.05), zne(LinearFactory([1, 3]), fold_global)]
+4. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_at_random)]
+5. [rem(0.05, 0.05), zne(ExpFactory([1.86773451 8.01023306], -3.1983231065776536), fold_gates_at_random)]
+6. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_global)]
+7. [rem(0.04, 0.06), zne(LinearFactory([5.84399371 7.11148495]), fold_global)]
+8. [rem(0.05, 0.05), ddd(yy)]
+9. [rem(0.06, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_from_left)]
+10. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_from_left)]
+Best max individual
+[rem(0.05, 0.05), ddd(xyxy)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: -0.02800
+Noisy value: -0.00600
+Mitigated value obtained with REM: 0.02800
+Mitigated value obtained with ZNE: -0.13000
+Mitigated value obtained with DDD: 0.01000
+Optim mitigated value: -0.10600
+REM ratio: 2.54545
+ZNE ratio: 4.63636
+DDD ratio: 1.72727
+DNA ratio: 3.54545
+REM fitness: 0.28205
+ZNE fitness: 0.17742
+DDD fitness: 0.36667
+DNA fitness: 0.22000
+
+
+
+############### EXPERIMENT 1 (Tue May 14 18:35:16 2024) ############
+
+
+CIRCUIT: GHZ with 5 qubits and seed 2
+0: ───H───@───────────────
+          │
+1: ───────X───@───────────
+              │
+2: ───────────X───@───────
+                  │
+3: ───────────────X───@───
+                      │
+4: ───────────────────X───
+Final pop
+1. [rem(0.04, 0.05), ddd(yy)]
+2. [rem(0.05, 0.05), ddd(xx)]
+3. [rem(0.05, 0.05), ddd(xx)]
+4. [rem(0.05, 0.06), ddd(yy)]
+5. [rem(0.06, 0.06), ddd(xx)]
+6. [rem(0.05, 0.04), ddd(xx)]
+7. [rem(0.03, 0.05), ddd(xyxy)]
+8. [rem(0.05, 0.05), ddd(yy)]
+9. [rem(0.05, 0.05), ddd(xyxy)]
+10. [rem(0.05, 0.05), ddd(yy)]
+11. [rem(0.06, 0.05), ddd(yy)]
+12. [rem(0.05, 0.06), ddd(yy)]
+13. [rem(0.05, 0.05), ddd(yy)]
+14. [rem(0.05, 0.06), ddd(xx)]
+15. [rem(0.05, 0.03), ddd(xx)]
+16. [rem(0.06, 0.06), ddd(xyxy)]
+17. [rem(0.05, 0.06), ddd(xx)]
+18. [rem(0.05, 0.05), ddd(xyxy)]
+19. [rem(0.03, 0.04), ddd(yy)]
+20. [rem(0.05, 0.05), ddd(xx)]
+21. [rem(0.03, 0.05), ddd(xyxy)]
+22. [rem(0.05, 0.05), ddd(xyxy)]
+23. [rem(0.04, 0.06), ddd(xyxy)]
+24. [rem(0.04, 0.06), ddd(yy)]
+25. [rem(0.05, 0.06), ddd(xyxy)]
+26. [rem(0.05, 0.08), ddd(xyxy)]
+27. [rem(0.03, 0.03), ddd(yy)]
+28. [rem(0.05, 0.06), ddd(xx)]
+29. [rem(0.05, 0.04), ddd(yy)]
+30. [rem(0.05, 0.05), ddd(yy)]
+31. [rem(0.04, 0.03), ddd(yy)]
+32. [rem(0.05, 0.05), ddd(yy)]
+33. [rem(0.05, 0.06), ddd(yy)]
+34. [rem(0.05, 0.05), ddd(xyxy)]
+35. [rem(0.04, 0.05), ddd(yy)]
+36. [rem(0.04, 0.06), ddd(xyxy)]
+37. [rem(0.04, 0.04), ddd(yy)]
+38. [rem(0.04, 0.06), ddd(xx)]
+39. [rem(0.05, 0.05), ddd(xyxy)]
+40. [rem(0.04, 0.03), ddd(xx)]
+Max pop
+1. [rem(0.05, 0.05), ddd(yy)]
+2. [rem(0.05, 0.05), ddd(yy)]
+3. [rem(0.04, 0.05), ddd(yy)]
+4. [rem(0.04, 0.05), ddd(xyxy)]
+5. [rem(0.05, 0.05), ddd(xyxy)]
+6. [rem(0.05, 0.05), ddd(xx)]
+7. [rem(0.05, 0.06), ddd(xx)]
+8. [rem(0.05, 0.06), ddd(yy)]
+9. [rem(0.04, 0.03), ddd(yy)]
+10. [rem(0.04, 0.05), ddd(yy)]
+Med pop
+1. [rem(0.04, 0.05), ddd(yy)]
+2. [rem(0.05, 0.05), ddd(xyxy)]
+3. [rem(0.05, 0.08), ddd(xyxy)]
+4. [rem(0.05, 0.03), ddd(xyxy)]
+5. [rem(0.04, 0.05), ddd(xyxy)]
+6. [rem(0.05, 0.05), ddd(yy)]
+7. [rem(0.05, 0.05), ddd(xyxy)]
+8. [rem(0.03, 0.08), ddd(xyxy)]
+9. [rem(0.03, 0.04), ddd(yy)]
+10. [rem(0.03, 0.05), ddd(xyxy)]
+Best max individual
+[rem(0.05, 0.05), ddd(yy)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: 0.01000
+Noisy value: -0.02000
+Mitigated value obtained with REM: -0.03800
+Mitigated value obtained with ZNE: 0.00400
+Mitigated value obtained with DDD: -0.00600
+Optim mitigated value: 0.00000
+REM ratio: 1.60000
+ZNE ratio: 0.20000
+DDD ratio: 0.53333
+DNA ratio: 0.33333
+REM fitness: 0.38462
+ZNE fitness: 0.83333
+DDD fitness: 0.65217
+DNA fitness: 0.75000
+
+
+CIRCUIT: W-state with 5 qubits and seed 2
+0: ───@────────────X────────────────────────────────────────────────────
+      │            │
+1: ───Ry(0.705π)───@───@────────────X───────────────────────────────────
+                       │            │
+2: ────────────────────Ry(0.667π)───@───@────────────X──────────────────
+                                        │            │
+3: ─────────────────────────────────────Ry(0.608π)───@───@──────────X───
+                                                         │          │
+4: ──────────────────────────────────────────────────────Ry(0.5π)───@───
+Final pop
+1. [rem(0.06, 0.07), ddd(xyxy)]
+2. [rem(0.08, 0.05), ddd(xx)]
+3. [rem(0.08, 0.04), ddd(yy)]
+4. [rem(0.07, 0.07), ddd(xx)]
+5. [rem(0.08, 0.04), ddd(xyxy)]
+6. [rem(0.08, 0.06), ddd(xyxy)]
+7. [rem(0.06, 0.05), ddd(xyxy)]
+8. [rem(0.07, 0.05), ddd(xyxy)]
+9. [rem(0.07, 0.05), ddd(xx)]
+10. [rem(0.08, 0.06), ddd(xx)]
+11. [rem(0.11, 0.05), ddd(yy)]
+12. [rem(0.07, 0.07), ddd(xx)]
+13. [rem(0.07, 0.05), ddd(xx)]
+14. [rem(0.07, 0.05), ddd(xx)]
+15. [rem(0.07, 0.04), ddd(yy)]
+16. [rem(0.08, 0.08), ddd(xx)]
+17. [rem(0.08, 0.04), ddd(yy)]
+18. [rem(0.08, 0.05), ddd(yy)]
+19. [rem(0.08, 0.05), ddd(xyxy)]
+20. [rem(0.09, 0.02), ddd(yy)]
+21. [rem(0.07, 0.07), ddd(xyxy)]
+22. [rem(0.08, 0.04), ddd(yy)]
+23. [rem(0.08, 0.06), ddd(xyxy)]
+24. [rem(0.08, 0.05), ddd(xyxy)]
+25. [rem(0.07, 0.05), ddd(xx)]
+26. [rem(0.07, 0.05), ddd(xx)]
+27. [rem(0.08, 0.05), ddd(xx)]
+28. [rem(0.10, 0.05), ddd(yy)]
+29. [rem(0.06, 0.06), ddd(yy)]
+30. [rem(0.08, 0.07), ddd(xyxy)]
+31. [rem(0.07, 0.05), ddd(xyxy)]
+32. [rem(0.07, 0.05), ddd(xx)]
+33. [rem(0.08, 0.04), ddd(xyxy)]
+34. [rem(0.08, 0.08), ddd(xyxy)]
+35. [rem(0.08, 0.06), ddd(xx)]
+36. [rem(0.08, 0.05), ddd(xyxy)]
+37. [rem(0.06, 0.07), ddd(xx)]
+38. [rem(0.06, 0.08), ddd(xx)]
+39. [rem(0.06, 0.07), ddd(xx)]
+40. [rem(0.05, 0.06), ddd(xx)]
+Max pop
+1. [rem(0.06, 0.05), ddd(xx)]
+2. [rem(0.06, 0.05), ddd(yy)]
+3. [rem(0.06, 0.05), ddd(xyxy)]
+4. [rem(0.07, 0.05), ddd(xyxy)]
+5. [rem(0.07, 0.04), ddd(xyxy)]
+6. [rem(0.07, 0.04), ddd(xyxy)]
+7. [rem(0.07, 0.03), ddd(xyxy)]
+8. [rem(0.07, 0.03), ddd(yy)]
+9. [rem(0.06, 0.07), ddd(xx)]
+10. [rem(0.06, 0.07), ddd(xyxy)]
+Med pop
+1. [rem(0.04, 0.05), zne(LinearFactory([1, 3]), fold_gates_at_random)]
+2. [rem(0.05, 0.05), zne(RichardsonFactory([1, 3, 5]), fold_all)]
+3. [rem(0.06, 0.05), ddd(yy)]
+4. [rem(0.06, 0.05), ddd(xx)]
+5. [rem(0.07, 0.06), ddd(xyxy)]
+6. [rem(0.07, 0.05), ddd(yy)]
+7. [rem(0.08, 0.05), ddd(xyxy)]
+8. [rem(0.07, 0.05), ddd(xx)]
+9. [rem(0.08, 0.05), ddd(xyxy)]
+10. [rem(0.07, 0.07), ddd(xyxy)]
+Best max individual
+[rem(0.06, 0.05), ddd(xx)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: 1.00000
+Noisy value: 0.58200
+Mitigated value obtained with REM: 0.92200
+Mitigated value obtained with ZNE: 0.79600
+Mitigated value obtained with DDD: 0.59800
+Optim mitigated value: 0.99400
+REM ratio: 0.18660
+ZNE ratio: 0.48804
+DDD ratio: 0.96172
+DNA ratio: 0.01435
+REM fitness: 0.84274
+ZNE fitness: 0.67203
+DDD fitness: 0.50976
+DNA fitness: 0.98585
+
+
+CIRCUIT: Random Clifford T with 5 qubits and seed 2
+          ┌──┐       ┌──┐
+0: ───T─────@────@──────────@───S───
+            │    │          │
+1: ───S────H┼────X─────@────@───────
+            │          │
+2: ─────────@────T────T┼────────────
+                       │
+3: ───@────T─────S─────@────────────
+      │
+4: ───@────H─────T──────────────────
+          └──┘       └──┘
+Final pop
+1. [rem(0.05, 0.05), zne(PolyFactory([7.61634757 9.54715896], 0), fold_all)]
+2. [rem(0.05, 0.04), ddd(yy)]
+3. [rem(0.05, 0.05), ddd(xyxy)]
+4. [rem(0.07, 0.06), zne(AdaExpFactory(6, -6.9747418862595705), fold_gates_from_right)]
+5. [rem(0.04, 0.04), ddd(xyxy)]
+6. [rem(0.05, 0.04), ddd(xyxy)]
+7. [rem(0.05, 0.07), zne(AdaExpFactory(6, -6.9747418862595705), fold_global)]
+8. [rem(0.05, 0.07), ddd(yy)]
+9. [rem(0.05, 0.07), ddd(xyxy)]
+10. [rem(0.05, 0.04), ddd(yy)]
+11. [rem(0.05, 0.05), zne(PolyFactory([7.61634757 9.54715896], 0), fold_global)]
+12. [rem(0.06, 0.06), ddd(xyxy)]
+13. [rem(0.05, 0.05), zne(AdaExpFactory(6, -9.432247605026545), fold_global)]
+14. [rem(0.05, 0.07), ddd(yy)]
+15. [rem(0.04, 0.05), ddd(xyxy)]
+16. [rem(0.07, 0.07), zne(PolyFactory([7.61634757 9.54715896], 0), fold_global)]
+17. [rem(0.06, 0.06), zne(AdaExpFactory(6, -6.9747418862595705), fold_gates_from_right)]
+18. [rem(0.04, 0.01), ddd(xyxy)]
+19. [rem(0.05, 0.01), ddd(yy)]
+20. [rem(0.05, 0.04), ddd(yy)]
+21. [rem(0.05, 0.04), ddd(yy)]
+22. [rem(0.05, 0.05), ddd(xx)]
+23. [rem(0.04, 0.07), ddd(xyxy)]
+24. [rem(0.05, 0.05), ddd(xyxy)]
+25. [rem(0.05, 0.05), ddd(yy)]
+26. [rem(0.05, 0.06), ddd(yy)]
+27. [rem(0.01, 0.09), ddd(yy)]
+28. [rem(0.01, 0.09), ddd(yy)]
+29. [rem(0.05, 0.04), ddd(yy)]
+30. [rem(0.04, 0.07), ddd(xx)]
+31. [rem(0.09, 0.05), ddd(xyxy)]
+32. [rem(0.04, 0.01), ddd(xyxy)]
+33. [rem(0.05, 0.05), ddd(xyxy)]
+34. [rem(0.05, 0.07), ddd(xyxy)]
+35. [rem(0.05, 0.07), ddd(xyxy)]
+36. [rem(0.06, 0.07), ddd(xx)]
+37. [rem(0.06, 0.06), ddd(xx)]
+38. [rem(0.07, 0.04), zne(PolyFactory([7.61634757 9.54715896], 0), fold_global)]
+39. [rem(0.09, 0.05), ddd(xyxy)]
+40. [rem(0.04, 0.01), ddd(yy)]
+Max pop
+1. [rem(0.05, 0.05), zne(RichardsonFactory([1, 3, 5]), fold_gates_from_left)]
+2. [rem(0.05, 0.05), ddd(xyxy)]
+3. [rem(0.05, 0.05), zne(AdaExpFactory(8, 3.601634564067961), fold_gates_from_right)]
+4. [rem(0.05, 0.04), ddd(xx)]
+5. [rem(0.05, 0.05), ddd(yy)]
+6. [rem(0.06, 0.05), zne(LinearFactory([1, 3]), fold_gates_from_left)]
+7. [rem(0.06, 0.05), ddd(xyxy)]
+8. [rem(0.06, 0.06), ddd(xyxy)]
+9. [rem(0.05, 0.05), ddd(xyxy)]
+10. [rem(0.05, 0.05), zne(PolyFactory([7.61634757 9.54715896], 0), fold_all)]
+Med pop
+1. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_at_random)]
+2. [rem(0.05, 0.05), zne(RichardsonFactory([1, 3, 5]), fold_gates_from_left)]
+3. [rem(0.05, 0.05), ddd(yy)]
+4. [rem(0.05, 0.04), ddd(xyxy)]
+5. [rem(0.05, 0.04), ddd(yy)]
+6. [rem(0.05, 0.05), ddd(xx)]
+7. [rem(0.05, 0.06), ddd(xyxy)]
+8. [rem(0.05, 0.05), zne(PolyFactory([7.61634757 9.54715896], 0), fold_gates_from_right)]
+9. [rem(0.05, 0.05), ddd(xyxy)]
+10. [rem(0.05, 0.04), ddd(yy)]
+Best max individual
+[rem(0.06, 0.06), ddd(xyxy)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: -0.02400
+Noisy value: -0.01400
+Mitigated value obtained with REM: 0.02400
+Mitigated value obtained with ZNE: 0.01000
+Mitigated value obtained with DDD: -0.01800
+Optim mitigated value: 0.12600
+REM ratio: 4.80000
+ZNE ratio: 3.40000
+DDD ratio: 0.60000
+DNA ratio: 15.00000
+REM fitness: 0.17241
+ZNE fitness: 0.22727
+DDD fitness: 0.62500
+DNA fitness: 0.06250
+
+
+
+############### EXPERIMENT 1 (Tue May 14 18:37:21 2024) ############
+
+
+CIRCUIT: GHZ with 6 qubits and seed 0
+0: ───H───@───────────────────
+          │
+1: ───────X───@───────────────
+              │
+2: ───────────X───@───────────
+                  │
+3: ───────────────X───@───────
+                      │
+4: ───────────────────X───@───
+                          │
+5: ───────────────────────X───
+Final pop
+1. [rem(0.07, 0.06), ddd(xx)]
+2. [rem(0.06, 0.09), ddd(xx)]
+3. [rem(0.08, 0.05), ddd(xyxy)]
+4. [rem(0.06, 0.07), ddd(yy)]
+5. [rem(0.06, 0.08), ddd(yy)]
+6. [rem(0.06, 0.06), ddd(yy)]
+7. [rem(0.06, 0.07), ddd(xyxy)]
+8. [rem(0.08, 0.05), ddd(xx)]
+9. [rem(0.06, 0.07), ddd(xx)]
+10. [rem(0.06, 0.07), ddd(xyxy)]
+11. [rem(0.06, 0.06), ddd(xx)]
+12. [rem(0.08, 0.06), ddd(yy)]
+13. [rem(0.06, 0.06), ddd(xx)]
+14. [rem(0.05, 0.09), ddd(xx)]
+15. [rem(0.05, 0.08), ddd(xx)]
+16. [rem(0.05, 0.07), ddd(xyxy)]
+17. [rem(0.08, 0.05), ddd(xx)]
+18. [rem(0.05, 0.07), ddd(xx)]
+19. [rem(0.08, 0.06), ddd(xyxy)]
+20. [rem(0.06, 0.08), ddd(xyxy)]
+21. [rem(0.06, 0.06), ddd(xyxy)]
+22. [rem(0.06, 0.07), ddd(xyxy)]
+23. [rem(0.08, 0.05), ddd(xx)]
+24. [rem(0.06, 0.09), ddd(xx)]
+25. [rem(0.06, 0.10), ddd(xx)]
+26. [rem(0.07, 0.06), ddd(xx)]
+27. [rem(0.07, 0.06), ddd(xx)]
+28. [rem(0.04, 0.09), ddd(xx)]
+29. [rem(0.06, 0.06), ddd(xx)]
+30. [rem(0.05, 0.07), ddd(xyxy)]
+31. [rem(0.08, 0.05), ddd(xyxy)]
+32. [rem(0.06, 0.06), ddd(xx)]
+33. [rem(0.06, 0.07), ddd(yy)]
+34. [rem(0.06, 0.06), ddd(xx)]
+35. [rem(0.05, 0.07), ddd(xx)]
+36. [rem(0.07, 0.06), ddd(xyxy)]
+37. [rem(0.06, 0.06), ddd(xyxy)]
+38. [rem(0.07, 0.05), ddd(yy)]
+39. [rem(0.06, 0.05), ddd(xx)]
+40. [rem(0.05, 0.05), ddd(yy)]
+Max pop
+1. [rem(0.05, 0.05), zne(RichardsonFactory([1, 3, 5]), fold_gates_from_left)]
+2. [rem(0.06, 0.07), ddd(xx)]
+3. [rem(0.06, 0.07), ddd(yy)]
+4. [rem(0.05, 0.07), ddd(yy)]
+5. [rem(0.06, 0.06), ddd(yy)]
+6. [rem(0.06, 0.06), ddd(yy)]
+7. [rem(0.06, 0.06), ddd(xx)]
+8. [rem(0.06, 0.06), ddd(xx)]
+9. [rem(0.06, 0.06), ddd(xx)]
+10. [rem(0.07, 0.06), ddd(xx)]
+Med pop
+1. [rem(0.05, 0.05), zne(LinearFactory([1, 3]), fold_all)]
+2. [rem(0.05, 0.07), zne(LinearFactory([1, 3]), fold_gates_from_left)]
+3. [rem(0.05, 0.05), zne(LinearFactory([1, 3]), fold_global)]
+4. [rem(0.06, 0.05), zne(AdaExpFactory(6, -9.911027303560505), fold_gates_at_random)]
+5. [rem(0.05, 0.06), ddd(yy)]
+6. [rem(0.06, 0.07), ddd(xx)]
+7. [rem(0.05, 0.08), ddd(yy)]
+8. [rem(0.06, 0.07), ddd(xyxy)]
+9. [rem(0.06, 0.07), ddd(yy)]
+10. [rem(0.06, 0.06), ddd(xyxy)]
+Best max individual
+[rem(0.06, 0.07), ddd(xx)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: 1.00000
+Noisy value: 0.48800
+Mitigated value obtained with REM: 0.83600
+Mitigated value obtained with ZNE: 0.53400
+Mitigated value obtained with DDD: 0.48400
+Optim mitigated value: 1.00000
+REM ratio: 0.32031
+ZNE ratio: 0.91016
+DDD ratio: 1.00781
+DNA ratio: 0.00000
+REM fitness: 0.75740
+ZNE fitness: 0.52352
+DDD fitness: 0.49805
+DNA fitness: 1.00000
+
+
+CIRCUIT: W-state with 6 qubits and seed 0
+0: ───@────────────X─────────────────────────────────────────────────────────────────────
+      │            │
+1: ───Ry(0.732π)───@───@────────────X────────────────────────────────────────────────────
+                       │            │
+2: ────────────────────Ry(0.705π)───@───@────────────X───────────────────────────────────
+                                        │            │
+3: ─────────────────────────────────────Ry(0.667π)───@───@────────────X──────────────────
+                                                         │            │
+4: ──────────────────────────────────────────────────────Ry(0.608π)───@───@──────────X───
+                                                                          │          │
+5: ───────────────────────────────────────────────────────────────────────Ry(0.5π)───@───
+Final pop
+1. [rem(0.07, 0.04), ddd(xx)]
+2. [rem(0.07, 0.05), ddd(xx)]
+3. [rem(0.09, 0.05), ddd(xyxy)]
+4. [rem(0.10, 0.08), ddd(xyxy)]
+5. [rem(0.07, 0.08), ddd(xyxy)]
+6. [rem(0.09, 0.07), ddd(xyxy)]
+7. [rem(0.09, 0.05), ddd(xyxy)]
+8. [rem(0.07, 0.02), ddd(xx)]
+9. [rem(0.07, 0.04), ddd(xx)]
+10. [rem(0.07, 0.06), ddd(yy)]
+11. [rem(0.07, 0.07), ddd(yy)]
+12. [rem(0.08, 0.03), ddd(xx)]
+13. [rem(0.10, 0.07), ddd(xx)]
+14. [rem(0.08, 0.05), ddd(xyxy)]
+15. [rem(0.07, 0.06), ddd(xyxy)]
+16. [rem(0.07, 0.04), ddd(xyxy)]
+17. [rem(0.07, 0.06), ddd(xyxy)]
+18. [rem(0.07, 0.05), ddd(xyxy)]
+19. [rem(0.07, 0.07), ddd(yy)]
+20. [rem(0.07, 0.04), ddd(yy)]
+21. [rem(0.07, 0.05), ddd(xx)]
+22. [rem(0.09, 0.05), ddd(xx)]
+23. [rem(0.10, 0.07), ddd(xyxy)]
+24. [rem(0.07, 0.08), ddd(xyxy)]
+25. [rem(0.09, 0.07), ddd(xx)]
+26. [rem(0.09, 0.05), ddd(xyxy)]
+27. [rem(0.07, 0.04), ddd(yy)]
+28. [rem(0.07, 0.04), ddd(xyxy)]
+29. [rem(0.07, 0.06), ddd(xyxy)]
+30. [rem(0.10, 0.09), ddd(xx)]
+31. [rem(0.08, 0.03), ddd(xyxy)]
+32. [rem(0.08, 0.07), ddd(xyxy)]
+33. [rem(0.08, 0.05), ddd(xx)]
+34. [rem(0.07, 0.06), ddd(xyxy)]
+35. [rem(0.07, 0.04), ddd(xyxy)]
+36. [rem(0.09, 0.06), ddd(xyxy)]
+37. [rem(0.07, 0.05), ddd(xx)]
+38. [rem(0.10, 0.10), ddd(yy)]
+39. [rem(0.06, 0.08), ddd(xx)]
+40. [rem(0.06, 0.07), ddd(yy)]
+Max pop
+1. [rem(0.05, 0.05), zne(LinearFactory([1, 3]), fold_gates_at_random)]
+2. [rem(0.06, 0.05), ddd(xx)]
+3. [rem(0.06, 0.04), ddd(xx)]
+4. [rem(0.06, 0.04), ddd(xx)]
+5. [rem(0.07, 0.04), ddd(xx)]
+6. [rem(0.07, 0.04), ddd(xx)]
+7. [rem(0.07, 0.04), ddd(xx)]
+8. [rem(0.07, 0.04), ddd(xx)]
+9. [rem(0.07, 0.04), ddd(xyxy)]
+10. [rem(0.07, 0.04), ddd(xx)]
+Med pop
+1. [rem(0.05, 0.05), ddd(xx)]
+2. [rem(0.05, 0.05), ddd(xyxy)]
+3. [rem(0.05, 0.05), ddd(yy)]
+4. [rem(0.06, 0.05), zne(LinearFactory([1, 3]), fold_gates_from_left)]
+5. [rem(0.06, 0.05), ddd(yy)]
+6. [rem(0.07, 0.06), ddd(xyxy)]
+7. [rem(0.06, 0.04), ddd(xyxy)]
+8. [rem(0.07, 0.04), ddd(xx)]
+9. [rem(0.07, 0.05), ddd(xx)]
+10. [rem(0.07, 0.05), ddd(xx)]
+Best max individual
+[rem(0.06, 0.05), ddd(xx)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: 1.00000
+Noisy value: 0.47200
+Mitigated value obtained with REM: 0.94600
+Mitigated value obtained with ZNE: 0.66400
+Mitigated value obtained with DDD: 0.47600
+Optim mitigated value: 1.00000
+REM ratio: 0.10227
+ZNE ratio: 0.63636
+DDD ratio: 0.99242
+DNA ratio: 0.00000
+REM fitness: 0.90722
+ZNE fitness: 0.61111
+DDD fitness: 0.50190
+DNA fitness: 1.00000
+
+
+CIRCUIT: Random Clifford T with 6 qubits and seed 0
+          ┌──┐   ┌──┐
+0: ───T─────@──────@────S───────@───@───
+            │      │            │   │
+1: ────────@┼─────T┼────H───────┼───X───
+           ││      │            │
+2: ───H────@┼─────T┼────@───T───X───H───
+            │      │    │
+3: ─────────┼──────┼────X───T───T───────
+            │      │
+4: ─────────@──────X────H───────────────
+
+5: ───S─────────────────────────────────
+          └──┘   └──┘
+Final pop
+1. [rem(0.06, 0.03), ddd(xyxy)]
+2. [rem(0.03, 0.06), zne(AdaExpFactory(5, 0.5), fold_global)]
+3. [rem(0.05, 0.07), ddd(yy)]
+4. [rem(0.05, 0.04), zne(AdaExpFactory(10, 7.892457992278423), fold_gates_from_left)]
+5. [rem(0.05, 0.05), ddd(xx)]
+6. [rem(0.06, 0.05), ddd(yy)]
+7. [rem(0.03, 0.06), zne(AdaExpFactory(5, 0.5), fold_global)]
+8. [rem(0.05, 0.04), zne(ExpFactory([4.21328298 5.29559868 8.21624188 8.56361893], 9.892374136921408), fold_all)]
+9. [rem(0.05, 0.04), zne(AdaExpFactory(7, 3.7502870917789792), fold_gates_at_random)]
+10. [rem(0.06, 0.03), ddd(yy)]
+11. [rem(0.05, 0.05), ddd(xyxy)]
+12. [rem(0.07, 0.05), ddd(yy)]
+13. [rem(0.04, 0.05), zne(AdaExpFactory(5, 1.96688194417208), fold_gates_at_random)]
+14. [rem(0.05, 0.06), ddd(yy)]
+15. [rem(0.05, 0.07), ddd(xyxy)]
+16. [rem(0.04, 0.04), zne(AdaExpFactory(10, 7.892457992278423), fold_gates_from_left)]
+17. [rem(0.05, 0.07), zne(AdaExpFactory(10, 7.892457992278423), fold_gates_from_left)]
+18. [rem(0.05, 0.07), ddd(xx)]
+19. [rem(0.04, 0.04), zne(LinearFactory([3.4121351  7.08907874 8.97027177]), fold_gates_at_random)]
+20. [rem(0.06, 0.05), ddd(xx)]
+21. [rem(0.05, 0.05), ddd(yy)]
+22. [rem(0.04, 0.05), zne(AdaExpFactory(7, 3.7502870917789792), fold_gates_from_right)]
+23. [rem(0.05, 0.05), ddd(xx)]
+24. [rem(0.05, 0.05), ddd(xx)]
+25. [rem(0.04, 0.04), zne(AdaExpFactory(7, 3.7502870917789792), fold_gates_at_random)]
+26. [rem(0.07, 0.05), ddd(yy)]
+27. [rem(0.06, 0.05), ddd(xyxy)]
+28. [rem(0.04, 0.06), ddd(xx)]
+29. [rem(0.04, 0.05), zne(AdaExpFactory(7, 3.7502870917789792), fold_global)]
+30. [rem(0.07, 0.05), ddd(xyxy)]
+31. [rem(0.05, 0.04), zne(AdaExpFactory(10, 7.892457992278423), fold_gates_from_left)]
+32. [rem(0.06, 0.06), ddd(xx)]
+33. [rem(0.05, 0.04), zne(AdaExpFactory(10, 6.836291451941165), fold_global)]
+34. [rem(0.03, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_from_right)]
+35. [rem(0.05, 0.06), ddd(xyxy)]
+36. [rem(0.04, 0.04), zne(ExpFactory([4.21328298 5.29559868 8.21624188 8.56361893], 9.892374136921408), fold_global)]
+37. [rem(0.06, 0.05), ddd(yy)]
+38. [rem(0.03, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_at_random)]
+39. [rem(0.07, 0.05), ddd(xyxy)]
+40. [rem(0.05, 0.04), zne(AdaExpFactory(9, None), fold_gates_from_left)]
+Max pop
+1. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_global)]
+2. [rem(0.05, 0.05), ddd(xyxy)]
+3. [rem(0.05, 0.03), ddd(xx)]
+4. [rem(0.04, 0.05), zne(LinearFactory([1, 3]), fold_gates_from_right)]
+5. [rem(0.04, 0.05), zne(LinearFactory([1, 3]), fold_gates_from_right)]
+6. [rem(0.03, 0.05), ddd(xx)]
+7. [rem(0.05, 0.03), ddd(xx)]
+8. [rem(0.05, 0.05), ddd(xx)]
+9. [rem(0.05, 0.07), ddd(yy)]
+10. [rem(0.06, 0.03), ddd(xyxy)]
+Med pop
+1. [rem(0.05, 0.05), zne(LinearFactory([1, 3]), fold_global)]
+2. [rem(0.04, 0.05), ddd(xx)]
+3. [rem(0.04, 0.05), zne(LinearFactory([2.05992324 4.90108659 5.22517538]), fold_all)]
+4. [rem(0.06, 0.05), ddd(yy)]
+5. [rem(0.06, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_at_random)]
+6. [rem(0.04, 0.04), zne(AdaExpFactory(5, 0.5), fold_gates_at_random)]
+7. [rem(0.03, 0.04), ddd(yy)]
+8. [rem(0.03, 0.05), zne(ExpFactory([2.01849338 6.18534762], 3.924423942947058), fold_gates_from_right)]
+9. [rem(0.05, 0.04), ddd(xyxy)]
+10. [rem(0.05, 0.05), ddd(yy)]
+Best max individual
+[rem(0.05, 0.05), ddd(xyxy)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: -0.01800
+Noisy value: -0.00600
+Mitigated value obtained with REM: -0.04600
+Mitigated value obtained with ZNE: 0.04800
+Mitigated value obtained with DDD: 0.01200
+Optim mitigated value: -0.06600
+REM ratio: 2.33333
+ZNE ratio: 5.50000
+DDD ratio: 2.50000
+DNA ratio: 4.00000
+REM fitness: 0.30000
+ZNE fitness: 0.15385
+DDD fitness: 0.28571
+DNA fitness: 0.20000
+
+
+
+############### EXPERIMENT 1 (Tue May 14 18:40:40 2024) ############
+
+
+CIRCUIT: GHZ with 6 qubits and seed 1
+0: ───H───@───────────────────
+          │
+1: ───────X───@───────────────
+              │
+2: ───────────X───@───────────
+                  │
+3: ───────────────X───@───────
+                      │
+4: ───────────────────X───@───
+                          │
+5: ───────────────────────X───
+Final pop
+1. [rem(0.05, 0.08), ddd(xx)]
+2. [rem(0.05, 0.10), ddd(xx)]
+3. [rem(0.05, 0.10), ddd(xx)]
+4. [rem(0.06, 0.08), ddd(xx)]
+5. [rem(0.07, 0.08), ddd(yy)]
+6. [rem(0.07, 0.07), ddd(xyxy)]
+7. [rem(0.06, 0.08), ddd(xx)]
+8. [rem(0.05, 0.10), ddd(xx)]
+9. [rem(0.05, 0.09), ddd(xyxy)]
+10. [rem(0.05, 0.11), ddd(xx)]
+11. [rem(0.05, 0.10), ddd(xx)]
+12. [rem(0.05, 0.10), ddd(xyxy)]
+13. [rem(0.05, 0.08), ddd(xyxy)]
+14. [rem(0.05, 0.10), ddd(xx)]
+15. [rem(0.07, 0.09), ddd(xx)]
+16. [rem(0.05, 0.08), ddd(xyxy)]
+17. [rem(0.05, 0.13), ddd(yy)]
+18. [rem(0.05, 0.08), ddd(xx)]
+19. [rem(0.05, 0.10), ddd(xyxy)]
+20. [rem(0.04, 0.10), ddd(xx)]
+21. [rem(0.05, 0.10), ddd(xx)]
+22. [rem(0.07, 0.08), ddd(xyxy)]
+23. [rem(0.06, 0.07), ddd(xyxy)]
+24. [rem(0.06, 0.08), ddd(xyxy)]
+25. [rem(0.05, 0.10), ddd(xx)]
+26. [rem(0.06, 0.09), ddd(xyxy)]
+27. [rem(0.05, 0.12), ddd(xx)]
+28. [rem(0.05, 0.10), ddd(xx)]
+29. [rem(0.05, 0.08), ddd(xx)]
+30. [rem(0.03, 0.09), ddd(yy)]
+31. [rem(0.05, 0.10), ddd(xyxy)]
+32. [rem(0.05, 0.07), ddd(xx)]
+33. [rem(0.05, 0.08), ddd(xx)]
+34. [rem(0.07, 0.09), ddd(xx)]
+35. [rem(0.05, 0.08), ddd(yy)]
+36. [rem(0.05, 0.10), ddd(xyxy)]
+37. [rem(0.05, 0.07), ddd(xyxy)]
+38. [rem(0.03, 0.09), ddd(yy)]
+39. [rem(0.05, 0.08), ddd(xyxy)]
+40. [rem(0.05, 0.08), ddd(xyxy)]
+Max pop
+1. [rem(0.05, 0.07), ddd(xyxy)]
+2. [rem(0.05, 0.08), ddd(xyxy)]
+3. [rem(0.05, 0.08), ddd(xx)]
+4. [rem(0.05, 0.08), ddd(xx)]
+5. [rem(0.05, 0.08), ddd(xyxy)]
+6. [rem(0.05, 0.08), ddd(xx)]
+7. [rem(0.05, 0.08), ddd(xyxy)]
+8. [rem(0.05, 0.08), ddd(xx)]
+9. [rem(0.05, 0.08), ddd(xx)]
+10. [rem(0.05, 0.08), ddd(xx)]
+Med pop
+1. [rem(0.05, 0.05), zne(PolyFactory([1.11300382 1.64776852], 0), fold_gates_from_right)]
+2. [rem(0.05, 0.05), zne(LinearFactory([2.83922315 3.68812218 6.86008503 7.83413915 9.03719091 9.83580977]), fold_gates_at_random)]
+3. [rem(0.05, 0.05), ddd(xyxy)]
+4. [rem(0.06, 0.06), ddd(xyxy)]
+5. [rem(0.05, 0.10), ddd(xyxy)]
+6. [rem(0.05, 0.08), ddd(xx)]
+7. [rem(0.05, 0.08), ddd(xx)]
+8. [rem(0.05, 0.08), ddd(xx)]
+9. [rem(0.05, 0.08), ddd(xx)]
+10. [rem(0.05, 0.10), ddd(xx)]
+Best max individual
+[rem(0.05, 0.07), ddd(xyxy)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: 1.00000
+Noisy value: 0.54400
+Mitigated value obtained with REM: 0.95200
+Mitigated value obtained with ZNE: 0.61800
+Mitigated value obtained with DDD: 0.46800
+Optim mitigated value: 0.99200
+REM ratio: 0.10526
+ZNE ratio: 0.83772
+DDD ratio: 1.16667
+DNA ratio: 0.01754
+REM fitness: 0.90476
+ZNE fitness: 0.54415
+DDD fitness: 0.46154
+DNA fitness: 0.98276
+
+
+CIRCUIT: W-state with 6 qubits and seed 1
+0: ───@────────────X─────────────────────────────────────────────────────────────────────
+      │            │
+1: ───Ry(0.732π)───@───@────────────X────────────────────────────────────────────────────
+                       │            │
+2: ────────────────────Ry(0.705π)───@───@────────────X───────────────────────────────────
+                                        │            │
+3: ─────────────────────────────────────Ry(0.667π)───@───@────────────X──────────────────
+                                                         │            │
+4: ──────────────────────────────────────────────────────Ry(0.608π)───@───@──────────X───
+                                                                          │          │
+5: ───────────────────────────────────────────────────────────────────────Ry(0.5π)───@───
+Final pop
+1. [rem(0.07, 0.05), ddd(xyxy)]
+2. [rem(0.07, 0.05), ddd(yy)]
+3. [rem(0.09, 0.06), ddd(xx)]
+4. [rem(0.07, 0.06), ddd(xyxy)]
+5. [rem(0.07, 0.04), ddd(xx)]
+6. [rem(0.08, 0.05), ddd(yy)]
+7. [rem(0.07, 0.02), ddd(yy)]
+8. [rem(0.08, 0.06), ddd(xx)]
+9. [rem(0.09, 0.06), ddd(xyxy)]
+10. [rem(0.07, 0.05), ddd(xx)]
+11. [rem(0.07, 0.04), ddd(yy)]
+12. [rem(0.07, 0.05), ddd(yy)]
+13. [rem(0.09, 0.04), ddd(xx)]
+14. [rem(0.08, 0.05), ddd(yy)]
+15. [rem(0.06, 0.07), ddd(yy)]
+16. [rem(0.08, 0.05), ddd(xx)]
+17. [rem(0.07, 0.05), ddd(yy)]
+18. [rem(0.07, 0.05), ddd(yy)]
+19. [rem(0.07, 0.05), ddd(yy)]
+20. [rem(0.07, 0.06), ddd(yy)]
+21. [rem(0.06, 0.05), ddd(xyxy)]
+22. [rem(0.07, 0.05), ddd(yy)]
+23. [rem(0.07, 0.05), ddd(xx)]
+24. [rem(0.08, 0.06), ddd(yy)]
+25. [rem(0.07, 0.05), ddd(xx)]
+26. [rem(0.08, 0.05), ddd(xx)]
+27. [rem(0.07, 0.02), ddd(xx)]
+28. [rem(0.08, 0.06), ddd(xx)]
+29. [rem(0.09, 0.06), ddd(xx)]
+30. [rem(0.07, 0.05), ddd(xx)]
+31. [rem(0.08, 0.04), ddd(yy)]
+32. [rem(0.09, 0.05), ddd(xyxy)]
+33. [rem(0.08, 0.05), ddd(xyxy)]
+34. [rem(0.06, 0.05), ddd(yy)]
+35. [rem(0.08, 0.05), ddd(xx)]
+36. [rem(0.09, 0.06), ddd(yy)]
+37. [rem(0.07, 0.03), ddd(xyxy)]
+38. [rem(0.06, 0.05), ddd(xx)]
+39. [rem(0.06, 0.06), ddd(yy)]
+40. [rem(0.05, 0.05), ddd(xx)]
+Max pop
+1. [rem(0.05, 0.05), zne(LinearFactory([1, 3]), fold_global)]
+2. [rem(0.07, 0.05), ddd(xx)]
+3. [rem(0.07, 0.05), ddd(xx)]
+4. [rem(0.07, 0.05), ddd(xx)]
+5. [rem(0.07, 0.05), ddd(xx)]
+6. [rem(0.07, 0.05), ddd(yy)]
+7. [rem(0.07, 0.05), ddd(xyxy)]
+8. [rem(0.07, 0.05), ddd(xyxy)]
+9. [rem(0.07, 0.05), ddd(xyxy)]
+10. [rem(0.07, 0.05), ddd(xyxy)]
+Med pop
+1. [rem(0.05, 0.05), zne(RichardsonFactory([1, 3, 5]), fold_gates_from_right)]
+2. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_global)]
+3. [rem(0.05, 0.05), ddd(yy)]
+4. [rem(0.05, 0.05), zne(PolyFactory([4.6646489  4.98372598 5.59235251 6.84765536 7.45567365 8.26492882], 2), fold_global)]
+5. [rem(0.06, 0.05), ddd(yy)]
+6. [rem(0.07, 0.06), ddd(xx)]
+7. [rem(0.07, 0.05), ddd(yy)]
+8. [rem(0.09, 0.06), ddd(yy)]
+9. [rem(0.08, 0.05), ddd(yy)]
+10. [rem(0.06, 0.05), ddd(xyxy)]
+Best max individual
+[rem(0.07, 0.05), ddd(xx)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: 1.00000
+Noisy value: 0.46000
+Mitigated value obtained with REM: 0.85400
+Mitigated value obtained with ZNE: 0.29800
+Mitigated value obtained with DDD: 0.50400
+Optim mitigated value: 1.00000
+REM ratio: 0.27037
+ZNE ratio: 1.30000
+DDD ratio: 0.91852
+DNA ratio: 0.00000
+REM fitness: 0.78717
+ZNE fitness: 0.43478
+DDD fitness: 0.52124
+DNA fitness: 1.00000
+
+
+CIRCUIT: Random Clifford T with 6 qubits and seed 1
+      ┌──┐       ┌──┐
+0: ─────@────T────T─────S───────────────
+        │
+1: ────S┼────S─────@────────────@───────
+        │          │            │
+2: ────H┼────T─────┼────────────┼───────
+        │          │            │
+3: ────T┼────@────T┼────S───X───@───@───
+        │    │     │        │       │
+4: ─────┼────@─────@────────@───T───@───
+        │
+5: ─────@────H──────────────────────────
+      └──┘       └──┘
+Final pop
+1. [rem(0.06, 0.04), ddd(yy)]
+2. [rem(0.07, 0.05), ddd(xx)]
+3. [rem(0.06, 0.05), ddd(yy)]
+4. [rem(0.05, 0.06), ddd(yy)]
+5. [rem(0.02, 0.06), ddd(xx)]
+6. [rem(0.02, 0.06), ddd(xyxy)]
+7. [rem(0.06, 0.06), ddd(yy)]
+8. [rem(0.05, 0.06), ddd(yy)]
+9. [rem(0.05, 0.07), ddd(xyxy)]
+10. [rem(0.03, 0.05), ddd(yy)]
+11. [rem(0.06, 0.05), ddd(yy)]
+12. [rem(0.05, 0.05), ddd(xx)]
+13. [rem(0.06, 0.06), ddd(yy)]
+14. [rem(0.06, 0.04), ddd(xyxy)]
+15. [rem(0.06, 0.04), ddd(xyxy)]
+16. [rem(0.07, 0.04), ddd(yy)]
+17. [rem(0.02, 0.05), ddd(xx)]
+18. [rem(0.05, 0.05), ddd(xyxy)]
+19. [rem(0.06, 0.05), ddd(xx)]
+20. [rem(0.05, 0.06), ddd(xyxy)]
+21. [rem(0.05, 0.05), ddd(xx)]
+22. [rem(0.03, 0.05), ddd(yy)]
+23. [rem(0.06, 0.05), ddd(yy)]
+24. [rem(0.07, 0.04), ddd(xx)]
+25. [rem(0.03, 0.07), ddd(xyxy)]
+26. [rem(0.05, 0.03), ddd(xyxy)]
+27. [rem(0.06, 0.04), ddd(xyxy)]
+28. [rem(0.04, 0.07), ddd(yy)]
+29. [rem(0.04, 0.07), ddd(xyxy)]
+30. [rem(0.05, 0.01), ddd(xyxy)]
+31. [rem(0.02, 0.05), ddd(yy)]
+32. [rem(0.06, 0.07), ddd(xx)]
+33. [rem(0.08, 0.05), ddd(yy)]
+34. [rem(0.05, 0.05), ddd(yy)]
+35. [rem(0.06, 0.04), ddd(yy)]
+36. [rem(0.02, 0.05), ddd(xx)]
+37. [rem(0.06, 0.04), ddd(yy)]
+38. [rem(0.07, 0.04), ddd(xx)]
+39. [rem(0.05, 0.05), ddd(yy)]
+40. [rem(0.02, 0.05), ddd(xx)]
+Max pop
+1. [rem(0.05, 0.05), ddd(yy)]
+2. [rem(0.05, 0.06), ddd(xyxy)]
+3. [rem(0.05, 0.05), ddd(xx)]
+4. [rem(0.03, 0.06), ddd(xx)]
+5. [rem(0.05, 0.05), ddd(xyxy)]
+6. [rem(0.06, 0.04), ddd(xyxy)]
+7. [rem(0.03, 0.05), ddd(xyxy)]
+8. [rem(0.04, 0.06), ddd(yy)]
+9. [rem(0.06, 0.04), ddd(yy)]
+10. [rem(0.06, 0.04), ddd(yy)]
+Med pop
+1. [rem(0.05, 0.05), ddd(yy)]
+2. [rem(0.06, 0.05), ddd(yy)]
+3. [rem(0.03, 0.06), ddd(xx)]
+4. [rem(0.05, 0.05), ddd(xyxy)]
+5. [rem(0.05, 0.05), ddd(yy)]
+6. [rem(0.05, 0.05), ddd(yy)]
+7. [rem(0.06, 0.06), ddd(xx)]
+8. [rem(0.05, 0.05), ddd(yy)]
+9. [rem(0.06, 0.05), ddd(yy)]
+10. [rem(0.05, 0.05), ddd(xx)]
+Best max individual
+[rem(0.05, 0.05), ddd(yy)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: -0.01400
+Noisy value: 0.02400
+Mitigated value obtained with REM: 0.08800
+Mitigated value obtained with ZNE: 0.10000
+Mitigated value obtained with DDD: -0.03400
+Optim mitigated value: -0.11800
+REM ratio: 2.68421
+ZNE ratio: 3.00000
+DDD ratio: 0.52632
+DNA ratio: 2.73684
+REM fitness: 0.27143
+ZNE fitness: 0.25000
+DDD fitness: 0.65517
+DNA fitness: 0.26761
+
+
+
+############### EXPERIMENT 1 (Tue May 14 18:43:20 2024) ############
+
+
+CIRCUIT: GHZ with 6 qubits and seed 2
+0: ───H───@───────────────────
+          │
+1: ───────X───@───────────────
+              │
+2: ───────────X───@───────────
+                  │
+3: ───────────────X───@───────
+                      │
+4: ───────────────────X───@───
+                          │
+5: ───────────────────────X───
+Final pop
+1. [rem(0.07, 0.05), ddd(yy)]
+2. [rem(0.08, 0.05), ddd(xx)]
+3. [rem(0.07, 0.05), ddd(yy)]
+4. [rem(0.08, 0.06), ddd(xyxy)]
+5. [rem(0.06, 0.06), ddd(yy)]
+6. [rem(0.04, 0.08), ddd(xyxy)]
+7. [rem(0.05, 0.07), ddd(xyxy)]
+8. [rem(0.08, 0.07), ddd(xx)]
+9. [rem(0.08, 0.06), ddd(xx)]
+10. [rem(0.08, 0.05), ddd(yy)]
+11. [rem(0.08, 0.06), ddd(xyxy)]
+12. [rem(0.09, 0.05), ddd(yy)]
+13. [rem(0.08, 0.05), ddd(xx)]
+14. [rem(0.09, 0.05), ddd(xyxy)]
+15. [rem(0.08, 0.05), ddd(xyxy)]
+16. [rem(0.08, 0.05), ddd(yy)]
+17. [rem(0.08, 0.06), ddd(xyxy)]
+18. [rem(0.05, 0.08), ddd(yy)]
+19. [rem(0.07, 0.05), ddd(yy)]
+20. [rem(0.08, 0.05), ddd(yy)]
+21. [rem(0.08, 0.06), ddd(xx)]
+22. [rem(0.06, 0.06), ddd(yy)]
+23. [rem(0.06, 0.07), ddd(yy)]
+24. [rem(0.08, 0.07), ddd(yy)]
+25. [rem(0.08, 0.06), ddd(xx)]
+26. [rem(0.06, 0.05), ddd(xx)]
+27. [rem(0.08, 0.05), ddd(xx)]
+28. [rem(0.08, 0.06), ddd(xyxy)]
+29. [rem(0.09, 0.05), ddd(yy)]
+30. [rem(0.08, 0.05), ddd(yy)]
+31. [rem(0.09, 0.06), ddd(xyxy)]
+32. [rem(0.09, 0.05), ddd(xx)]
+33. [rem(0.08, 0.05), ddd(yy)]
+34. [rem(0.08, 0.06), ddd(yy)]
+35. [rem(0.05, 0.08), ddd(xyxy)]
+36. [rem(0.07, 0.05), ddd(yy)]
+37. [rem(0.05, 0.08), ddd(xx)]
+38. [rem(0.04, 0.08), ddd(xyxy)]
+39. [rem(0.03, 0.08), ddd(xx)]
+40. [rem(0.06, 0.03), ddd(yy)]
+Max pop
+1. [rem(0.08, 0.05), ddd(xx)]
+2. [rem(0.08, 0.05), ddd(xx)]
+3. [rem(0.08, 0.05), ddd(xx)]
+4. [rem(0.08, 0.05), ddd(xx)]
+5. [rem(0.08, 0.05), ddd(xx)]
+6. [rem(0.08, 0.05), ddd(yy)]
+7. [rem(0.08, 0.05), ddd(yy)]
+8. [rem(0.08, 0.05), ddd(yy)]
+9. [rem(0.07, 0.05), ddd(yy)]
+10. [rem(0.07, 0.05), ddd(yy)]
+Med pop
+1. [rem(0.05, 0.05), ddd(xyxy)]
+2. [rem(0.05, 0.06), ddd(xx)]
+3. [rem(0.05, 0.05), zne(ExpFactory([2.92554735 3.0803943  9.07241142 9.47633223], 6.32591115556999), fold_gates_from_left)]
+4. [rem(0.05, 0.07), ddd(xyxy)]
+5. [rem(0.08, 0.05), ddd(xx)]
+6. [rem(0.06, 0.06), ddd(xyxy)]
+7. [rem(0.08, 0.05), ddd(xyxy)]
+8. [rem(0.08, 0.06), ddd(xx)]
+9. [rem(0.08, 0.05), ddd(yy)]
+10. [rem(0.08, 0.06), ddd(xx)]
+Best max individual
+[rem(0.08, 0.05), ddd(xx)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: 1.00000
+Noisy value: 0.46000
+Mitigated value obtained with REM: 0.94600
+Mitigated value obtained with ZNE: 0.47600
+Mitigated value obtained with DDD: 0.48200
+Optim mitigated value: 1.00000
+REM ratio: 0.10000
+ZNE ratio: 0.97037
+DDD ratio: 0.95926
+DNA ratio: 0.00000
+REM fitness: 0.90909
+ZNE fitness: 0.50752
+DDD fitness: 0.51040
+DNA fitness: 1.00000
+
+
+CIRCUIT: W-state with 6 qubits and seed 2
+0: ───@────────────X─────────────────────────────────────────────────────────────────────
+      │            │
+1: ───Ry(0.732π)───@───@────────────X────────────────────────────────────────────────────
+                       │            │
+2: ────────────────────Ry(0.705π)───@───@────────────X───────────────────────────────────
+                                        │            │
+3: ─────────────────────────────────────Ry(0.667π)───@───@────────────X──────────────────
+                                                         │            │
+4: ──────────────────────────────────────────────────────Ry(0.608π)───@───@──────────X───
+                                                                          │          │
+5: ───────────────────────────────────────────────────────────────────────Ry(0.5π)───@───
+Final pop
+1. [rem(0.07, 0.04), ddd(xx)]
+2. [rem(0.06, 0.06), ddd(yy)]
+3. [rem(0.07, 0.03), ddd(yy)]
+4. [rem(0.08, 0.05), ddd(yy)]
+5. [rem(0.07, 0.03), ddd(xyxy)]
+6. [rem(0.07, 0.05), ddd(xx)]
+7. [rem(0.07, 0.05), ddd(yy)]
+8. [rem(0.07, 0.05), ddd(xx)]
+9. [rem(0.07, 0.07), ddd(xyxy)]
+10. [rem(0.06, 0.04), ddd(xyxy)]
+11. [rem(0.10, 0.06), ddd(xx)]
+12. [rem(0.08, 0.03), ddd(yy)]
+13. [rem(0.06, 0.05), ddd(xyxy)]
+14. [rem(0.08, 0.03), ddd(xx)]
+15. [rem(0.09, 0.05), ddd(xx)]
+16. [rem(0.08, 0.05), ddd(xx)]
+17. [rem(0.07, 0.04), ddd(xx)]
+18. [rem(0.09, 0.05), ddd(xyxy)]
+19. [rem(0.07, 0.03), ddd(xx)]
+20. [rem(0.06, 0.06), ddd(xx)]
+21. [rem(0.07, 0.05), ddd(yy)]
+22. [rem(0.08, 0.05), ddd(xyxy)]
+23. [rem(0.07, 0.05), ddd(xx)]
+24. [rem(0.07, 0.03), ddd(xx)]
+25. [rem(0.07, 0.05), ddd(yy)]
+26. [rem(0.07, 0.05), ddd(xx)]
+27. [rem(0.06, 0.04), ddd(xx)]
+28. [rem(0.10, 0.05), ddd(yy)]
+29. [rem(0.08, 0.03), ddd(xx)]
+30. [rem(0.06, 0.05), ddd(xyxy)]
+31. [rem(0.08, 0.03), ddd(xx)]
+32. [rem(0.07, 0.05), ddd(yy)]
+33. [rem(0.08, 0.05), ddd(yy)]
+34. [rem(0.07, 0.03), ddd(xx)]
+35. [rem(0.06, 0.04), ddd(xx)]
+36. [rem(0.08, 0.05), ddd(xyxy)]
+37. [rem(0.06, 0.02), ddd(xyxy)]
+38. [rem(0.07, 0.04), ddd(yy)]
+39. [rem(0.07, 0.07), ddd(yy)]
+40. [rem(0.05, 0.04), ddd(xyxy)]
+Max pop
+1. [rem(0.05, 0.05), ddd(yy)]
+2. [rem(0.06, 0.04), ddd(xx)]
+3. [rem(0.06, 0.05), ddd(xx)]
+4. [rem(0.06, 0.05), ddd(xx)]
+5. [rem(0.06, 0.06), ddd(xx)]
+6. [rem(0.07, 0.04), ddd(yy)]
+7. [rem(0.06, 0.05), ddd(xx)]
+8. [rem(0.07, 0.04), ddd(xx)]
+9. [rem(0.07, 0.04), ddd(xx)]
+10. [rem(0.07, 0.04), ddd(xx)]
+Med pop
+1. [rem(0.05, 0.05), zne(AdaExpFactory(5, 0.5), fold_gates_from_right)]
+2. [rem(0.05, 0.05), ddd(yy)]
+3. [rem(0.05, 0.05), zne(ExpFactory([1, 2, 3], 0.5), fold_gates_at_random)]
+4. [rem(0.05, 0.06), zne(PolyFactory([1, 1.5, 2, 2.5, 3], 2), fold_global)]
+5. [rem(0.05, 0.05), zne(RichardsonFactory([1, 3, 5]), fold_all)]
+6. [rem(0.05, 0.06), zne(ExpFactory([1, 2, 3], 0.5), fold_all)]
+7. [rem(0.06, 0.00), ddd(yy)]
+8. [rem(0.07, 0.05), ddd(xyxy)]
+9. [rem(0.07, 0.04), ddd(xyxy)]
+10. [rem(0.07, 0.05), ddd(yy)]
+Best max individual
+[rem(0.06, 0.05), ddd(xx)]
+
+========= BENCHMARK RESULTS ========
+Ideal value: 1.00000
+Noisy value: 0.46000
+Mitigated value obtained with REM: 0.94200
+Mitigated value obtained with ZNE: 0.55000
+Mitigated value obtained with DDD: 0.49600
+Optim mitigated value: 0.96200
+REM ratio: 0.10741
+ZNE ratio: 0.83333
+DDD ratio: 0.93333
+DNA ratio: 0.07037
+REM fitness: 0.90301
+ZNE fitness: 0.54545
+DDD fitness: 0.51724
+DNA fitness: 0.93426
+
+
+CIRCUIT: Random Clifford T with 6 qubits and seed 2
+                          ┌──┐
+0: ───H─────────────────────@────@───@───@───T───
+                            │    │   │   │
+1: ───────────────X───T────T┼────┼───┼───┼───────
+                  │         │    │   │   │
+2: ───────────────┼─────────┼────┼───┼───@───H───
+                  │         │    │   │
+4: ───H───@───H───@───S─────@────┼───@───T───────
+          │                      │
+5: ───T───@───S──────────────────@───T───────────
+                          └──┘
