@@ -389,7 +389,7 @@ def genetic_algorithm(pop_size, generation_count, circuit, n_qubits, obs):
     best_mean_fitness_so_far = float('-inf')
     best_med_fitness_so_far = float('-inf')
     ctx = get_context('spawn')
-    with ProcessPoolExecutor(mp_context=ctx) as executor:
+    with ProcessPoolExecutor(mp_context=ctx, max_workers=20) as executor:
         for generation in (pbar := trange(generation_count,
             desc = 'genetic algorithm',
             unit = 'generation',
