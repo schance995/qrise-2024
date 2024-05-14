@@ -8,6 +8,7 @@ from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
 from contextlib import redirect_stdout
 from copy import deepcopy
 from functools import partial
+import gc
 from multiprocessing import get_context
 from pathlib import Path
 import sys
@@ -488,6 +489,7 @@ def make_plot(max_fits, mean_fits, med_fits, title, serial_code):
     plots_dir.mkdir(exist_ok=True)
     plt.savefig(plots_dir / f'{title} (run {serial_code}).png')
     plt.close()
+    gc.collect()
 
 def benchmark_results(fittest_chromosome, circuit, n_qubits, obs):
     print("\n========= BENCHMARK RESULTS ========")
@@ -613,6 +615,7 @@ def plot_benchmarks(benchmark_fitnesses, benchmark_ratios, n_qubits, serial_code
     ax.set(xlabel='Mitigation', ylabel='Fitness', title=title)
     plt.savefig(plots_dir / f'{title}.png')
     plt.close()
+    gc.collect() # https://github.com/matplotlib/matplotlib/issues/27713
 
     ratio_df = pd.concat(benchmark_ratios)
     mean_ratio_df = ratio_df.groupby(ratio_df.index).mean()
@@ -622,6 +625,7 @@ def plot_benchmarks(benchmark_fitnesses, benchmark_ratios, n_qubits, serial_code
     ax.set(xlabel='Mitigation', ylabel='Ratio', title=title)
     plt.savefig(plots_dir / f'{title}.png')
     plt.close()
+    gc.collect()
 
 if __name__ == '__main__':
 
@@ -631,7 +635,7 @@ if __name__ == '__main__':
     max_qubits = 7
     n_seeds = 3  # TODO: set to 3 when ready
 
-    for n_qubits in range(5, max_qubits+1):
+    for n_qubits in range(6, max_qubits+1):
         benchmark_fitnesses = []
         benchmark_ratios = []
         for seed in range(n_seeds):
