@@ -423,13 +423,13 @@ def genetic_algorithm(pop_size, generation_count, circuit, n_qubits, obs):
             )
 
             # logging
-            # array is sorted, use constant-time lookups
             max_indiv, max_fit = pop_fit[0]
-            med_indiv, med_fit = pop_fit[len(fitnesses)//2]
+            # array is sorted, use constant-time lookups
+            med_indiv, med_fit = pop_fit[len(fitnesses)//2] 
             mean_fit = sum(p[1] for p in pop_fit) / len(pop_fit)
 
             best_max_fitness_so_far = max(best_max_fitness_so_far, max_fit)
-            best_median_fitness_so_far = max(best_max_fitness_so_far, med_fit)
+            best_median_fitness_so_far = max(best_med_fitness_so_far, med_fit)
             best_mean_fitness_so_far = max(best_mean_fitness_so_far, mean_fit)
 
             max_indivs_over_time.append(max_indiv)
@@ -444,7 +444,8 @@ def genetic_algorithm(pop_size, generation_count, circuit, n_qubits, obs):
             ]
 
             # logging
-            pbar.set_postfix_str(f"Best Mean Fitness: {best_mean_fitness_so_far:.3f}, Best Max Fitness: {best_max_fitness_so_far:.3f}")
+            pbar.set_postfix_str(f"Best Mean Fit: {best_mean_fitness_so_far:.3f}, Best Med Fit: {best_med_fitness_so_far:.3f}, Best Max Fit: {best_max_fitness_so_far:.3f}")
+
             # print_pop(pop)
 
             # return the final population and metrics once done
