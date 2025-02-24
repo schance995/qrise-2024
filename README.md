@@ -3,7 +3,7 @@ Quantum computing's potential is notably dampened by inherent error rates in cur
 
 Our approach diverges from traditional methods by implementing a genetic algorithm to intelligently explore and optimize combinations of error mitigation techniques. By comparing this approach against brute force methods in various simulated environments, we aimed to identify optimal combinations that significantly reduce error rates. Our submission not only demonstrates potential paths to enhanced quantum computation accuracy but also contributes to the ongoing development of the Mitiq toolkit by highlighting areas for improvement.
 
-Developed for [QRISE 2024](https://www.quantumcoalition.io/).
+Developed for [QRISE 2024](https://www.quantumcoalition.io/). Slides [here](https://docs.google.com/presentation/d/1cXJs9C0Gi8Dlbfm8ArY0-wEvWJeQO-lSovG8JE8eypI/view)
 
 ## 💻 Languages and Tools 💻
 DNA Game was developed using the following technologies:
